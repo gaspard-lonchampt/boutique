@@ -7,11 +7,19 @@ class Model
     protected $pdo;
     protected $table;
 
+    /**
+     * Model constructor.
+     */
     public function __construct()
     {
         $this->pdo = \Database::getPdo();
     }
 
+    /**
+     * Return une liste de plusieurs produits/user...
+     * @param string|string|null $order
+     * @return array
+     */
     public function findAll(?string $order = "") : array
     {
         $sql = "SELECT * FROM {$this->table}";
@@ -28,6 +36,7 @@ class Model
     }
 
     /**
+     * Retourne un produit / user ...
      * @param int $id
      * @return mixed
      */
@@ -41,11 +50,41 @@ class Model
 
 
     /**
+     * Supprime un produit / user
      * @param int $id
      */
     public function delete(int $id): void
     {
         $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
+    }
+
+    /**
+     * Insert un produit /user ...
+     * $database->insert( "table" , 'username,password,email' , " 'shaz3e' , 'securepassword', 'email@email.com' ");
+     * @param $table
+     * @param $column
+     * @param $value
+     * @return false|\PDOStatement
+     */
+    public function insert($table, $column, $value){
+        $sql = "INSERT INTO {$table} ({$column}) VALUES ({$value})";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        return $query;
+    }
+
+    /**
+     * @param $table
+     * @param $column
+     * @param $value
+     * @param $id
+     * @return false|\PDOStatement
+     */
+    public function update($table, $column, $value, $id){
+        $sql = " UPDATE {$table} SET `{$column}` = {$value} WHERE id = :id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute(['id' => $id]);
+        return $query;
     }
 }
