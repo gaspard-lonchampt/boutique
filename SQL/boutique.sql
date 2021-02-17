@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 15, 2021 at 04:11 PM
+-- Generation Time: Feb 17, 2021 at 10:59 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -154,6 +154,19 @@ CREATE TABLE `products_has_stock` (
   `Stock_stock_id` int(11) NOT NULL,
   `order_item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products_image`
+--
+
+CREATE TABLE `products_image` (
+  `product_id` int(11) NOT NULL,
+  `attribute_value_id` int(11) NOT NULL,
+  `product_image_1` varchar(45) COLLATE utf8_bin NOT NULL,
+  `product_image_2` varchar(45) COLLATE utf8_bin DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
 
@@ -322,6 +335,14 @@ ALTER TABLE `products_has_stock`
   ADD KEY `fk_products_has_Stock_Stock1_idx` (`Stock_stock_id`),
   ADD KEY `fk_products_has_Stock_products1_idx` (`products_product_id`),
   ADD KEY `fk_products_has_Stock_Order_Items1_idx` (`order_item_id`);
+
+--
+-- Indexes for table `products_image`
+--
+ALTER TABLE `products_image`
+  ADD PRIMARY KEY (`product_id`,`attribute_value_id`),
+  ADD KEY `fk_products_has_Attribute_Value_Attribute_Value1_idx` (`attribute_value_id`),
+  ADD KEY `fk_products_has_Attribute_Value_products1_idx` (`product_id`);
 
 --
 -- Indexes for table `ref_invoice_status_codes`
@@ -522,6 +543,13 @@ ALTER TABLE `products_has_stock`
   ADD CONSTRAINT `fk_products_has_Stock_Order_Items1` FOREIGN KEY (`order_item_id`) REFERENCES `order_items` (`order_item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_products_has_Stock_Stock1` FOREIGN KEY (`Stock_stock_id`) REFERENCES `stock` (`stock_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_products_has_Stock_products1` FOREIGN KEY (`products_product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `products_image`
+--
+ALTER TABLE `products_image`
+  ADD CONSTRAINT `fk_products_has_Attribute_Value_Attribute_Value1` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute_value` (`attribute_value_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_products_has_Attribute_Value_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `ref_product_types`
