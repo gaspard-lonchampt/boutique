@@ -1,14 +1,15 @@
 <?php
-require_once 'libraries/Database.php';
 
-class Produits
+namespace Models;
+
+class Model
 {
     protected $pdo;
     protected $table;
 
     public function __construct()
     {
-        $this->pdo = getPdo();
+        $this->pdo = \Database::getPdo();
     }
 
     public function findAll(?string $order = "") : array
@@ -21,30 +22,30 @@ class Produits
 
         $resultats = $this->pdo->query($sql);
         // On fouille le résultat pour en extraire les données réelles
-        $produits = $resultats->fetchAll();
+        $articles = $resultats->fetchAll();
 
-        return $produits;
+        return $articles;
     }
 
+    /**
+     * @param int $id
+     * @return mixed
+     */
     public function find(int $id)
     {
         $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
-        $produit = $query->fetch();
-        return $produit;
+        $item = $query->fetch();
+        return $item;
     }
 
-    public function update(int $id)
-    {
 
-    }
-
+    /**
+     * @param int $id
+     */
     public function delete(int $id): void
     {
         $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
     }
-
-
-
 }
