@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 17, 2021 at 01:22 PM
+-- Generation Time: Feb 17, 2021 at 02:02 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -47,7 +47,8 @@ CREATE TABLE `comment` (
   `product_id` int(11) NOT NULL,
   `comment_title` varchar(45) COLLATE utf8_bin NOT NULL,
   `comment_content` longtext COLLATE utf8_bin NOT NULL,
-  `comment_ratings` int(5) NOT NULL
+  `comment_ratings` int(5) NOT NULL,
+  `comment_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- --------------------------------------------------------
