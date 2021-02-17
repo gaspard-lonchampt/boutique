@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 17, 2021 at 10:59 AM
+-- Generation Time: Feb 17, 2021 at 01:22 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -38,20 +38,37 @@ CREATE TABLE `attribute_value` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `comment_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `comment_title` varchar(45) COLLATE utf8_bin NOT NULL,
+  `comment_content` longtext COLLATE utf8_bin NOT NULL,
+  `comment_ratings` int(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customer`
 --
 
 CREATE TABLE `customer` (
   `customer_id` int(11) NOT NULL,
-  `customer_statut` int(11) NOT NULL,
-  `customer_organisation_or_person` varchar(255) COLLATE utf8_bin NOT NULL,
+  `customer_email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `customer_login` varchar(85) COLLATE utf8_bin NOT NULL,
+  `customer_password` varchar(255) COLLATE utf8_bin NOT NULL,
   `customer_firstname` varchar(255) COLLATE utf8_bin NOT NULL,
   `customer_lastname` varchar(255) COLLATE utf8_bin NOT NULL,
+  `customer_statut` int(11) NOT NULL,
+  `customer_organisation_or_person` varchar(255) COLLATE utf8_bin NOT NULL,
   `customer_country` varchar(2) COLLATE utf8_bin NOT NULL,
   `customer_city` varchar(100) COLLATE utf8_bin NOT NULL,
   `customer_postcode` varchar(100) COLLATE utf8_bin NOT NULL,
   `customer_state` varchar(100) COLLATE utf8_bin NOT NULL,
-  `customer_email` varchar(100) COLLATE utf8_bin NOT NULL,
   `customer_adress_line_1` varchar(255) COLLATE utf8_bin NOT NULL,
   `customer_adress_line_2` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `customer_adress_line_3` varchar(255) COLLATE utf8_bin DEFAULT NULL,
@@ -275,6 +292,14 @@ ALTER TABLE `attribute_value`
   ADD KEY `fk_Product_Type_Attribute_Value_Ref_Product_Types1_idx` (`product_type_id`);
 
 --
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`comment_id`),
+  ADD KEY `fk_Comment_Customer1_idx` (`customer_id`),
+  ADD KEY `fk_Comment_products1_idx` (`product_id`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
@@ -408,6 +433,12 @@ ALTER TABLE `attribute_value`
   MODIFY `attribute_value_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `customer_payment_methods`
 --
 ALTER TABLE `customer_payment_methods`
@@ -494,6 +525,13 @@ ALTER TABLE `stock`
 --
 ALTER TABLE `attribute_value`
   ADD CONSTRAINT `fk_Product_Type_Attribute_Value_Ref_Product_Types1` FOREIGN KEY (`product_type_id`) REFERENCES `ref_product_types` (`product_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `fk_Comment_Customer1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Comment_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `customer_payment_methods`
