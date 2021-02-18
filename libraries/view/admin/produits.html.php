@@ -55,36 +55,9 @@ $Produits = new Produits();
         ?>
     </section>
 
-
     <!--AJOUT DUN NOUVEAU PRODUIT-->
-    <?php
-
-    $var = $Produits->insert("products", "`product_type_id`, `product_name`, `product_description`, `other_product_details`", "(SELECT product_type_id from ref_product_types where product_type_id = :product_type_id), :product_name, :product_description, :other_product_details");
-
-    var_dump($var);
-
-    if (isset($_POST["submit"])) {
-        $type = $_POST["product_type_id"];
-        $nom = $_POST["product_name"];
-        $description = $_POST["product_description"];
-        $other = $_POST["other_product_details"];
-
-        $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ]);
-
-        $sql = "INSERT INTO `products` (`product_type_id`, `product_name`, `product_description`, `other_product_details`) VALUES ((SELECT product_type_id from ref_product_types where product_type_id = :product_type_id), :product_name, :product_description, :other_product_details)";
-        $query = $pdo->prepare($sql);
-        //var_dump($query);
-        $query->execute(['product_type_id' => $type,
-            'product_name' => $nom,
-            'product_description' => $description,
-            'other_product_details' => $other
-        ]);
-    }
-    ?>
-    <form action="" method="post">
+    <?php $Produits->insertproduct(); ?>
+    <form action="produits.html.php" method="post">
         <input type="number" name="product_type_id"> <br>
         <input type="text" name="product_name" placeholder="Nom du produit"><br>
         <input type="text" name="product_description" placeholder="Description"><br>

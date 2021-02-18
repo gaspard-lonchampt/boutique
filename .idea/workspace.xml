@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="ajout de view">
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="page produits.html.php">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/models/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Model.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/models/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Produits.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/view/admin/produits.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/produits.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/layout.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/template/layout.html.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +89,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613484566998</updated>
-      <workItem from="1613484568225" duration="29151000" />
+      <workItem from="1613484568225" duration="36907000" />
     </task>
     <task id="LOCAL-00001" summary="test insert table product sur index.php">
       <created>1613576337508</created>
@@ -114,7 +112,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613643836075</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="page produits.html.php">
+      <created>1613655015837</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1613655015837</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,7 +139,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test insert table product sur index.php" />
     <MESSAGE value="ajout de view" />
-    <option name="LAST_COMMIT_MESSAGE" value="ajout de view" />
+    <MESSAGE value="page produits.html.php" />
+    <option name="LAST_COMMIT_MESSAGE" value="page produits.html.php" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

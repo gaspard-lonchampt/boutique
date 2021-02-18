@@ -66,29 +66,4 @@ class Model
      * @param $value
      * @return false|\PDOStatement
      */
-    public function insert($table, $column, $value)
-    {
-        $sql = "INSERT INTO {$table} ({$column}) VALUES ({$value})";
-        $query = $this->pdo->prepare($sql);
-        $query->execute(compact('table', 'column', 'value'));
-        var_dump($query);
-        return $query;
-    }
-
-    /**
-     *  Modifie un produit / user ...
-     *
-     * @param $table
-     * @param $column
-     * @param $value
-     * @param $id
-     * @return false|\PDOStatement
-     */
-    public function update($table, $column, $value, $id)
-    {
-        $sql = "UPDATE {$table} SET `{$column}` = {$value} WHERE id = :id";
-        $query = $this->pdo->prepare($sql);
-        $query->execute(['id' => $id]);
-        return $query;
-    }
 }
