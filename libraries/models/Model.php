@@ -1,4 +1,5 @@
 <?php
+require_once '../../../libraries/Database.php';
 
 class Model
 {
@@ -70,6 +71,7 @@ class Model
         $sql = "INSERT INTO {$table} ({$column}) VALUES ({$value})";
         $query = $this->pdo->prepare($sql);
         $query->execute(compact('table', 'column', 'value'));
+        var_dump($query);
         return $query;
     }
 

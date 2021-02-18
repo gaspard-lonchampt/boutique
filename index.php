@@ -39,11 +39,11 @@ if (isset($_POST["submit"])) {
 <!--
 <form action="" method="POST">
     <?php /**
-    foreach ($columnNames as $columnName)
-    {
-        echo '<label for="' . $columnName . '">Enter your ' . $columnName . '</label>
-            <input type="text" name="' . $columnName . '"><br>';
-    }
-    */?>
+foreach ($columnNames as $columnName)
+{
+echo '<label for="' . $columnName . '">Enter your ' . $columnName . '</label>
+<input type="text" name="' . $columnName . '"><br>';
+}
+ */?>
     <button>Insérer !</button>
 </form>-->

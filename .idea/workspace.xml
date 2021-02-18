@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="test insert table product sur index.php">
-      <change afterPath="$PROJECT_DIR$/libraries/view/admin/produits.html.php" afterDir="false" />
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="ajout de view">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/models/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Model.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/models/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Produits.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/admin/produits.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/produits.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/layout.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/template/layout.html.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,10 +18,38 @@
     <execution />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="Marie_view_admin_produit" />
+                    <option name="lastUsedInstant" value="1613643890" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1613643889" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php_installation_&lt;version&gt;" />
   <component name="ProjectId" id="1oZC8ZN8q0nFGnpFlkli5Nh52cZ" />
@@ -36,6 +69,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -57,7 +91,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613484566998</updated>
-      <workItem from="1613484568225" duration="21133000" />
+      <workItem from="1613484568225" duration="29151000" />
     </task>
     <task id="LOCAL-00001" summary="test insert table product sur index.php">
       <created>1613576337508</created>
@@ -66,7 +100,21 @@
       <option name="project" value="LOCAL" />
       <updated>1613576337508</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ajout de view">
+      <created>1613643820836</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1613643820836</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ajout de view">
+      <created>1613643836075</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1613643836075</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -85,7 +133,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test insert table product sur index.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="test insert table product sur index.php" />
+    <MESSAGE value="ajout de view" />
+    <option name="LAST_COMMIT_MESSAGE" value="ajout de view" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
