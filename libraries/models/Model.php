@@ -1,7 +1,5 @@
 <?php
-
-namespace Models;
-
+require_once '../../../libraries/Database.php';
 
 class Model
 {
@@ -18,9 +16,7 @@ class Model
 
     /**
      * Return une liste de plusieurs produits/user...
-     * 
-     * @param $order string
-     * 
+     * @param string|string|null $order
      * @return array
      */
     public function findAll(?string $order = "") : array
@@ -40,9 +36,7 @@ class Model
 
     /**
      * Retourne un produit / user ...
-     * 
-     * @param $id int
-     * 
+     * @param int $id
      * @return mixed
      */
     public function find(int $id)
@@ -56,10 +50,7 @@ class Model
 
     /**
      * Supprime un produit / user
-     * 
-     * @param $id int
-     * 
-     * @return void
+     * @param int $id
      */
     public function delete(int $id): void
     {
@@ -70,31 +61,9 @@ class Model
     /**
      * Insert un produit /user ...
      * $database->insert( "table" , 'username,password,email' , " 'shaz3e' , 'securepassword', 'email@email.com' ");
-     * 
-     * @param $table $column $value
-     * 
+     * @param $table
+     * @param $column
+     * @param $value
      * @return false|\PDOStatement
      */
-    public function insert($table, $column, $value)
-    {
-        $sql = "INSERT INTO {$table} ({$column}) VALUES ({$value})";
-        $query = $this->pdo->prepare($sql);
-        $query->execute(compact('table', 'column', 'value'));
-        return $query;
-    }
-
-    /**
-     *  Modifie un produit / user ...
-     *
-     * @param $table $column $value $id
-     * 
-     * @return false|\PDOStatement
-     */
-    public function update($table, $column, $value, $id)
-    {
-        $sql = "UPDATE {$table} SET `{$column}` = {$value} WHERE id = :id";
-        $query = $this->pdo->prepare($sql);
-        $query->execute(['id' => $id]);
-        return $query;
-    }
 }

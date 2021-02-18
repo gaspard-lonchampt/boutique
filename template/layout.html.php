@@ -9,7 +9,8 @@
 </head>
 
 <body>
-<?= $pageContent ?>
+<?php //$pageContent
+?>
 </body>
 
 </html>
