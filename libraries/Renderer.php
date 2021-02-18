@@ -5,9 +5,10 @@ class Renderer
 {
     //render('articles/show')
     /**
-     * affiche un template html en injectant les $variables
-     * @param string $path
-     * @param array $variables
+     * Affiche un template html en injectant les $variables
+     * 
+     * @param string&array $path $variables
+     * 
      */
     public static function render(string $path, array $variables = []) : void
     {
@@ -17,9 +18,9 @@ class Renderer
         extract($variables);
 
         ob_start();
-        require('templates/' . $path . '.html.php');
+        include'templates/' . $path . '.html.php';
         $pageContent = ob_get_clean();
 
-        require('templates/layout.html.php');
+        include'templates/layout.html.php';
     }
 }

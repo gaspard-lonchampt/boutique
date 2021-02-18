@@ -3,6 +3,12 @@
 //require_once 'libraries/models/Produits.php';
 
 
+require_once'libraries/autoload.php';
+// require_once'libraries/controllers/Controller.php';
+
+$controller = new \Controllers\Products();
+
+
 if (isset($_POST["submit"])) {
     $id  = $_POST["id"];
     $nom = $_POST["product_name"];

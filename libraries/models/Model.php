@@ -1,5 +1,8 @@
 <?php
 
+namespace Models;
+
+
 class Model
 {
     protected $pdo;
@@ -15,7 +18,9 @@ class Model
 
     /**
      * Return une liste de plusieurs produits/user...
-     * @param string|string|null $order
+     * 
+     * @param $order string
+     * 
      * @return array
      */
     public function findAll(?string $order = "") : array
@@ -35,7 +40,9 @@ class Model
 
     /**
      * Retourne un produit / user ...
-     * @param int $id
+     * 
+     * @param $id int
+     * 
      * @return mixed
      */
     public function find(int $id)
@@ -49,7 +56,10 @@ class Model
 
     /**
      * Supprime un produit / user
-     * @param int $id
+     * 
+     * @param $id int
+     * 
+     * @return void
      */
     public function delete(int $id): void
     {
@@ -60,9 +70,9 @@ class Model
     /**
      * Insert un produit /user ...
      * $database->insert( "table" , 'username,password,email' , " 'shaz3e' , 'securepassword', 'email@email.com' ");
-     * @param $table
-     * @param $column
-     * @param $value
+     * 
+     * @param $table $column $value
+     * 
      * @return false|\PDOStatement
      */
     public function insert($table, $column, $value)
@@ -76,10 +86,8 @@ class Model
     /**
      *  Modifie un produit / user ...
      *
-     * @param $table
-     * @param $column
-     * @param $value
-     * @param $id
+     * @param $table $column $value $id
+     * 
      * @return false|\PDOStatement
      */
     public function update($table, $column, $value, $id)
