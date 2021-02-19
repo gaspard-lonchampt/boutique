@@ -2,7 +2,7 @@
 require_once '../../../template/layout.html.php';
 require_once '../../../libraries/models/Produits.php';
 
-$Produits = new Produits();
+$Produits = new Products();
 
 ?>
 <section>
