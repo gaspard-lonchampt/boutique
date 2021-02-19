@@ -1,3 +1,10 @@
+<?php
+require_once 'Model.php';
+
+class Products extends Model
+{
+    protected $pdo;
+    protected $table = "products";
 
     public function insertproduct()
     {
