@@ -24,4 +24,8 @@ class Products extends Model
             ]);
         }
     }
+
+    public function update() {
+        
+    }
 }

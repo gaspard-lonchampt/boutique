@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="test controllers">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="class product rename, + function insert product">
+      <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,6 +11,9 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Marie_view_admin_produit" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -75,6 +78,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="PHP Script.Model.php" />
+        <item itemvalue="PHP Script.Model.php" />
       </list>
     </recent_temporary>
   </component>
@@ -116,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613655015837</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="class product rename, + function insert product">
+      <created>1613725771178</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613725771178</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,7 +148,8 @@
     <MESSAGE value="test insert table product sur index.php" />
     <MESSAGE value="ajout de view" />
     <MESSAGE value="page produits.html.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="page produits.html.php" />
+    <MESSAGE value="class product rename, + function insert product" />
+    <option name="LAST_COMMIT_MESSAGE" value="class product rename, + function insert product" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
