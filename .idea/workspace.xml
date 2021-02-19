@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="page produits.html.php">
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="test controllers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/models/Model.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Model.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/models/Produits.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Produits.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/admin/produits.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/produits.html.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +31,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="Marie_view_admin_produit" />
-                    <option name="lastUsedInstant" value="1613643890" />
+                    <option name="lastUsedInstant" value="1613665843" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
