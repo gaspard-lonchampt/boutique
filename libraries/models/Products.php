@@ -14,7 +14,7 @@ class Products extends Model
     public function findproducts(int $id)
     {
         $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id = :id");
-        $query->bindValue('id', $id, PDO::PARAM_INT);
+        $query->bindValue(':product_id', $id, PDO::PARAM_INT);
         $query->execute();
         $item = $query->fetch();
         // On vérifie si le produit existe
@@ -27,90 +27,84 @@ class Products extends Model
     public function insertproduct()
     {
         if (isset($_POST["submit"])) {
-            $type = $_POST["product_type_id"];
-            $nom = $_POST["product_name"];
-            $description = $_POST["product_description"];
-            $other = $_POST["other_product_details"];
 
-            $sql = "INSERT INTO `products` (`product_type_id`, `product_name`, `product_description`, `other_product_details`) VALUES ((SELECT product_type_id from ref_product_types where product_type_id = :product_type_id), :product_name, :product_description, :other_product_details)";
-            $query = $this->pdo->prepare($sql);
-            //var_dump($query);
-            $query->execute(['product_type_id' => $type,
-                'product_name' => $nom,
-                'product_description' => $description,
-                'other_product_details' => $other
-            ]);
-        }
-    }
+            if (isset($_POST['product_type_id']) && !empty($_POST['product_type_id'])
+                && isset($_POST['product_name']) && !empty($_POST['product_name'])
+                && isset($_POST['product_description']) && !empty($_POST['product_description'])
+                && isset($_POST['other_product_details']) && !empty($_POST['other_product_details']))
+            {
+                $type = strip_tags($_POST["product_type_id"]);
+                $nom = strip_tags($_POST["product_name"]);
+                $description = strip_tags($_POST["product_description"]);
+                $other = strip_tags($_POST["other_product_details"]);
 
-    /**
-     * GESTION PRODUITS-> Permet d'afficher les valeurs des produits selectionnés dans les champs du formulaire de modification
-     *
-     * @param $id
-     * @return array
-     */
-    public function replaceValueProduct($id): array
-    {
-        $query = $this->pdo->prepare("SELECT product_type_id, product_name, product_description, other_product_details FROM products WHERE id = :id");
-        $query->execute([
-            "id" => $id
-        ]);
+                $sql = "INSERT INTO `products` (`product_type_id`, `product_name`, `product_description`, `other_product_details`) VALUES ((SELECT product_type_id from ref_product_types where product_type_id = :product_type_id), :product_name, :product_description, :other_product_details)";
+                $query = $this->pdo->prepare($sql);
+                //var_dump($query);
+                $query->bindValue(':product_type_id', $type, PDO::PARAM_INT);
+                $query->bindValue(':product_name', $nom, PDO::PARAM_STR);
+                $query->bindValue(':product_description', $description, PDO::PARAM_STR);
+                $query->bindValue(':other_product_details', $other, PDO::PARAM_STR);
+                $query->execute();
 
-        $result = $query->fetch(PDO::FETCH_ASSOC);
-
-        $_SESSION['product_type_id'] = $result['product_type_id'];
-        $_SESSION['product_name'] = $result['product_name'];
-        $_SESSION['product_description'] = $result['product_description'];
-        $_SESSION['other_product_details'] = $result['other_product_details'];
-
-        return $_SESSION;
-    }
-
-    /**
-     * GESTION PRODUITS -> Permet d'afficher le formulaire de modification de produits
-     *
-     * @param $id
-     */
-    public function displayUpdateProduit($id)
-    {
-        $this->replaceValueProduct($id);
-        echo('<form action="" method="post" style="margin-top: 5%">
-                   <section class="container"><input type="number" id="product_type_id" name="product_type_id" value="' . $_SESSION['product_type_id'] . '"></section>
-                   <section class="container"><input type="text" id="product_name" name="product_name" value="' . $_SESSION['product_name'] . '"></section>
-                   <section class="container"><textarea type="text" id="product_description" name="product_description">' . $_SESSION['product_description'] . '...</textarea></section>
-                   <section class="container"><textarea type="text" id="other_product_details" name="other_product_details">' . $_SESSION['other_product_details'] . '...</textarea></section>
-                   <section class="container"><input type="submit" class="btn btn-warning" id="valid_update" name="validUpdate" value="Valider"></section>
-               </form>');
-
-        if (isset($_POST['validUpdate'])) {
-            $update_type_id = htmlspecialchars(trim($_POST['product_type_id']));
-            $update_name = htmlspecialchars(trim($_POST['product_name']));
-            $update_description = htmlspecialchars(trim($_POST['product_description']));
-            $update_other_details = htmlspecialchars(trim($_POST['other_product_details']));
-
-            $query = $this->pdo->prepare("UPDATE products SET product_type_id = :product_type_id, product_name = :product_name, product_description = :product_description, other_product_details = :other_product_details WHERE id = :id");
-            $query->execute([
-                "product_type_id" => $update_type_id,
-                "product_name" => $update_name,
-                "product_description" => $update_description,
-                "other_product_details" => $update_other_details,
-                "id" => $id
-            ]);
+                $_SESSION['message'] = "Le produit a été ajouté";
+            }
+            else {
+                $_SESSION['erreur'] = "le formulaire n'est pas complet";
+            }
         }
     }
 
     /**
      * GESTION DES PRODUITS -> Supprime un produit
      *
-     * @param $id
+     * @param $product_id
      */
-    public function deleteProduct($id)
+    public function deleteProduct(int $product_id)
     {
-        $query = $this -> pdo -> prepare("DELETE FROM products WHERE id = :id");
-        $query -> execute([
-            "id" => $id
-        ]);
+        if (isset($_GET['hiddenDeleteProduct']) && !empty($_GET['hiddenDeleteProduct'])) {
 
-        Http::redirect("../pages/admin.php");
+            // On nettoie l'id envoyé
+            $product_id = strip_tags($_GET['hiddenDeleteProduct']);
+
+            $sql = 'SELECT * FROM `products` WHERE product_id = :product_id;';
+
+            //On prépare requête
+            $query = $this->pdo->prepare($sql);
+
+            //On accroches les paramètres
+            $query->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+
+            // On exécute la requête
+
+            $query->execute();
+
+            // On récupère le produit
+            $produit = $query->fetch();
+
+            // On vérifie si le produit existe
+
+            if (!$produit){
+                $_SESSION['erreur'] = "Cet id n'existe pas";
+            }
+
+            $sql2 = 'DELETE FROM `products` WHERE product_id = :product_id;';
+
+            //On prépare requête
+            $query2 = $this->pdo->prepare($sql2);
+
+            //On accroches les paramètres
+            $query2->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+
+            // On exécute la requête
+
+            $query2->execute();
+
+            $_SESSION['message'] = "produit supprimé";
+
+        } else {
+            echo 'pas idi';
+            $_SESSION['erreur'] = "il y a un autre problème";
+        }
     }
 }
