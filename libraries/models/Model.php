@@ -57,13 +57,4 @@ class Model
         $query = $this->pdo->prepare("DELETE FROM {$this->table} WHERE id = :id");
         $query->execute(['id' => $id]);
     }
-
-    /**
-     * Insert un produit /user ...
-     * $database->insert( "table" , 'username,password,email' , " 'shaz3e' , 'securepassword', 'email@email.com' ");
-     * @param $table
-     * @param $column
-     * @param $value
-     * @return false|\PDOStatement
-     */
 }
