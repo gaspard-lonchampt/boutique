@@ -107,4 +107,45 @@ class Products extends Model
             $_SESSION['erreur'] = "il y a un autre problème";
         }
     }
+
+    /**
+     *
+     */
+    public function inventaire($id){
+        $sql = "SELECT * FROM `attribute_value` NATURAL JOIN stock NATURAL JOIN products_image WHERE products_image.product_id = :product_id";
+        $query = $this->pdo->prepare($sql);
+        $query->bindValue(':product_id', $id, PDO::PARAM_INT);
+        $query->execute();
+        $stock = $query->fetchAll();
+        return $stock;
+    }
+
+    public function insertstock() {
+        if (isset($_POST["submit"])) {
+            if (isset($_POST['size']) && !empty($_POST['size'])
+                && isset($_POST['color']) && !empty($_POST['color'])
+                && isset($_POST['quantity']) && !empty($_POST['quantity'])
+                && isset($_POST['price']) && !empty($_POST['price']))
+            {
+                $size = strip_tags($_POST['size']);
+                $color = strip_tags($_POST['color']);
+                $quantity = strip_tags($_POST['quantity']);
+                $price = strip_tags($_POST['price']);
+
+                $sql = "INSERT INTO `attribute_value` (`product_type_id`, `attribute_color`, `attribute_size`) VALUES (: , :product_name, :product_description, :other_product_details)";
+                $query = $this->pdo->prepare($sql);
+                //var_dump($query);
+                $query->bindValue(':', $size, PDO::PARAM_STR);
+                $query->bindValue(':', $color, PDO::PARAM_STR);
+                $query->bindValue(':', $quantity, PDO::PARAM_INT);
+                $query->bindValue(':', $price, PDO::PARAM_INT);
+                $query->execute();
+
+                $_SESSION['message'] = "Le produit a été ajouté";
+            }
+            else {
+                $_SESSION['erreur'] = "le formulaire n'est pas complet";
+            }
+        }
+    }
 }

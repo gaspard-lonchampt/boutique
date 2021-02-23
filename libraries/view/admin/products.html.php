@@ -37,12 +37,24 @@ if (isset($_GET['delete_Product']))
                 $_SESSION['message'] ="";
             }
             ?>
-            <!-- FIN MESSAGE D ERREUR -->
+            <!-- FIN MESSAGE -->
 
             <h1>Liste des Produits</h1>
 
+            <!-- FORM POUR LE BOUTON AJOUTER -->
+            <form method="POST">
+                <input type="submit" name="addProduct" value="Ajouter un produit" class="btn btn-success">
+            </form>
+            <!-- FIN DE FORM BOUTON AJOUTER-->
+
+            <?php
+            /**
+             * AFFICHAGE DU FORM POUR UPDATE PRODUIT
+             */
+            if (isset($_POST['addProduct'])) {
+            ?>
+
             <!-- AJOUT DES PRODUITS -->
-            <a href="" class="btn btn-primary">Ajouter un produit</a>
             <?php $Produits->insertproduct(); ?>
             <form action="products.html.php" method="post">
                 <div class="form-group">
@@ -64,6 +76,9 @@ if (isset($_GET['delete_Product']))
                 <button name="submit" class="btn btn-primary">Valider !</button>
             </form>
             <!-- FIN AJOUT DES PRODUITS -->
+                <?php
+            }
+            ?>
 
             <!-- AFFICHAGE DU TABLEAU AVEC PRODUITS -->
             <table class="table">
