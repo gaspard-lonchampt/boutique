@@ -3,7 +3,7 @@
 namespace Models;
 
 
-class Model
+class Models
 {
     protected $pdo;
     protected $table;

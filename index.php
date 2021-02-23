@@ -7,6 +7,9 @@ require_once'libraries/autoload.php';
 // require_once'libraries/controllers/Controller.php';
 
 $controller = new \Controllers\Products();
+$controller2 = new \Models\Products();
+
+$controller->delete();
 
 
 if (isset($_POST["submit"])) {
