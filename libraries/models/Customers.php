@@ -8,7 +8,7 @@ namespace Models;
 class Customers extends Models
 {
     protected $pdo;
-    protected $table = "users";
+    protected $table = "customer";
 
     private $id;
     public $customer_email;
@@ -37,21 +37,6 @@ class Customers extends Models
 
         parent::__construct();
 
-    }
-
-    /**
-     * Vérification de l'unicité du login client
-     *
-     * @return void
-     */
-    public function checklogin($customer_login)
-    {
-        $requete_same_login = $this->pdo->prepare(
-            "SELECT * FROM customer WHERE customer_login = ?"
-        );
-        $requete_same_login->execute([$customer_login]);
-        $loginExist = $requete_same_login->fetch();
-        return $loginExist;
     }
 
     /**
@@ -154,24 +139,25 @@ class Customers extends Models
         );
 
         $requete->execute();
-        echo "Insertion réussi";
 
     }
 
-    public function connect()
+    public function getAllinfos($customer_login)
     {
+
         $requete = $this->pdo->prepare(
-            "SELECT * FROM utilisateurs WHERE customer_login = :login "
+            "SELECT * FROM customer WHERE customer_login = :customer_login "
         );
 
-        $requete->bindParam(':customer_login', $this->customer_login);
+        $requete->bindParam(
+            ':customer_login',
+            $customer_login
+        );
 
-        $result = $requete->execute()->fetch();
+        $requete->execute();
+        $customer_getAllinfos = $requete->fetch();
 
-        if ($result && password_verify($this->customer_password, $result['customer_password'])) {
-            return $result;
-        }
-
+        return $customer_getAllinfos;
     }
 
     // public function update($id)
@@ -204,17 +190,6 @@ class Customers extends Models
 
     // }
 
-    public function getAllinfos()
-    {
-        $requete = $this->connexion->prepare("SELECT * FROM utilisateurs WHERE login = :login");
-        $requete->bindParam(':login', $this->login);
-
-        $requete->execute();
-
-        $result = $requete->fetch();
-
-        return $result;
-    }
 
     public function getDroit()
     {
@@ -228,4 +203,8 @@ class Customers extends Models
         return $result['id_droit'];
     }
 
+    public function update() 
+    {
+        
+    }
 }

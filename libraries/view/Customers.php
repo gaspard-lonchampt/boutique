@@ -2,15 +2,18 @@
 
     namespace View;
 
+    /**
+     * Customers view class
+     */
     class Customers
     {
 
         /**
-         * Affichage formulaire d'inscription des clients
+         * Formulaire d'inscription des clients avec affichage des messages d'erreurs/réussite de l'utilisateur
          *
          * @return void
          */
-        public function form()
+        public function register_form($register_msg)
         {
 
         ?>
@@ -147,19 +150,96 @@
                 name="customer_submit">
             </div>
 
-        </form>
+            <?php
 
-        <!-- <?php if (count($errors) > 0): ?>
-            <div class="error">
-            <?php foreach ($errors as $error): ?>
-            <p><?php echo $error ?></p>
-            <?php endforeach?>
+                        if (isset($register_msg)) {
+                            if (count($register_msg) > 0) {
+                            ?>
+                        <div class="error">
+                        <?php foreach ($register_msg as $msg) {
+                                                echo "<p>" . $msg . "</p>";
+                                            }
+                                        }
+                                    }
+                                ?>
             </div>
-        <?php endif?> -->
+            </form>
 
         <?php
             }
 
-            }
+                /**
+                 * Formulaire de connexion avec affichage des messages d'erreurs/réussite de l'utilisateur
+                 *
+                 * @param  mixed $connect_msg
+                 * @return void
+                 */
+                public function connect_form($connect_msg)
+                {
+                ?>
+            <form action="connection.php" method="POST" >
 
-        ?>
+            <div class="register_form">
+                <label for="customer_login">Login :</label>
+                <input type="text" class="register_form"
+                id="customer_login"
+                name="customer_login" >
+                <?php // if(isset($error_login)){ echo $error_login ;} ?>
+            </div>
+
+            <div class="register_form">
+                <label for="customer_password">Mot de passe : </label>
+                <input type="password" class="register_form"
+                id="customer_password"
+                name="customer_password" >
+            </div>
+
+            <div>
+              <input class="btn btn-outline-primary" type="submit" value="Envoyer"
+                name="customer_submit">
+            </div>
+            <?php
+
+                        if (isset($connect_msg)) {
+                            if (count($connect_msg) > 0) {
+                            ?>
+                        <div class="error">
+                        <?php foreach ($connect_msg as $msg) {
+                                                echo "<p>" . $msg . "</p>";
+                                            }
+                                        }
+                                    }
+                                ?>
+            </div>
+            </form>
+
+            <?php
+
+                    }
+
+                    public function All_profil_display($All_infos, $column_name)
+                    {
+
+                        echo "<table>";
+
+                        foreach ($column_name as $key => $column) {
+                            echo "<th>";
+                            echo $column["COLUMN_NAME"];
+                            echo "</th>";
+                        }
+                    ?>
+                        </tr>
+                        <?php
+                            foreach ($All_infos as $infos_key => $values) {
+                                        foreach ($column_name as $key => $column) {
+                                            echo "<td>";
+                                            echo $values[$column["COLUMN_NAME"]];
+                                            echo "</td>";
+                                        }
+                                        echo "</tr>";
+                                    }
+
+                                    echo "</table>";
+
+                                }
+                        }

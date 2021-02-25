@@ -33,9 +33,9 @@ class Models
 
         $resultats = $this->pdo->query($sql);
         // On fouille le résultat pour en extraire les données réelles
-        $articles = $resultats->fetchAll();
+        $All_infos = $resultats->fetchall();
 
-        return $articles;
+        return $All_infos;
     }
 
     /**
@@ -96,5 +96,16 @@ class Models
         $query = $this->pdo->prepare($sql);
         $query->execute(['id' => $id]);
         return $query;
+    }
+
+    public function getColumnName($table)
+    {
+        $sql = "SELECT * 
+        FROM information_schema.columns 
+        WHERE table_name = '$table'";
+
+        $query = $this->pdo->query($sql);
+        $column_name = $query->fetchall();
+        return $column_name;
     }
 }

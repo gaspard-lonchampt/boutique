@@ -5,8 +5,8 @@ require_once 'libraries/autoload.php';
 
 $view = new \view\Customers();
 
-$view->form();
-
 $register = new \controllers\Customers();
 
-$register->register();
+$register_msg = $register->register();
+
+$view->register_form($register_msg);
