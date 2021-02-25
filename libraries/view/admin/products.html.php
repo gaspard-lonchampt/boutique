@@ -49,13 +49,15 @@ if (isset($_GET['delete_Product']))
 
             <?php
             /**
-             * AFFICHAGE DU FORM POUR UPDATE PRODUIT
+             * AFFICHAGE DU FORM POUR AJOUT PRODUIT
              */
-            if (isset($_POST['addProduct'])) {
+            if (isset($_POST['addProduct']) || (isset($_POST['formAddProduct']))) {
             ?>
 
             <!-- AJOUT DES PRODUITS -->
-            <?php $Produits->insertproduct(); ?>
+            <?php $Produits->insertproduct();
+            if (isset($_POST['addProduct']))
+            { ?>
             <form action="products.html.php" method="post">
                 <div class="form-group">
                     <label for="product_type_id">Type de produit</label>
@@ -73,10 +75,11 @@ if (isset($_GET['delete_Product']))
                     <label for="other_product_details">Détail du produit</label>
                     <input type="text" name="other_product_details" class="form-control">
                 </div>
-                <button name="submit" class="btn btn-primary">Valider !</button>
+                <button type="submit" name="formAddProduct" class="btn btn-primary">Valider !</button>
             </form>
             <!-- FIN AJOUT DES PRODUITS -->
                 <?php
+            }
             }
             ?>
 

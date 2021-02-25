@@ -26,7 +26,7 @@ class Products extends Model
 
     public function insertproduct()
     {
-        if (isset($_POST["submit"])) {
+        if (isset($_POST["formAddProduct"])) {
 
             if (isset($_POST['product_type_id']) && !empty($_POST['product_type_id'])
                 && isset($_POST['product_name']) && !empty($_POST['product_name'])
@@ -48,6 +48,7 @@ class Products extends Model
                 $query->execute();
 
                 $_SESSION['message'] = "Le produit a été ajouté";
+                header('Location:products.html.php');
             }
             else {
                 $_SESSION['erreur'] = "le formulaire n'est pas complet";
@@ -132,6 +133,11 @@ class Products extends Model
                 $quantity = strip_tags($_POST['quantity']);
                 $price = strip_tags($_POST['price']);
 
+                /**
+                 * il faut faire 2 insert car insert avec inner join impossible
+                 * il faut d'abord inserer dans la table atribute value
+                 * puis dans la table stock en utilisant l'id atribute value qui sera alors créer
+                 */
                 $sql = "INSERT INTO `attribute_value` (`product_type_id`, `attribute_color`, `attribute_size`) VALUES (: , :product_name, :product_description, :other_product_details)";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);

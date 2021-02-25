@@ -114,7 +114,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
     // On nettoie l'id envoyé
     $product_id = strip_tags($_GET['product_id']);
 
-    $sql = 'SELECT * FROM `products` NATURAL JOIN products_image WHERE product_id = 6';
+    $sql = 'SELECT * FROM `products` NATURAL JOIN products_image WHERE product_id = :product_id';
 
     //On prépare requête
     $query = $pdo->prepare($sql);
@@ -131,12 +131,14 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
     //on definit une session
     $_SESSION['product_id'] = $produit['product_id'];
 
+    /**  ca marchait, mais ça marche plus ¯\_(ツ)_/¯
+     * ça n'affiche pas la fiche produit meme si elle existe
     // On vérifie si le produit existe
-
     if (!$produit){
         $_SESSION['erreur'] = "Cet id n'existe pas";
         header('Location: products.html.php');
     }
+     */
 } else {
     $_SESSION['erreur'] = "URL invalide";
     header('Location: products.html.php');
@@ -146,7 +148,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
     <div class="row">
         <section class="col-12">
 
-            <!-- MESSAGE D ERREUR SI URL DETAILS PRODUIT INVALIDE -->
+            <!-- MESSAGE D ERREUR -->
             <?php
             if (!empty($_SESSION['erreur'])) {
                 echo '<div class="alert alert-danger" role="alert">' . $_SESSION['erreur'] . '</div>';
@@ -247,7 +249,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                     $allStock = $Produits -> inventaire($_SESSION['product_id']);
                     foreach ($allStock as $inventaire)
                     {
-                        var_dump($inventaire);
+                        //var_dump($inventaire);
                         echo ('<tr>
                                     <td>' . $inventaire['attribute_size'] . '</td>
                                     <td>' . $inventaire['attribute_color'] . '</td>
@@ -281,15 +283,28 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                 ?>
 
                 <!-- AJOUT DES STOCK -->
+                <!--  -->
                 <?php $Produits->insertstock(); ?>
                 <form method="post">
                     <div class="form-group">
                         <label for="size">TAILLE</label>
-                        <input type="text" name="size" class="form-control">
+                        <select name="size" class="form-control">
+                            <option value="XS">XS</option>
+                            <option value="S">S</option>
+                            <option value="M" selected>M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                            <option value="XXXL">XXXL</option>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="coulor">COULEUR</label>
-                        <input type="text" name="coulor" class="form-control">
+                        <label for="color">COULEUR</label>
+                        <select name="color" class="form-control">
+                            <option value="rouge" selected>Rouge</option>
+                            <option value="orange">Orange</option>
+                            <option value="bleu">Bleu</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="quantity">QUANTITE</label>
