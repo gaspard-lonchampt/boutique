@@ -2,8 +2,10 @@
 session_start();
 require_once '../../../template/layout.html.php';
 require_once '../../../libraries/models/Products.php';
+require_once '../../../libraries/models/Categories.php';
 
 $Produits = new Products();
+$item = new Categories();
 
 
 /**
@@ -249,7 +251,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                     $allStock = $Produits -> inventaire($_SESSION['product_id']);
                     foreach ($allStock as $inventaire)
                     {
-                        //var_dump($inventaire);
+                        var_dump($inventaire);
                         echo ('<tr>
                                     <td>' . $inventaire['attribute_size'] . '</td>
                                     <td>' . $inventaire['attribute_color'] . '</td>
@@ -287,34 +289,29 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                 <?php $Produits->insertstock(); ?>
                 <form method="post">
                     <div class="form-group">
-                        <label for="size">TAILLE</label>
-                        <select name="size" class="form-control">
-                            <option value="XS">XS</option>
-                            <option value="S">S</option>
-                            <option value="M" selected>M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                            <option value="XXL">XXL</option>
-                            <option value="XXXL">XXXL</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="color">COULEUR</label>
-                        <select name="color" class="form-control">
-                            <option value="rouge" selected>Rouge</option>
-                            <option value="orange">Orange</option>
-                            <option value="bleu">Bleu</option>
+                        <label for="attribut">COMBINAISON COULEUR/TAILLE</label>
+                        <select name="attribut" id="attribut" class="form-control">
+                        <?php
+
+                        $allAttributs = $item->findAllAttribut();
+                        foreach ($allAttributs as $attribut)
+                        {
+                            echo ('<option value="' . $attribut['attribute_value_id'] . '"> type : ' . $attribut['product_type_id'] . ', couleur : 
+                                   ' . $attribut['attribute_color'] . ', taille : 
+                                   ' . $attribut['attribute_size'] . '</option>');
+                        }?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="quantity">QUANTITE</label>
-                        <input type="text" name="quantity" class="form-control">
+                        <input type="number" name="quantity" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="price">PRIX</label>
-                        <input type="text" name="price" class="form-control" value="<?php echo $inventaire['price']; ?>">
+                        <input type="number" name="price" class="form-control" value="<?php echo $inventaire['price']; ?>">
                     </div>
-                    <button name="submit" class="btn btn-primary">Valider</button>
+                    <input type="hidden" value="<?= $_SESSION['product_id'] ?>">
+                    <button name="addStock" class="btn btn-primary">Valider</button>
                 </form>
                 <!-- FIN AJOUT DES STOCK -->
                 <?php

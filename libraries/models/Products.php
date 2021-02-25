@@ -110,10 +110,13 @@ class Products extends Model
     }
 
     /**
-     *
+     * Affiche l'inventaire à d'un produit défini par product_id
      */
     public function inventaire($id){
-        $sql = "SELECT * FROM `attribute_value` NATURAL JOIN stock NATURAL JOIN products_image WHERE products_image.product_id = :product_id";
+        $sql = "SELECT * FROM `attribute_value` 
+                    NATURAL JOIN stock 
+                    NATURAL JOIN products_image 
+                WHERE products_image.product_id = :product_id";
         $query = $this->pdo->prepare($sql);
         $query->bindValue(':product_id', $id, PDO::PARAM_INT);
         $query->execute();
@@ -121,33 +124,34 @@ class Products extends Model
         return $stock;
     }
 
+    /**
+     * Insert le stock d'un produit définit par son product_id
+     */
     public function insertstock() {
-        if (isset($_POST["submit"])) {
-            if (isset($_POST['size']) && !empty($_POST['size'])
-                && isset($_POST['color']) && !empty($_POST['color'])
+        if (isset($_POST["addstock"])) {
+            if (isset($_POST['attribut']) && !empty($_POST['attribut'])
                 && isset($_POST['quantity']) && !empty($_POST['quantity'])
-                && isset($_POST['price']) && !empty($_POST['price']))
+                && isset($_POST['price']) && !empty($_POST['price'])
+                && isset($_POST['product_id']))
             {
-                $size = strip_tags($_POST['size']);
-                $color = strip_tags($_POST['color']);
+                $attribut = strip_tags($_POST['attribut']);
                 $quantity = strip_tags($_POST['quantity']);
                 $price = strip_tags($_POST['price']);
+                $id = $_POST['product_id'];
 
                 /**
-                 * il faut faire 2 insert car insert avec inner join impossible
-                 * il faut d'abord inserer dans la table atribute value
-                 * puis dans la table stock en utilisant l'id atribute value qui sera alors créer
+                 *
+                 *
                  */
-                $sql = "INSERT INTO `attribute_value` (`product_type_id`, `attribute_color`, `attribute_size`) VALUES (: , :product_name, :product_description, :other_product_details)";
+                $sql = "INSERT INTO `stock` (`attribute_value_id`, `quantity`, `price`) VALUES (:attribute_value_id, :quantity, :price)";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':', $size, PDO::PARAM_STR);
-                $query->bindValue(':', $color, PDO::PARAM_STR);
-                $query->bindValue(':', $quantity, PDO::PARAM_INT);
-                $query->bindValue(':', $price, PDO::PARAM_INT);
+                $query->bindValue(':attribute_value_id', $attribut, PDO::PARAM_INT);
+                $query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
+                $query->bindValue(':price', $price, PDO::PARAM_INT);
                 $query->execute();
 
-                $_SESSION['message'] = "Le produit a été ajouté";
+                $_SESSION['message'] = "Le stock a été ajouté";
             }
             else {
                 $_SESSION['erreur'] = "le formulaire n'est pas complet";
