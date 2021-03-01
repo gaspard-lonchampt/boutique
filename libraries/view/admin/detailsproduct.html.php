@@ -314,7 +314,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                     $allStock = $Produits -> inventaire($_SESSION['product_id']);
                     foreach ($allStock as $inventaire)
                     {
-                        var_dump($inventaire);
+                        //var_dump($inventaire);
                         echo ('<tr>
                                     <td>' . $inventaire['attribute_size'] . '</td>
                                     <td>' . $inventaire['attribute_color'] . '</td>
@@ -342,14 +342,15 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
 
             <?php
             /**
-             * AFFICHAGE DU FORM POUR UPDATE PRODUIT
+             * AFFICHAGE DU FORM POUR UPDATE STOCK
              */
-            if (isset($_POST['addProduct'])) {
+            if (isset($_POST['addProduct']) || (isset($_POST["addStock"]))) {
                 ?>
 
                 <!-- AJOUT DES STOCK -->
-                <!--  -->
-                <?php $Produits->insertstock(); ?>
+                <?php $Produits->insertstock();
+                if (isset($_POST['addProduct']))
+                { ?>
                 <form method="post">
                     <div class="form-group">
                         <label for="attribut">COMBINAISON COULEUR/TAILLE</label>
@@ -367,17 +368,18 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                     </div>
                     <div class="form-group">
                         <label for="quantity">QUANTITE</label>
-                        <input type="number" name="quantity" class="form-control">
+                        <input type="number" name="quantity" id="quantity" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="price">PRIX</label>
-                        <input type="number" name="price" class="form-control" value="<?php echo $inventaire['price']; ?>">
+                        <input type="number" name="price" id="price" class="form-control" value="<?php echo $inventaire['price']; ?>">
                     </div>
-                    <input type="hidden" value="<?= $_SESSION['product_id'] ?>">
+                    <input type="hidden" name="product_id" id="product_id" value="<?= $_SESSION['product_id'] ?>">
                     <button name="addStock" class="btn btn-success">Valider</button>
                 </form>
                 <!-- FIN AJOUT DES STOCK -->
                 <?php
+                }
             }
             ?>
         </section>

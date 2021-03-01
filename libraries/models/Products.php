@@ -133,9 +133,8 @@ class Products extends Model
      */
     public function inventaire($id){
         $sql = "SELECT * FROM `attribute_value` 
-                    NATURAL JOIN stock 
-                    NATURAL JOIN products_image 
-                WHERE products_image.product_id = :product_id";
+                    NATURAL JOIN stock
+                WHERE product_id = :product_id";
         //SELECT `stock_id`,ref_product_types.product_type_description, `quantity`, `price` FROM `stock` NATURAL JOIN attribute_value NATURAL JOIN ref_product_types
         $query = $this->pdo->prepare($sql);
         $query->bindValue(':product_id', $id, PDO::PARAM_INT);
@@ -148,24 +147,24 @@ class Products extends Model
      * Insert le stock d'un produit définit par son product_id
      */
     public function insertstock() {
-        if (isset($_POST["addstock"])) {
+        if (isset($_POST["addStock"]))
+        {
+            echo 'c est la merde';
             if (isset($_POST['attribut']) && !empty($_POST['attribut'])
                 && isset($_POST['quantity']) && !empty($_POST['quantity'])
                 && isset($_POST['price']) && !empty($_POST['price'])
                 && isset($_POST['product_id']))
             {
-                $attribut = strip_tags($_POST['attribut']);
-                $quantity = strip_tags($_POST['quantity']);
-                $price = strip_tags($_POST['price']);
-                $id = $_POST['product_id'];
 
-                /**
-                 *
-                 *
-                 */
-                $sql = "INSERT INTO `stock` (`attribute_value_id`, `quantity`, `price`) VALUES (:attribute_value_id, :quantity, :price)";
+                $attribut = $_POST['attribut'];
+                $quantity = $_POST['quantity'];
+                $price = $_POST['price'];
+                $id = $_SESSION['product_id'];
+
+                $sql = "INSERT INTO `stock`(`product_id`, `attribute_value_id`, `quantity`, `price`) VALUES (:id, :attribute_value_id, :quantity, :price)";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
+                $query->bindValue(':id', $id, PDO::PARAM_INT);
                 $query->bindValue(':attribute_value_id', $attribut, PDO::PARAM_INT);
                 $query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
                 $query->bindValue(':price', $price, PDO::PARAM_INT);
