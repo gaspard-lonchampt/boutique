@@ -47,9 +47,9 @@ if (isset($_POST['modifierlesodonnees'])) {
 }
 
 /**
- * AJOUTER UNE IMAGE ICI
+ * UPDATE IMAGE ICI (1 et 2 en deux if séparé)
  */
-if (isset($_POST['addimage']))
+if (isset($_POST['updateimg1']))
 {
     //Vérification que ce ne soit pas vide
     if (isset($_FILES['photo']) && !empty($_FILES['photo']['name']))
@@ -68,7 +68,7 @@ if (isset($_POST['addimage']))
             if (in_array($extensionsUpload, $extensionsValide))
             {
                 //on détermine où les photos seront upload
-                $chemin = "../images/photo" . $_POST['product_id'] . "." . $extensionsUpload;
+                $chemin = "../images/" . $_POST['product_id'] . "." . $extensionsUpload;
                 //on va les placer dans le bon dossier
                 $deplacement = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
 
@@ -78,11 +78,58 @@ if (isset($_POST['addimage']))
                         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
                     ]);
-                    $sql = "INSERT INTO `products_image`(`product_id`, `attribute_value_id`, `product_image_1`) VALUES (:product_id, :attribute_value_id, :product_image_1)";
+                    $sql = "UPDATE `products_image` SET `product_image_1` = :product_image_1 WHERE product_id = :product_id";
                     $updateAvatar = $pdo->prepare($sql);
                     $updateAvatar->bindValue(':product_id', $_POST['product_id'], PDO::PARAM_INT);
-                    $updateAvatar->bindValue(':attribute_value_id', 1, PDO::PARAM_INT);
                     $updateAvatar->bindValue(':product_image_1', $_POST['product_id'] . "." . $extensionsUpload);
+                    $updateAvatar->execute();
+                }
+                else {
+                    $_SESSION['erreur'] = "Erreur durant l'importation de la photo";
+                }
+            }
+            else {
+                $_SESSION['erreur'] = "La photo doit être au format : jpg, jpeg, gif, png.";
+            }
+        }
+        else {
+            $_SESSION['erreur'] = "L'image est trop lourde, 2Mo maximum";
+        }
+    }
+}
+if (isset($_POST['updateimg2']))
+{
+    //Vérification que ce ne soit pas vide
+    if (isset($_FILES['photo']) && !empty($_FILES['photo']['name']))
+    {
+        //On définit la taille de l'image
+        $tailleMax = 2097152;
+        //On définit les formats valides
+        $extensionsValide = ['jpg', 'jpeg', 'gif', 'png'];
+
+        if ($_FILES['photo']['size'] <= $tailleMax)
+        {
+            //on renvoie l'enxtension du fichier avec '.' devant = strrchr
+            //on va venir ignorer le 1er charactère la chaine = substr : 1
+            //on met tout en minuscule = strtolower
+            $extensionsUpload = strtolower(substr(strrchr($_FILES['photo']['name'],'.'),1));
+            if (in_array($extensionsUpload, $extensionsValide))
+            {
+                //on détermine où les photos seront upload
+                $chemin = "../images/" . $_POST['product_id'] . "-2." . $extensionsUpload;
+                //on va les placer dans le bon dossier
+                $deplacement = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
+
+                if ($deplacement)
+                {
+                    $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                    ]);
+                    $sql = "UPDATE `products_image` SET `product_image_2` = :product_image_2 WHERE product_id = :product_id";
+                    $updateAvatar = $pdo->prepare($sql);
+                    $updateAvatar->bindValue(':product_id', $_POST['product_id'], PDO::PARAM_INT);
+                    $updateAvatar->bindValue(':product_image_2', $_POST['product_id'] . "-2." . $extensionsUpload);
                     $updateAvatar->execute();
                 }
                 else {
@@ -116,7 +163,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
     // On nettoie l'id envoyé
     $product_id = strip_tags($_GET['product_id']);
 
-    $sql = 'SELECT * FROM `products` NATURAL JOIN products_image WHERE product_id = :product_id';
+    $sql = 'SELECT `product_id`, product_type_description, `product_name`, `product_description`, `other_product_details`, product_image_1, product_image_2 FROM `products` NATURAL JOIN ref_product_types NATURAL JOIN products_image WHERE product_id = :product_id';
 
     //On prépare requête
     $query = $pdo->prepare($sql);
@@ -171,18 +218,26 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
 
             <h1>Détails du produit <?= $produit['product_name'] ?></h1>
 
-            <a href="products.html.php" class="btn btn-primary">Retour</a> <br><br>
+            <a href="products.html.php" class="btn btn-secondary">Retour</a> <br><br>
 
             <!-- AFFICHAGE INFO PRODUIT -->
             <p>ID: <?= $produit['product_id'] ?></p>
-            <p>Type de produit: <?= $produit['product_type_id'] ?></p>
+            <p>Type de produit: <?= $produit['product_type_description'] ?></p>
             <p>Description: <?= $produit['product_description'] ?></p>
             <p>Détails: <?= $produit['other_product_details'] ?></p>
+
             <!-- IMAGE PRODUIT -->
             <?php
             if (!empty($produit['product_image_1'])) {
                 ?>
-                <img src="../images/photo<?= $produit['product_image_1']?>" />
+                <img src="../images/<?= $produit['product_image_1']?>" />
+                <?php
+            }
+            ?>
+            <?php
+            if (!empty($produit['product_image_2'])) {
+                ?>
+                <img src="../images/<?= $produit['product_image_2']?>" />
                 <?php
             }
             ?>
@@ -190,7 +245,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
 
             <!-- FORM POUR LE BOUTON MODIFIER -->
             <form method="POST">
-                <input type="submit" name="updateProduct" value="Modifer le produit" class="btn btn-success">
+                <input type="submit" name="updateProduct" value="Modifer le produit" class="btn btn-warning">
             </form>
             <!-- FIN DE FORM BOUTON MODIFIER -->
 
@@ -219,20 +274,28 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                         <input type="text" name="other_product_details" class="form-control" value="<?= $produit['other_product_details']?>">
                     </div>
                     <input type="hidden" value="<?= $produit['product_id']?>" name="product_id">
-                    <button name="modifierlesodonnees" class="btn btn-primary" id="modifierlesodonnees">Modifier le produit</button>
+                    <button name="modifierlesodonnees" class="btn btn-success" id="modifierlesodonnees">Modifier le produit</button>
                 </form>
                 <!-- FIN MODIFIER UN PRODUIT -->
 
-                <!-- AJOUTER UNE IMAGE -->
+                <!-- UPDATE IMAGE -->
                 <form method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="photo">Photo du produit :</label>
+                        <label for="photo">Photo de l'image 1 :</label>
                         <input type="file" class="form-control" name="photo" >
                     </div>
                     <input type="hidden" value="<?= $produit['product_id']?>" name="product_id">
-                    <button name="addimage" class="btn btn-primary" id="addimage">Ajouter une image</button>
+                    <button name="updateimg1" class="btn btn-success" id="updateimg1">Modifier L'image 1</button>
                 </form>
-                <!-- FIN AJOUTER UNE IMAGE -->
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="photo">Photo de l'image 2 :</label>
+                        <input type="file" class="form-control" name="photo" >
+                    </div>
+                    <input type="hidden" value="<?= $produit['product_id']?>" name="product_id">
+                    <button name="updateimg2" class="btn btn-success" id="updateimg2">Modifier L'image 2</button>
+                </form>
+                <!-- FIN UPDATE IMAGE -->
                 <?php
             }
             ?>
@@ -260,7 +323,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                               
                                     <form method="get">
                                         <td style="border: none;">
-                                            <input type="submit" name="updateStock" value="Modifer le stock" class="btn btn-success">
+                                            <input type="submit" name="updateStock" value="Modifer le stock" class="btn btn-warning">
                                             <input type="hidden" name="updateInventaire" value="' . $inventaire['product_id'] . '">                                   
                                         </td>
                                    </form>
@@ -273,7 +336,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
 
             <!-- FORM POUR LE BOUTON AJOUTER -->
             <form method="POST">
-                <input type="submit" name="addProduct" value="Ajouter un stock" class="btn btn-success">
+                <input type="submit" name="addProduct" value="Ajouter un stock" class="btn btn-primary">
             </form>
             <!-- FIN DE FORM BOUTON AJOUTER-->
 
@@ -296,7 +359,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                         $allAttributs = $item->findAllAttribut();
                         foreach ($allAttributs as $attribut)
                         {
-                            echo ('<option value="' . $attribut['attribute_value_id'] . '"> type : ' . $attribut['product_type_id'] . ', couleur : 
+                            echo ('<option value="' . $attribut['attribute_value_id'] . '"> type : ' . $attribut['product_type_description'] . ', couleur : 
                                    ' . $attribut['attribute_color'] . ', taille : 
                                    ' . $attribut['attribute_size'] . '</option>');
                         }?>
@@ -311,7 +374,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                         <input type="number" name="price" class="form-control" value="<?php echo $inventaire['price']; ?>">
                     </div>
                     <input type="hidden" value="<?= $_SESSION['product_id'] ?>">
-                    <button name="addStock" class="btn btn-primary">Valider</button>
+                    <button name="addStock" class="btn btn-success">Valider</button>
                 </form>
                 <!-- FIN AJOUT DES STOCK -->
                 <?php

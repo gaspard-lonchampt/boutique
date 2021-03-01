@@ -19,7 +19,7 @@ class Model
      * @param string|string|null $order
      * @return array
      */
-    public function findAll(?string $order = "") : array
+    public function findAlLl(?string $order = "") : array
     {
         $sql = "SELECT * FROM {$this->table}";
 

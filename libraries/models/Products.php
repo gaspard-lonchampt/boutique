@@ -11,9 +11,20 @@ class Products extends Model
      * @param int $id
      * @return mixed
      */
+    public function findAll()
+    {
+        $sql = "SELECT `product_id`, ref_product_types.product_type_description, `product_name`, `product_description`, `other_product_details` FROM `products`NATURAL JOIN ref_product_types";
+
+        $resultats = $this->pdo->query($sql);
+        // On fouille le résultat pour en extraire les données réelles
+        $articles = $resultats->fetchAll();
+
+        return $articles;
+    }
+
     public function findproducts(int $id)
     {
-        $query = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE id = :id");
+        $query = $this->pdo->prepare("SELECT * FROM 'products' WHERE id = :id");
         $query->bindValue(':product_id', $id, PDO::PARAM_INT);
         $query->execute();
         $item = $query->fetch();
@@ -48,7 +59,17 @@ class Products extends Model
                 $query->execute();
 
                 $_SESSION['message'] = "Le produit a été ajouté";
+
+                $attribute = 1;
+                $sql = "INSERT INTO `products_image`(`attribute_value_id`, `product_image_1`, `product_image_2`) VALUES (:attribute_value_id, :product_image_1, :product_image_2);";
+                $requete = $this->pdo->prepare($sql);
+                $requete->bindValue(':attribute_value_id', $attribute, PDO::PARAM_INT);
+                $requete->bindValue(':product_image_1', 'no-pic.JPG', PDO::PARAM_STR);
+                $requete->bindValue(':product_image_2', 'no-pic.JPG', PDO::PARAM_STR);
+                $requete->execute();
+                $_SESSION['message'] = "L'image' a été ajouté";
                 header('Location:products.html.php');
+
             }
             else {
                 $_SESSION['erreur'] = "le formulaire n'est pas complet";
@@ -77,14 +98,12 @@ class Products extends Model
             $query->bindValue(':product_id', $product_id, PDO::PARAM_INT);
 
             // On exécute la requête
-
             $query->execute();
 
             // On récupère le produit
             $produit = $query->fetch();
 
             // On vérifie si le produit existe
-
             if (!$produit){
                 $_SESSION['erreur'] = "Cet id n'existe pas";
             }
@@ -117,6 +136,7 @@ class Products extends Model
                     NATURAL JOIN stock 
                     NATURAL JOIN products_image 
                 WHERE products_image.product_id = :product_id";
+        //SELECT `stock_id`,ref_product_types.product_type_description, `quantity`, `price` FROM `stock` NATURAL JOIN attribute_value NATURAL JOIN ref_product_types
         $query = $this->pdo->prepare($sql);
         $query->bindValue(':product_id', $id, PDO::PARAM_INT);
         $query->execute();

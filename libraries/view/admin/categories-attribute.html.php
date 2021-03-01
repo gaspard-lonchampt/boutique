@@ -23,7 +23,12 @@ if (isset($_GET['delete_Attribut']))
 <main class="container">
     <div class="row">
         <h1>Categories et attributs des Produits</h1>
+
         <section class="col-12">
+
+            <!-- BOUTON PODUITS -->
+            <a href="products.html.php" class="btn btn-secondary">Voir les produits</a>
+            <!-- FIN BOUTON PRODUITS -->
 
             <!-- MESSAGE D ERREUR-->
             <?php
@@ -73,7 +78,7 @@ if (isset($_GET['delete_Attribut']))
                             <label for="product_type_description">Description</label>
                             <input type="text" id="product_type_description" name="product_type_description" class="form-control" value="lol">
                         </div>
-                        <button type="submit" name="addCat" class="btn btn-primary">Valider</button>
+                        <button type="submit" name="addCat" class="btn btn-success">Valider</button>
                     </form>
                     <!-- FIN AJOUT DES CAT -->
                     <?php
@@ -85,7 +90,7 @@ if (isset($_GET['delete_Attribut']))
             <!-- AFFICHAGE DU TABLEAU AVEC Catégories -->
             <table class="table">
                 <thead>
-                <th>Type Produit id</th>
+                <th>ID</th>
                 <th>Parent type</th>
                 <th>Description</th>
                 </thead>
@@ -132,8 +137,14 @@ if (isset($_GET['delete_Attribut']))
                 { ?>
                     <form action="categories-attribute.html.php" method="post">
                         <div class="form-group">
-                            <label for="product_type_id">ID Type Produit</label>
-                            <input type="number" id="product_type_id" name="product_type_id" class="form-control" value="1">
+                            <select name="product_type_id" id="product_type_id" class="form-control">
+                                <?php
+                                $allCat = $item->findAllCategories();
+                                foreach ($allCat as $cat)
+                                {
+                                    echo ('<option value="' . $cat['product_type_id'] . '"> type : ' . $cat['product_type_description'] . '</option>');
+                                }?>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="attribute_color">Couleur</label>
@@ -158,7 +169,7 @@ if (isset($_GET['delete_Attribut']))
                                 <option value="7 -XXXL">XXXL</option>
                             </select>
                         </div>
-                        <button type="submit" name="addAtt" class="btn btn-primary">Valider</button>
+                        <button type="submit" name="addAtt" class="btn btn-success">Valider</button>
                     </form>
                     <!-- FIN AJOUT DES CAT -->
                     <?php
@@ -170,7 +181,7 @@ if (isset($_GET['delete_Attribut']))
             <table class="table">
                 <thead>
                 <th>ID </th>
-                <th>ID du type de produit</th>
+                <th>Produit</th>
                 <th>Couleur</th>
                 <th>Taille</th>
                 </thead>
@@ -181,9 +192,10 @@ if (isset($_GET['delete_Attribut']))
 
                 foreach ($allAttributs as $attribut)
                 {
+                    //var_dump($attribut);
                     echo ('<tr>
                                    <td>' . $attribut['attribute_value_id'] . '</td>
-                                   <td>' . $attribut['product_type_id'] . '</td>
+                                   <td>' . $attribut['product_type_description'] . '</td>
                                    <td>' . $attribut['attribute_color'] . '</td>
                                    <td>' . $attribut['attribute_size'] . '</td>
                                    
