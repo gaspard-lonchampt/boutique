@@ -258,8 +258,15 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                 <!-- MODIFIER PRODUIT-->
                 <form method="post">
                     <div class="form-group">
-                        <label for="product_type_id">Type de produit</label>
-                        <input type="number" name="product_type_id" class="form-control" value="<?= $produit['product_type_id']?>">
+                        <label for="attribut">Type de produit</label>
+                        <select name="product_type_id" id="product_type_id" class="form-control">
+                            <?php
+                            $allCat = $item->findAllCategories();
+                            foreach ($allCat as $cat)
+                            {
+                                echo ('<option value="' . $cat['product_type_id'] . '"> type : ' . $cat['product_type_description'] . '</option>');
+                            }?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="product_name">Nom du produit</label>
@@ -330,6 +337,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                               </tr>');
                     }
                     ?>
+                <!-- UPDATE STOCK APRES LE TR (en haut) -->
                 </tbody>
             </table>
             <!-- FIN INVENTAIRE -->

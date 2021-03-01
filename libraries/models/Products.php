@@ -149,7 +149,6 @@ class Products extends Model
     public function insertstock() {
         if (isset($_POST["addStock"]))
         {
-            echo 'c est la merde';
             if (isset($_POST['attribut']) && !empty($_POST['attribut'])
                 && isset($_POST['quantity']) && !empty($_POST['quantity'])
                 && isset($_POST['price']) && !empty($_POST['price'])
@@ -176,5 +175,9 @@ class Products extends Model
                 $_SESSION['erreur'] = "le formulaire n'est pas complet";
             }
         }
+    }
+
+    public function updateStock() {
+
     }
 }
