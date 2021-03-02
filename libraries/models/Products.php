@@ -142,7 +142,7 @@ class Products extends Model
                 $_SESSION['erreur'] = "Cet id n'existe pas";
             }
 
-            $sql2 = 'DELETE FROM `products` WHERE product_id = :product_id;';
+            $sql2 = 'DELETE FROM `stock` WHERE `product_id`=:product_id; DELETE FROM `products` WHERE product_id = :product_id;';
 
             //On prépare requête
             $query2 = $this->pdo->prepare($sql2);
@@ -344,7 +344,7 @@ class Products extends Model
      * GESTION DE L'INVENTAIRE -> Supprime un stock
      *
      */
-    public function deleteStock(int $stock_id)
+    public function deleteStock($stock_id)
     {
         if (isset($_GET['hiddenDeleteInventaire']) && !empty($_GET['hiddenDeleteInventaire'])) {
 
@@ -363,29 +363,32 @@ class Products extends Model
             $query->execute();
 
             // On récupère le produit
-            $produit = $query->fetch();
+            $stock = $query->fetch();
+
+            var_dump($stock);
 
             // On vérifie si le produit existe
-            if (!$produit){
+            if (!$stock){
                 $_SESSION['erreur'] = "Cet id n'existe pas";
             }
 
-            $sql2 = 'DELETE FROM `stock` WHERE stock_id = :stock_id;';
+            $sql2 = 'DELETE FROM `stock` WHERE `stock_id`=?;';
 
             //On prépare requête
             $query2 = $this->pdo->prepare($sql2);
 
             //On accroches les paramètres
-            $query2->bindValue(':stock', $stock_id, PDO::PARAM_INT);
+            //$query2->bindValue(':stock', $stock_id, PDO::PARAM_INT);
 
+            echo 'yo';
+            var_dump($query2);
             // On exécute la requête
-
-            $query2->execute();
-
-            $_SESSION['message'] = "produit supprimé";
+            $query2->execute([$stock_id]);
+            echo 'ya';
+            $_SESSION['message'] = "stock supprimé";
 
         } else {
-            echo 'pas idi';
+            echo 'pas id';
             $_SESSION['erreur'] = "il y a un autre problème";
         }
     }

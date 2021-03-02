@@ -207,13 +207,15 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                                     <td>' . $inventaire['quantity'] . '</td>
                                     <td>' . $inventaire['price'] . ' €</td>
                               
-                                    <form method="post">
+                                    <form method="POST">
                                         <td>
                                             <input type="submit" name="updateStock" value="Modifer quantité / prix" class="btn btn-warning">
                                             <input type="hidden" name="updateInventaire" value="' . $inventaire['stock_id'] . '">                                   
                                         </td>
+                                    </form>
+                                    <form method="GET">
                                         <td>
-                                            <input type="submit" name="delete_Stock" value="Supprimer de l\'inventaire" class="btn btn-danger" onclick="return confirm(\'Etes vous sûre de vouloir supprimer de l inventaire ?\');">
+                                            <input type="submit" name="delete_Stock" value="Supprimer" class="btn btn-danger" onclick="return confirm(\'Etes vous sûre de vouloir supprimer de l inventaire ?\');">
                                             <input type="hidden" name="hiddenDeleteInventaire" value="' . $inventaire['stock_id'] . '">                                   
                                         </td>
                                    </form>');
