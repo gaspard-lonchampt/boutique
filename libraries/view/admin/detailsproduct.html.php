@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../../template/layout.html.php';
+require_once 'nav.html.php';
 require_once '../../../libraries/models/Products.php';
 require_once '../../../libraries/models/Categories.php';
 

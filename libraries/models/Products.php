@@ -7,7 +7,7 @@ class Products extends Model
     protected $table = "products";
 
     /**
-     * Retourne un produit / user ...
+     * Retourne un produit
      * @param int $id
      * @return mixed
      */
@@ -21,6 +21,15 @@ class Products extends Model
 
         return $articles;
     }
+
+    public function displayProductInventaire(){
+        $sql = "SELECT products_image.product_image_1, ref_product_types.product_type_description, `product_name`, stock.quantity, `product_id`, `product_type_id`, stock.price FROM `products` NATURAL JOIN products_image NATURAL JOIN ref_product_types NATURAL JOIN stock";
+        $resultats = $this->pdo->query($sql);
+        // On fouille le résultat pour en extraire les données réelles
+        $stock = $resultats->fetchAll();
+        return $stock;
+    }
+
 
     /**
      * ON va faire afficher les détails d'un produit, incluant l'image

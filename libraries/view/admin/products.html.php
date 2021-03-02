@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../../template/layout.html.php';
+require_once 'nav.html.php';
 require_once '../../../libraries/models/Products.php';
 require_once '../../../libraries/models/Categories.php';
 
@@ -42,10 +42,6 @@ if (isset($_GET['delete_Product']))
             <!-- FIN MESSAGE -->
 
             <h1>Liste des Produits</h1>
-
-            <!-- BOUTON CAT -->
-            <a href="categories-attribute.html.php" class="btn btn-secondary">Voir les catégories</a>
-            <!-- FIN BOUTON CAT -->
 
             <!-- FORM POUR LE BOUTON AJOUTER -->
             <form method="POST">

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'nav.html.php';
 require_once '../../../template/layout.html.php';
 require_once '../../../libraries/models/Categories.php';
 
@@ -25,10 +26,6 @@ if (isset($_GET['delete_Attribut']))
         <h1>Categories et attributs des Produits</h1>
 
         <section class="col-12">
-
-            <!-- BOUTON PODUITS -->
-            <a href="products.html.php" class="btn btn-secondary">Voir les produits</a>
-            <!-- FIN BOUTON PRODUITS -->
 
             <!-- MESSAGE D ERREUR-->
             <?php
