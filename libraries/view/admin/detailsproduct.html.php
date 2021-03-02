@@ -7,150 +7,29 @@ require_once '../../../libraries/models/Categories.php';
 $Produits = new Products();
 $item = new Categories();
 
-
 /**
- * On va modifer les données ici
+ * Modifier le produit;
  */
-if (isset($_POST['modifierlesodonnees'])) {
-    if (isset($_POST['product_id']) && !empty($_POST['product_id'])
-        && isset($_POST['product_type_id']) && !empty($_POST['product_type_id'])
-        && isset($_POST['product_name']) && !empty($_POST['product_name'])
-        && isset($_POST['product_description']) && !empty($_POST['product_description'])
-        && isset($_POST['other_product_details']) && !empty($_POST['other_product_details'])) {
-        //connexion à la base de données
-        $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-        ]);
+$Produits->updateproduct();
 
-        $id = strip_tags($_POST["product_id"]);
-        $type = strip_tags($_POST["product_type_id"]);
-        $nom = strip_tags($_POST["product_name"]);
-        $description = strip_tags($_POST["product_description"]);
-        $other = strip_tags($_POST["other_product_details"]);
-
-        $sql = "UPDATE `products` SET `product_type_id`=:product_type_id, `product_name`=:product_name, `product_description`=:product_description, `other_product_details`=:other_product_details WHERE product_id=:product_id";
-        $query = $pdo->prepare($sql);
-        //var_dump($query);
-        $query->bindValue(':product_id', $id, PDO::PARAM_INT);
-        $query->bindValue(':product_type_id', $type, PDO::PARAM_INT);
-        $query->bindValue(':product_name', $nom, PDO::PARAM_STR);
-        $query->bindValue(':product_description', $description, PDO::PARAM_STR);
-        $query->bindValue(':other_product_details', $other, PDO::PARAM_STR);
-        $query->execute();
-
-        $_SESSION['message'] = "Le produit a été modifié";
-
-    } else {
-        $_SESSION['erreur'] = "le formulaire n'est pas complet";
-    }
-}
 
 /**
  * UPDATE IMAGE ICI (1 et 2 en deux if séparé)
  */
-if (isset($_POST['updateimg1']))
-{
-    //Vérification que ce ne soit pas vide
-    if (isset($_FILES['photo']) && !empty($_FILES['photo']['name']))
-    {
-        //On définit la taille de l'image
-        $tailleMax = 2097152;
-        //On définit les formats valides
-        $extensionsValide = ['jpg', 'jpeg', 'gif', 'png'];
-
-        if ($_FILES['photo']['size'] <= $tailleMax)
-        {
-            //on renvoie l'enxtension du fichier avec '.' devant = strrchr
-            //on va venir ignorer le 1er charactère la chaine = substr : 1
-            //on met tout en minuscule = strtolower
-            $extensionsUpload = strtolower(substr(strrchr($_FILES['photo']['name'],'.'),1));
-            if (in_array($extensionsUpload, $extensionsValide))
-            {
-                //on détermine où les photos seront upload
-                $chemin = "../images/" . $_POST['product_id'] . "." . $extensionsUpload;
-                //on va les placer dans le bon dossier
-                $deplacement = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
-
-                if ($deplacement)
-                {
-                    $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                    ]);
-                    $sql = "UPDATE `products_image` SET `product_image_1` = :product_image_1 WHERE product_id = :product_id";
-                    $updateAvatar = $pdo->prepare($sql);
-                    $updateAvatar->bindValue(':product_id', $_POST['product_id'], PDO::PARAM_INT);
-                    $updateAvatar->bindValue(':product_image_1', $_POST['product_id'] . "." . $extensionsUpload);
-                    $updateAvatar->execute();
-                }
-                else {
-                    $_SESSION['erreur'] = "Erreur durant l'importation de la photo";
-                }
-            }
-            else {
-                $_SESSION['erreur'] = "La photo doit être au format : jpg, jpeg, gif, png.";
-            }
-        }
-        else {
-            $_SESSION['erreur'] = "L'image est trop lourde, 2Mo maximum";
-        }
-    }
-}
-if (isset($_POST['updateimg2']))
-{
-    //Vérification que ce ne soit pas vide
-    if (isset($_FILES['photo']) && !empty($_FILES['photo']['name']))
-    {
-        //On définit la taille de l'image
-        $tailleMax = 2097152;
-        //On définit les formats valides
-        $extensionsValide = ['jpg', 'jpeg', 'gif', 'png'];
-
-        if ($_FILES['photo']['size'] <= $tailleMax)
-        {
-            //on renvoie l'enxtension du fichier avec '.' devant = strrchr
-            //on va venir ignorer le 1er charactère la chaine = substr : 1
-            //on met tout en minuscule = strtolower
-            $extensionsUpload = strtolower(substr(strrchr($_FILES['photo']['name'],'.'),1));
-            if (in_array($extensionsUpload, $extensionsValide))
-            {
-                //on détermine où les photos seront upload
-                $chemin = "../images/" . $_POST['product_id'] . "-2." . $extensionsUpload;
-                //on va les placer dans le bon dossier
-                $deplacement = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
-
-                if ($deplacement)
-                {
-                    $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                    ]);
-                    $sql = "UPDATE `products_image` SET `product_image_2` = :product_image_2 WHERE product_id = :product_id";
-                    $updateAvatar = $pdo->prepare($sql);
-                    $updateAvatar->bindValue(':product_id', $_POST['product_id'], PDO::PARAM_INT);
-                    $updateAvatar->bindValue(':product_image_2', $_POST['product_id'] . "-2." . $extensionsUpload);
-                    $updateAvatar->execute();
-                }
-                else {
-                    $_SESSION['erreur'] = "Erreur durant l'importation de la photo";
-                }
-            }
-            else {
-                $_SESSION['erreur'] = "La photo doit être au format : jpg, jpeg, gif, png.";
-            }
-        }
-        else {
-            $_SESSION['erreur'] = "L'image est trop lourde, 2Mo maximum";
-        }
-    }
-}
-
+$Produits->updateimage();
 
 /**
- * ON va faire afficher les détails d'un produit, incluant l'image
+ * POUR SUPPRIMER UN STOCK
  */
+if (isset($_GET['delete_Stock']))
+{
+    $Produits->deleteStock($_GET['hiddenDeleteInventaire']);
+}
 
+/**
+ * On va faire afficher les détails d'un produit, incluant l'image
+ */
+//$Produits->displayproducts();
 // Est-ce qu'il existe et n'est pas vide dans l'url?
 if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
 
@@ -326,18 +205,57 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                                     <td>' . $inventaire['attribute_size'] . '</td>
                                     <td>' . $inventaire['attribute_color'] . '</td>
                                     <td>' . $inventaire['quantity'] . '</td>
-                                    <td>' . $inventaire['price'] . '</td>
+                                    <td>' . $inventaire['price'] . ' €</td>
                               
-                                    <form method="get">
-                                        <td style="border: none;">
-                                            <input type="submit" name="updateStock" value="Modifer le stock" class="btn btn-warning">
-                                            <input type="hidden" name="updateInventaire" value="' . $inventaire['product_id'] . '">                                   
+                                    <form method="post">
+                                        <td>
+                                            <input type="submit" name="updateStock" value="Modifer quantité / prix" class="btn btn-warning">
+                                            <input type="hidden" name="updateInventaire" value="' . $inventaire['stock_id'] . '">                                   
                                         </td>
-                                   </form>
-                              </tr>');
-                    }
-                    ?>
-                <!-- UPDATE STOCK APRES LE TR (en haut) -->
+                                        <td>
+                                            <input type="submit" name="delete_Stock" value="Supprimer de l\'inventaire" class="btn btn-danger" onclick="return confirm(\'Etes vous sûre de vouloir supprimer de l inventaire ?\');">
+                                            <input type="hidden" name="hiddenDeleteInventaire" value="' . $inventaire['stock_id'] . '">                                   
+                                        </td>
+                                   </form>');
+                        ?>
+
+                        <!-- UPDATE STOCK -->
+                        <?php
+                        /**
+                         * AFFICHAGE DU FORM POUR UPDATE INVENTAIRE
+                         */
+                        if (isset($_POST['updateStock']) || isset($_POST['modifierlestock']))
+                        {
+                            /**
+                             * Modifier l'inventaire';
+                             */
+                            $Produits->updateStock();
+                            if (isset($_POST['updateStock']))
+                            { ?>
+                        <form method="post">
+                            <div class="form-group">
+                                <td>
+                                <label for="attribut">Quantité</label>
+                                <input type="number" name="quantite" id="quantite" value="<?= $inventaire['quantity'] ?>">
+                                </td>
+                            </div>
+                            <div class="form-group">
+                                <td>
+                                <label for="product_name">Prix</label>
+                                <input type="number" name="prix" value="<?= $inventaire['price']?>">
+                                </td>
+                            </div>
+                            <td>
+                            <input type="hidden" value="<?= $inventaire['stock_id']?>" name="stock_id">
+                            <button name="modifierlestock" class="btn btn-success" id="">Modifier l'inventaire</button>
+                            </td>
+                        </form>
+                        <!-- FIN UPDATE STOCK -->
+                        <?php
+                            }
+                        }
+                        echo ('</tr>');
+                    } ?>
                 </tbody>
             </table>
             <!-- FIN INVENTAIRE -->
@@ -350,7 +268,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
 
             <?php
             /**
-             * AFFICHAGE DU FORM POUR UPDATE STOCK
+             * AFFICHAGE DU FORM POUR Ajouter STOCK
              */
             if (isset($_POST['addProduct']) || (isset($_POST["addStock"]))) {
                 ?>
