@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 17, 2021 at 02:02 PM
+-- Generation Time: Mar 01, 2021 at 01:57 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.4.1
 
@@ -75,6 +75,13 @@ CREATE TABLE `customer` (
   `customer_adress_line_3` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `customer_adress_line_4` varchar(255) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `customer_email`, `customer_login`, `customer_password`, `customer_firstname`, `customer_lastname`, `customer_statut`, `customer_organisation_or_person`, `customer_country`, `customer_city`, `customer_postcode`, `customer_state`, `customer_adress_line_1`, `customer_adress_line_2`, `customer_adress_line_3`, `customer_adress_line_4`) VALUES
+(20, 'Test@gmail.com', 'login60', '$2y$10$syeE4baWtf1ts8eDW3LNUuzevuqe9TvSZourXubEPsmvXn0Ah1zXS', 'Prenom', 'Nom', 2, 'Organisation', 'fr', 'Marseille', '13001', 'Metropole', 'Adress 1', 'Adresse 2', 'Adresse 3', 'Adresse 4');
 
 -- --------------------------------------------------------
 
@@ -161,6 +168,15 @@ CREATE TABLE `products` (
   `other_product_details` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_type_id`, `product_name`, `product_description`, `other_product_details`) VALUES
+(1, 1, 'Test 1', 'Le test 1', 'Toujours le test 1'),
+(2, 1, 'truc', 'truc', 'truc'),
+(3, 2, 'truc', 'truc', 'truc');
+
 -- --------------------------------------------------------
 
 --
@@ -168,8 +184,8 @@ CREATE TABLE `products` (
 --
 
 CREATE TABLE `products_has_stock` (
-  `products_product_id` int(11) NOT NULL,
-  `Stock_stock_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `stock_id` int(11) NOT NULL,
   `order_item_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -242,6 +258,14 @@ CREATE TABLE `ref_product_types` (
   `product_type_description` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `ref_product_types`
+--
+
+INSERT INTO `ref_product_types` (`product_type_id`, `parent_product_type_code`, `product_type_description`) VALUES
+(1, 1, 'Test 1'),
+(2, 2, 'Test 2');
+
 -- --------------------------------------------------------
 
 --
@@ -276,6 +300,7 @@ CREATE TABLE `shipment_items` (
 
 CREATE TABLE `stock` (
   `stock_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `attribute_value_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` float NOT NULL
@@ -357,9 +382,9 @@ ALTER TABLE `products`
 -- Indexes for table `products_has_stock`
 --
 ALTER TABLE `products_has_stock`
-  ADD PRIMARY KEY (`products_product_id`,`Stock_stock_id`),
-  ADD KEY `fk_products_has_Stock_Stock1_idx` (`Stock_stock_id`),
-  ADD KEY `fk_products_has_Stock_products1_idx` (`products_product_id`),
+  ADD PRIMARY KEY (`product_id`,`stock_id`),
+  ADD KEY `fk_products_has_Stock_Stock1_idx` (`stock_id`),
+  ADD KEY `fk_products_has_Stock_products1_idx` (`product_id`),
   ADD KEY `fk_products_has_Stock_Order_Items1_idx` (`order_item_id`);
 
 --
@@ -420,8 +445,9 @@ ALTER TABLE `shipment_items`
 -- Indexes for table `stock`
 --
 ALTER TABLE `stock`
-  ADD PRIMARY KEY (`stock_id`),
-  ADD KEY `fk_Stock_Attribute_Value1_idx` (`attribute_value_id`);
+  ADD PRIMARY KEY (`stock_id`,`product_id`),
+  ADD KEY `fk_Stock_Attribute_Value1_idx` (`attribute_value_id`),
+  ADD KEY `fk_Stock_products1_idx` (`product_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -438,6 +464,12 @@ ALTER TABLE `attribute_value`
 --
 ALTER TABLE `comment`
   MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `customer_payment_methods`
@@ -473,7 +505,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ref_invoice_status_codes`
@@ -503,7 +535,7 @@ ALTER TABLE `ref_payment_methods`
 -- AUTO_INCREMENT for table `ref_product_types`
 --
 ALTER TABLE `ref_product_types`
-  MODIFY `product_type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shipments`
@@ -580,8 +612,8 @@ ALTER TABLE `products`
 --
 ALTER TABLE `products_has_stock`
   ADD CONSTRAINT `fk_products_has_Stock_Order_Items1` FOREIGN KEY (`order_item_id`) REFERENCES `order_items` (`order_item_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_products_has_Stock_Stock1` FOREIGN KEY (`Stock_stock_id`) REFERENCES `stock` (`stock_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_products_has_Stock_products1` FOREIGN KEY (`products_product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_products_has_Stock_Stock1` FOREIGN KEY (`stock_id`) REFERENCES `stock` (`stock_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_products_has_Stock_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `products_image`
@@ -614,7 +646,8 @@ ALTER TABLE `shipment_items`
 -- Constraints for table `stock`
 --
 ALTER TABLE `stock`
-  ADD CONSTRAINT `fk_Stock_Attribute_Value1` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute_value` (`attribute_value_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Stock_Attribute_Value1` FOREIGN KEY (`attribute_value_id`) REFERENCES `attribute_value` (`attribute_value_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Stock_products1` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
