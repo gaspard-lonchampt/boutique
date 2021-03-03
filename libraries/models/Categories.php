@@ -1,5 +1,5 @@
 <?php
-require_once 'Model.php';
+namespace Models;
 
 
 /**
@@ -7,7 +7,7 @@ require_once 'Model.php';
  * ici pour les catégories de produit (Apparel => pull, tee-shirt, jeans,... ; Music => dématérialisée, vinyles,...)
  * et pour leurs attributs (taille, couleur, ...)
  */
-class Categories extends Model
+class Categories extends \Models\Models
 {
     protected $pdo;
     protected $table;

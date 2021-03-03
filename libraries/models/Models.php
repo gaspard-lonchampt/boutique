@@ -26,7 +26,7 @@ class Models
      * 
      * @return array
      */
-    public function findAll(?string $order = "") : array
+    public function findAl(?string $order = "") : array
     {
         $sql = "SELECT * FROM {$this->table}";
 
@@ -97,7 +97,7 @@ class Models
     {
         $sql = "UPDATE {$table} SET `{$column}` = {$value} WHERE customer_id=:id";
         $query = $this->pdo->prepare($sql);
-        $query->execute([''
+        $query->execute([
             'id' => $id]);
         return $query;
     }

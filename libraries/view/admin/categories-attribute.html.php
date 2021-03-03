@@ -4,7 +4,7 @@ require_once 'nav.html.php';
 require_once '../../../template/layout.html.php';
 require_once '../../../libraries/models/Categories.php';
 
-$item = new Categories();
+$item = new \Models\
 ?>
 <?php
 /**

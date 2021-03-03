@@ -1,10 +1,15 @@
 <?php
-require_once 'Model.php';
+namespace models;
 
-class Products extends Model
+class Products extends Models
 {
     protected $pdo;
     protected $table = "products";
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Retourne un produit

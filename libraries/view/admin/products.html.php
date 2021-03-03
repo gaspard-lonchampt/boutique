@@ -1,11 +1,11 @@
 <?php
 session_start();
+require_once '../../../libraries/autoload.php';
 require_once 'nav.html.php';
-require_once '../../../libraries/models/Products.php';
-require_once '../../../libraries/models/Categories.php';
 
-$Produits = new Products();
-$Categories = new Categories();
+
+$Produits = new \Models\Products();
+$Categories = new \Models\Categories();
 
 ?>
 <?php
