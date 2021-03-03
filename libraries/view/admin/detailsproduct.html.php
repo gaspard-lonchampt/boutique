@@ -29,48 +29,7 @@ if (isset($_GET['delete_Stock']))
 /**
  * On va faire afficher les détails d'un produit, incluant l'image
  */
-//$Produits->displayproducts();
-// Est-ce qu'il existe et n'est pas vide dans l'url?
-if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
-
-    //connexion à la base de données
-    $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-
-    // On nettoie l'id envoyé
-    $product_id = strip_tags($_GET['product_id']);
-
-    $sql = 'SELECT `product_id`, product_type_description, `product_name`, `product_description`, `other_product_details`, product_image_1, product_image_2 FROM `products` NATURAL JOIN ref_product_types NATURAL JOIN products_image WHERE product_id = :product_id';
-
-    //On prépare requête
-    $query = $pdo->prepare($sql);
-
-    //On accroches les paramètres
-    $query->bindValue(':product_id', $product_id, PDO::PARAM_INT);
-
-    // On exécute la requête
-    $query->execute();
-
-    // On récupère le produit
-    $produit = $query->fetch();
-
-    //on definit une session
-    $_SESSION['product_id'] = $produit['product_id'];
-
-    /**  ca marchait, mais ça marche plus ¯\_(ツ)_/¯
-     * ça n'affiche pas la fiche produit meme si elle existe
-    // On vérifie si le produit existe
-    if (!$produit){
-        $_SESSION['erreur'] = "Cet id n'existe pas";
-        header('Location: products.html.php');
-    }
-     */
-} else {
-    $_SESSION['erreur'] = "URL invalide";
-    header('Location: products.html.php');
-}
+$Produits->displayproducts();
 ?>
 <main class="container">
     <div class="row">
@@ -95,28 +54,28 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
             <!-- FIN MESSAGE -->
 
 
-            <h1>Détails du produit <?= $produit['product_name'] ?></h1>
+            <h1>Détails du produit <?= $_SESSION['product_name'] ?></h1>
 
             <a href="products.html.php" class="btn btn-secondary">Retour</a> <br><br>
 
             <!-- AFFICHAGE INFO PRODUIT -->
-            <p>ID: <?= $produit['product_id'] ?></p>
-            <p>Type de produit: <?= $produit['product_type_description'] ?></p>
-            <p>Description: <?= $produit['product_description'] ?></p>
-            <p>Détails: <?= $produit['other_product_details'] ?></p>
+            <p>ID: <?= $_SESSION['product_id'] ?></p>
+            <p>Type de produit: <?= $_SESSION['product_type_description'] ?></p>
+            <p>Description: <?= $_SESSION['product_description'] ?></p>
+            <p>Détails: <?= $_SESSION['other_product_details'] ?></p>
 
             <!-- IMAGE PRODUIT -->
             <?php
-            if (!empty($produit['product_image_1'])) {
+            if (!empty($_SESSION['product_image_1'])) {
                 ?>
-                <img src="../images/<?= $produit['product_image_1']?>" />
+                <img src="../images/<?= $_SESSION['product_image_1']?>" />
                 <?php
             }
             ?>
             <?php
-            if (!empty($produit['product_image_2'])) {
+            if (!empty($_SESSION['product_image_2'])) {
                 ?>
-                <img src="../images/<?= $produit['product_image_2']?>" />
+                <img src="../images/<?= $_SESSION['product_image_2']?>" />
                 <?php
             }
             ?>
@@ -149,17 +108,17 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                     </div>
                     <div class="form-group">
                         <label for="product_name">Nom du produit</label>
-                        <input type="text" name="product_name" class="form-control" value="<?= $produit['product_name']?>">
+                        <input type="text" name="product_name" class="form-control" value="<?= $_SESSION['product_name']?>">
                     </div>
                     <div class="form-group">
                         <label for="product_description">Description du produit</label>
-                        <input type="text" name="product_description" class="form-control" value="<?= $produit['product_description']?>">
+                        <input type="text" name="product_description" class="form-control" value="<?= $_SESSION['product_description']?>">
                     </div>
                     <div class="form-group">
                         <label for="other_product_details">Détail du produit</label>
-                        <input type="text" name="other_product_details" class="form-control" value="<?= $produit['other_product_details']?>">
+                        <input type="text" name="other_product_details" class="form-control" value="<?= $_SESSION['other_product_details']?>">
                     </div>
-                    <input type="hidden" value="<?= $produit['product_id']?>" name="product_id">
+                    <input type="hidden" value="<?= $_SESSION['product_id'] ?>" name="product_id">
                     <button name="modifierlesodonnees" class="btn btn-success" id="modifierlesodonnees">Modifier le produit</button>
                 </form>
                 <!-- FIN MODIFIER UN PRODUIT -->
@@ -170,7 +129,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                         <label for="photo">Photo de l'image 1 :</label>
                         <input type="file" class="form-control" name="photo" >
                     </div>
-                    <input type="hidden" value="<?= $produit['product_id']?>" name="product_id">
+                    <input type="hidden" value="<?= $_SESSION['product_id'] ?>" name="product_id">
                     <button name="updateimg1" class="btn btn-success" id="updateimg1">Modifier L'image 1</button>
                 </form>
                 <form method="post" enctype="multipart/form-data">
@@ -178,7 +137,7 @@ if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
                         <label for="photo">Photo de l'image 2 :</label>
                         <input type="file" class="form-control" name="photo" >
                     </div>
-                    <input type="hidden" value="<?= $produit['product_id']?>" name="product_id">
+                    <input type="hidden" value="<?= $_SESSION['product_id'] ?>" name="product_id">
                     <button name="updateimg2" class="btn btn-success" id="updateimg2">Modifier L'image 2</button>
                 </form>
                 <!-- FIN UPDATE IMAGE -->

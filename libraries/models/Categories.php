@@ -44,7 +44,7 @@ class Categories extends Model
                 $query->execute();
 
                 $_SESSION['message'] = "La categorie a été ajouté";
-                header('Location:categories-attribute.html.php');
+                //header('Location:categories-attribute.html.php');
             }
             else {
                 $_SESSION['erreur'] = "le formulaire n'est pas complet";

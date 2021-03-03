@@ -23,7 +23,7 @@ class Products extends Model
     }
 
     public function displayProductInventaire(){
-        $sql = "SELECT products_image.product_image_1, ref_product_types.product_type_description, `product_name`, stock.quantity, `product_id`, `product_type_id`, stock.price FROM `products` NATURAL JOIN products_image NATURAL JOIN ref_product_types NATURAL JOIN stock";
+        $sql = "SELECT * FROM ref_product_types NATURAL JOIN stock NATURAL JOIN products;";
         $resultats = $this->pdo->query($sql);
         // On fouille le résultat pour en extraire les données réelles
         $stock = $resultats->fetchAll();
@@ -33,11 +33,52 @@ class Products extends Model
 
     /**
      * ON va faire afficher les détails d'un produit, incluant l'image
-     * tout est sur la page details produit
+     *
      */
     public function displayproducts()
     {
+        // Est-ce qu'il existe et n'est pas vide dans l'url?
+        if (isset($_GET['product_id']) && !empty($_GET['product_id']))
+        {
+            // On nettoie l'id envoyé
+            $product_id = strip_tags($_GET['product_id']);
 
+            $sql = 'SELECT `product_id`, product_type_description, `product_name`, `product_description`, `other_product_details`, product_image_1, product_image_2 FROM `products` NATURAL JOIN ref_product_types NATURAL JOIN products_image WHERE product_id = :product_id';
+
+            //On prépare requête
+            $query = $this->pdo->prepare($sql);
+
+            //On accroches les paramètres
+            $query->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+
+            // On exécute la requête
+            $query->execute();
+
+            // On récupère le produit
+            $produit = $query->fetch();
+
+            //var_dump($produit);
+            //on definit une session
+            $_SESSION['product_id'] = $produit['product_id'];
+            $_SESSION['product_type_description'] = $produit['product_type_description'];
+            $_SESSION['product_name'] = $produit ['product_name'];
+            $_SESSION['product_description'] = $produit['product_description'];
+            $_SESSION['other_product_details'] = $produit['other_product_details'];
+            $_SESSION['product_image_1'] = $produit['product_image_1'];
+            $_SESSION['product_image_2'] = $produit['product_image_2'];
+
+            /**  ca marchait, mais ça marche plus ¯\_(ツ)_/¯
+             * ça n'affiche pas la fiche produit meme si elle existe
+            // On vérifie si le produit existe
+            if (!$produit){
+            $_SESSION['erreur'] = "Cet id n'existe pas";
+            header('Location: products.html.php');
+            }
+             */
+        } else {
+            $_SESSION['erreur'] = "URL invalide";
+            header('Location: products.html.php');
+        }
     }
 
     /**
@@ -76,7 +117,7 @@ class Products extends Model
                 $requete->bindValue(':product_image_2', 'no-pic.JPG', PDO::PARAM_STR);
                 $requete->execute();
                 $_SESSION['message'] = "L'image' a été ajouté";
-                header('Location:products.html.php');
+                //header('Location:products.html.php');
             }
             else {
                 $_SESSION['erreur'] = "le formulaire n'est pas complet";
@@ -280,7 +321,6 @@ class Products extends Model
         $sql = "SELECT * FROM `attribute_value` 
                     NATURAL JOIN stock
                 WHERE product_id = :product_id";
-        //SELECT `stock_id`,ref_product_types.product_type_description, `quantity`, `price` FROM `stock` NATURAL JOIN attribute_value NATURAL JOIN ref_product_types
         $query = $this->pdo->prepare($sql);
         $query->bindValue(':product_id', $id, PDO::PARAM_INT);
         $query->execute();

@@ -16,6 +16,9 @@ $inventaire = new Products();
                 <th> </th>
                 <th>Catégorie</th>
                 <th>Produit</th>
+                <th>Description</th>
+                <th>Couleur</th>
+                <th>Taille</th>
                 <th>Quantité</th>
                 <th>Prix</th>
                 </thead>
@@ -26,11 +29,14 @@ $inventaire = new Products();
 
                 foreach ($allProduits as $produit)
                 {
-                    //var_dump($allProduits);
+                    //var_dump($produit);
                     echo ('<tr>
-                                   <td><img src="../images/' . $produit['product_image_1'] . '" style="width: 100px" /></td>
+                                   <td><img src="../images/" style="width: 100px" /></td>
                                    <td>' . $produit['product_type_description'] . '</td>
                                    <td>' . $produit['product_name'] . '</td>
+                                   <td>' . $produit['product_description'] . '</td>
+                                   <td>' . $produit['attribute_value_id'] . '</td>
+                                   <td>(pareil)</td>
                                    <td>' . $produit['quantity'] . '</td>
                                    <td>' . $produit['price'] . '</td>
                                    <td><a href="detailsproduct.html.php?product_id=' . $produit['product_id'] . '" class="btn btn-info">Voir les details</a></td>
