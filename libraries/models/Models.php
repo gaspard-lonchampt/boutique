@@ -26,7 +26,7 @@ class Models
      * 
      * @return array
      */
-    public function findAll(?string $order = "") : array
+    public function findAl(?string $order = "") : array
     {
         $sql = "SELECT * FROM {$this->table}";
 

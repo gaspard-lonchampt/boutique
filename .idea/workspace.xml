@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="test insert table product sur index.php">
-      <change afterPath="$PROJECT_DIR$/libraries/view/admin/produits.html.php" afterDir="false" />
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="class product rename, + function insert product">
+      <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,11 +12,42 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Marie_view_admin_produit" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="Marie_view_admin_produit" />
+                    <option name="lastUsedInstant" value="1613665843" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1613643889" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php_installation_&lt;version&gt;" />
   <component name="ProjectId" id="1oZC8ZN8q0nFGnpFlkli5Nh52cZ" />
@@ -36,6 +67,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -45,6 +77,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHP Script.Model.php" />
         <item itemvalue="PHP Script.Model.php" />
       </list>
     </recent_temporary>
@@ -57,7 +90,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1613484566998</updated>
-      <workItem from="1613484568225" duration="21133000" />
+      <workItem from="1613484568225" duration="36907000" />
     </task>
     <task id="LOCAL-00001" summary="test insert table product sur index.php">
       <created>1613576337508</created>
@@ -66,7 +99,35 @@
       <option name="project" value="LOCAL" />
       <updated>1613576337508</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ajout de view">
+      <created>1613643820836</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1613643820836</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ajout de view">
+      <created>1613643836075</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1613643836075</updated>
+    </task>
+    <task id="LOCAL-00004" summary="page produits.html.php">
+      <created>1613655015837</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1613655015837</updated>
+    </task>
+    <task id="LOCAL-00005" summary="class product rename, + function insert product">
+      <created>1613725771178</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613725771178</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -85,7 +146,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test insert table product sur index.php" />
-    <option name="LAST_COMMIT_MESSAGE" value="test insert table product sur index.php" />
+    <MESSAGE value="ajout de view" />
+    <MESSAGE value="page produits.html.php" />
+    <MESSAGE value="class product rename, + function insert product" />
+    <option name="LAST_COMMIT_MESSAGE" value="class product rename, + function insert product" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
