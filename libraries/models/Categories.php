@@ -7,7 +7,7 @@ namespace Models;
  * ici pour les catégories de produit (Apparel => pull, tee-shirt, jeans,... ; Music => dématérialisée, vinyles,...)
  * et pour leurs attributs (taille, couleur, ...)
  */
-class Categories extends \Models\Models
+class Categories extends Models
 {
     protected $pdo;
     protected $table;
@@ -39,8 +39,8 @@ class Categories extends \Models\Models
                 $sql = "INSERT INTO `ref_product_types` (`parent_product_type_code`, `product_type_description`) VALUES (:parent_product_type_code, :product_type_description)";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':parent_product_type_code', $parent, PDO::PARAM_INT);
-                $query->bindValue(':product_type_description', $desc, PDO::PARAM_STR);
+                $query->bindValue(':parent_product_type_code', $parent);
+                $query->bindValue(':product_type_description', $desc);
                 $query->execute();
 
                 $_SESSION['message'] = "La categorie a été ajouté";
@@ -69,7 +69,7 @@ class Categories extends \Models\Models
             $query = $this->pdo->prepare($sql);
 
             //On accroches les paramètres
-            $query->bindValue(':product_type_id', $product_type_id, PDO::PARAM_INT);
+            $query->bindValue(':product_type_id', $product_type_id);
 
             // On exécute la requête
 
@@ -89,7 +89,7 @@ class Categories extends \Models\Models
             $query2 = $this->pdo->prepare($sql2);
 
             //On accroches les paramètres
-            $query2->bindValue(':product_type_id', $product_type_id, PDO::PARAM_INT);
+            $query2->bindValue(':product_type_id', $product_type_id);
 
             // On exécute la requête
             $query2->execute();
@@ -135,9 +135,9 @@ class Categories extends \Models\Models
 
                 $sqlselect="SELECT `product_type_id`, `attribute_color`, `attribute_size` FROM `attribute_value` WHERE product_type_id = :product_type_id AND attribute_color = :attribute_color AND attribute_size = :attribute_size";
                 $queryselect = $this->pdo->prepare($sqlselect);
-                $queryselect->bindValue(':product_type_id', $type, PDO::PARAM_INT);
-                $queryselect->bindValue(':attribute_color', $color, PDO::PARAM_STR);
-                $queryselect->bindValue(':attribute_size', $size, PDO::PARAM_STR);
+                $queryselect->bindValue(':product_type_id', $type);
+                $queryselect->bindValue(':attribute_color', $color);
+                $queryselect->bindValue(':attribute_size', $size);
                 $queryselect->execute();
 
                 $resultatselect = $queryselect->fetch();
@@ -149,9 +149,9 @@ class Categories extends \Models\Models
                      $sql = "INSERT INTO `attribute_value` (`product_type_id`, `attribute_color`, `attribute_size`) VALUES (:product_type_id, :attribute_color, :attribute_size)";
                      $query = $this->pdo->prepare($sql);
                      //var_dump($query);
-                     $query->bindValue(':product_type_id', $type, PDO::PARAM_INT);
-                     $query->bindValue(':attribute_color', $color, PDO::PARAM_STR);
-                     $query->bindValue(':attribute_size', $size, PDO::PARAM_STR);
+                     $query->bindValue(':product_type_id', $type);
+                     $query->bindValue(':attribute_color', $color);
+                     $query->bindValue(':attribute_size', $size);
                      $query->execute();
 
                      $_SESSION['message'] = "L'attribut a été ajouté";
@@ -180,7 +180,7 @@ class Categories extends \Models\Models
             $query = $this->pdo->prepare($sql);
 
             //On accroches les paramètres
-            $query->bindValue(':attribute_value_id', $attribute_value_id, PDO::PARAM_INT);
+            $query->bindValue(':attribute_value_id', $attribute_value_id);
 
             // On exécute la requête
             $query->execute();
@@ -199,7 +199,7 @@ class Categories extends \Models\Models
             $query2 = $this->pdo->prepare($sql2);
 
             //On accroches les paramètres
-            $query2->bindValue(':attribute_value_id', $attribute_value_id, PDO::PARAM_INT);
+            $query2->bindValue(':attribute_value_id', $attribute_value_id);
 
             // On exécute la requête
             $query2->execute();

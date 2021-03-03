@@ -54,7 +54,7 @@ class Products extends Models
             $query = $this->pdo->prepare($sql);
 
             //On accroches les paramètres
-            $query->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+            $query->bindValue(':product_id', $product_id);
 
             // On exécute la requête
             $query->execute();
@@ -64,13 +64,16 @@ class Products extends Models
 
             //var_dump($produit);
             //on definit une session
-            $_SESSION['product_id'] = $produit['product_id'];
-            $_SESSION['product_type_description'] = $produit['product_type_description'];
-            $_SESSION['product_name'] = $produit ['product_name'];
-            $_SESSION['product_description'] = $produit['product_description'];
-            $_SESSION['other_product_details'] = $produit['other_product_details'];
-            $_SESSION['product_image_1'] = $produit['product_image_1'];
-            $_SESSION['product_image_2'] = $produit['product_image_2'];
+            $_SESSION['product'] = $produit;
+
+            var_dump($_SESSION['product']);
+            // $_SESSION['product_id'] = $produit['product_id'];
+            // $_SESSION['product_type_description'] = $produit['product_type_description'];
+            // $_SESSION['product_name'] = $produit ['product_name'];
+            // $_SESSION['product_description'] = $produit['product_description'];
+            // $_SESSION['other_product_details'] = $produit['other_product_details'];
+            // $_SESSION['product_image_1'] = $produit['product_image_1'];
+            // $_SESSION['product_image_2'] = $produit['product_image_2'];
 
             /**  ca marchait, mais ça marche plus ¯\_(ツ)_/¯
              * ça n'affiche pas la fiche produit meme si elle existe
@@ -327,7 +330,7 @@ class Products extends Models
                     NATURAL JOIN stock
                 WHERE product_id = :product_id";
         $query = $this->pdo->prepare($sql);
-        $query->bindValue(':product_id', $id, PDO::PARAM_INT);
+        $query->bindValue(':product_id', $id);
         $query->execute();
         $stock = $query->fetchAll();
         return $stock;

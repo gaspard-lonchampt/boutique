@@ -1,12 +1,10 @@
 <?php
 session_start();
 require_once 'nav.html.php';
-require_once '../../../template/layout.html.php';
-require_once '../../../libraries/models/Categories.php';
+$repere = 1;
+require_once '../../autoload.php';
 
-$item = new \Models\
-?>
-<?php
+$item = new \models\Categories();
 /**
  * POUR SUPPRIMER
  */

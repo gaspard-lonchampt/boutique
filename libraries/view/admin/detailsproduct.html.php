@@ -1,11 +1,12 @@
 <?php
 session_start();
 require_once 'nav.html.php';
-require_once '../../../libraries/models/Products.php';
-require_once '../../../libraries/models/Categories.php';
+$repere = 1;
+require_once '../../autoload.php';
 
-$Produits = new Products();
-$item = new Categories();
+
+$Produits = new \Models\Products();
+$item = new \Models\Categories();
 
 /**
  * Modifier le produit;
@@ -54,28 +55,28 @@ $Produits->displayproducts();
             <!-- FIN MESSAGE -->
 
 
-            <h1>Détails du produit <?= $_SESSION['product_name'] ?></h1>
+            <h1>Détails du produit <?= $_SESSION['product']['product_name'] ?></h1>
 
             <a href="products.html.php" class="btn btn-secondary">Retour</a> <br><br>
 
             <!-- AFFICHAGE INFO PRODUIT -->
-            <p>ID: <?= $_SESSION['product_id'] ?></p>
-            <p>Type de produit: <?= $_SESSION['product_type_description'] ?></p>
-            <p>Description: <?= $_SESSION['product_description'] ?></p>
-            <p>Détails: <?= $_SESSION['other_product_details'] ?></p>
+            <p>ID: <?= $_SESSION['product']['product_id'] ?></p>
+            <p>Type de produit: <?= $_SESSION['product']['product_type_description'] ?></p>
+            <p>Description: <?= $_SESSION['product']['product_description'] ?></p>
+            <p>Détails: <?= $_SESSION['product']['other_product_details'] ?></p>
 
             <!-- IMAGE PRODUIT -->
             <?php
-            if (!empty($_SESSION['product_image_1'])) {
+            if (!empty($_SESSION['product']['product_image_1'])) {
                 ?>
-                <img src="../images/<?= $_SESSION['product_image_1']?>" />
+                <img src="../images/<?= $_SESSION['product']['product_image_1']?>" />
                 <?php
             }
             ?>
             <?php
-            if (!empty($_SESSION['product_image_2'])) {
+            if (!empty($_SESSION['product']['product_image_2'])) {
                 ?>
-                <img src="../images/<?= $_SESSION['product_image_2']?>" />
+                <img src="../images/<?= $_SESSION['product']['product_image_2']?>" />
                 <?php
             }
             ?>
@@ -108,17 +109,17 @@ $Produits->displayproducts();
                     </div>
                     <div class="form-group">
                         <label for="product_name">Nom du produit</label>
-                        <input type="text" name="product_name" class="form-control" value="<?= $_SESSION['product_name']?>">
+                        <input type="text" name="product_name" class="form-control" value="<?= $_SESSION['product']['product_name']?>">
                     </div>
                     <div class="form-group">
                         <label for="product_description">Description du produit</label>
-                        <input type="text" name="product_description" class="form-control" value="<?= $_SESSION['product_description']?>">
+                        <input type="text" name="product_description" class="form-control" value="<?= $_SESSION['product']['product_description']?>">
                     </div>
                     <div class="form-group">
                         <label for="other_product_details">Détail du produit</label>
-                        <input type="text" name="other_product_details" class="form-control" value="<?= $_SESSION['other_product_details']?>">
+                        <input type="text" name="other_product_details" class="form-control" value="<?= $_SESSION['product']['other_product_details']?>">
                     </div>
-                    <input type="hidden" value="<?= $_SESSION['product_id'] ?>" name="product_id">
+                    <input type="hidden" value="<?= $_SESSION['product']['product_id'] ?>" name="product_id">
                     <button name="modifierlesodonnees" class="btn btn-success" id="modifierlesodonnees">Modifier le produit</button>
                 </form>
                 <!-- FIN MODIFIER UN PRODUIT -->
@@ -129,7 +130,7 @@ $Produits->displayproducts();
                         <label for="photo">Photo de l'image 1 :</label>
                         <input type="file" class="form-control" name="photo" >
                     </div>
-                    <input type="hidden" value="<?= $_SESSION['product_id'] ?>" name="product_id">
+                    <input type="hidden" value="<?= $_SESSION['product']['product_id'] ?>" name="product_id">
                     <button name="updateimg1" class="btn btn-success" id="updateimg1">Modifier L'image 1</button>
                 </form>
                 <form method="post" enctype="multipart/form-data">
@@ -137,7 +138,7 @@ $Produits->displayproducts();
                         <label for="photo">Photo de l'image 2 :</label>
                         <input type="file" class="form-control" name="photo" >
                     </div>
-                    <input type="hidden" value="<?= $_SESSION['product_id'] ?>" name="product_id">
+                    <input type="hidden" value="<?= $_SESSION['product']['product_id'] ?>" name="product_id">
                     <button name="updateimg2" class="btn btn-success" id="updateimg2">Modifier L'image 2</button>
                 </form>
                 <!-- FIN UPDATE IMAGE -->
@@ -156,7 +157,7 @@ $Produits->displayproducts();
                 <tbody>
                     <?php
 
-                    $allStock = $Produits -> inventaire($_SESSION['product_id']);
+                    $allStock = $Produits -> inventaire($_SESSION['product']['product_id']);
                     foreach ($allStock as $inventaire)
                     {
                         //var_dump($inventaire);
@@ -261,7 +262,7 @@ $Produits->displayproducts();
                         <label for="price">PRIX</label>
                         <input type="number" name="price" id="price" class="form-control" value="<?php echo $inventaire['price']; ?>">
                     </div>
-                    <input type="hidden" name="product_id" id="product_id" value="<?= $_SESSION['product_id'] ?>">
+                    <input type="hidden" name="product_id" id="product_id" value="<?= $_SESSION['product']['product_id'] ?>">
                     <button name="addStock" class="btn btn-success">Valider</button>
                 </form>
                 <!-- FIN AJOUT DES STOCK -->

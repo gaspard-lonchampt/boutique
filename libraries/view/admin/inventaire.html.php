@@ -1,8 +1,9 @@
 <?php
 require_once 'nav.html.php';
-require_once '../../../libraries/models/Products.php';
-require_once '../../../libraries/models/Categories.php';
-$inventaire = new Products();
+$repere = 1;
+require_once '../../autoload.php';
+
+$inventaire = new \Models\Products();
 
 ?>
 <main class="container">

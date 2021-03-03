@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+$repere = 1;
 require_once 'libraries/autoload.php';
 
 $view = new \view\Customers();
