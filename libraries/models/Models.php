@@ -97,8 +97,7 @@ class Models
     {
         $sql = "UPDATE {$table} SET `{$column}` = {$value} WHERE customer_id=:id";
         $query = $this->pdo->prepare($sql);
-        $query->execute([''
-            'id' => $id]);
+        $query->execute(['id' => $id]);
         return $query;
     }
 
