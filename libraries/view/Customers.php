@@ -2,8 +2,12 @@
 
     namespace View;
 
+    require_once 'libraries/autoload.php';
+
     /**
-     * Customers view class
+     * Customers view class est un ensemble de fonction qui regroupe l'affichage du HTML pour la partie client
+     */
+    /**
      */
     class Customers
     {
@@ -54,13 +58,6 @@
                 <input type="text" class="register_form"
                 id="customer_firstname"
                 name="customer_firstname">
-            </div>
-
-            <div class="register_form">
-                <label for="customer_statut"> Droit : </label>
-                <input type="number" class="register_form"
-                id="customer_statut"
-                name="customer_statut" >
             </div>
 
             <div class="register_form">
@@ -144,26 +141,30 @@
                 <input type="password" class="register_form" id="confirm_mdp" name="confirm_pass" >
             </div>
             <?php // if(isset($error)){ echo $error ;} ?>
-            <div> -->
+            <!-- patate -->
 
+            <div>
                 <input class="btn btn-outline-primary" type="submit" value="Envoyer"
                 name="customer_submit">
             </div>
 
-            <?php
+<?php
 
-                        if (isset($register_msg)) {
-                            if (count($register_msg) > 0) {
-                            ?>
-                        <div class="error">
-                        <?php foreach ($register_msg as $msg) {
-                                                echo "<p>" . $msg . "</p>";
-                                            }
-                                        }
-                                    }
-                                ?>
+            if (isset($register_msg)) {
+                if (count($register_msg) > 0) {
+                ?>
+
+            <div class="error">
+<?php
+
+                    foreach ($register_msg as $msg) {
+                        echo "<p>" . $msg . "</p>";
+                    }
+                }
+            }
+        ?>
             </div>
-            </form>
+        </form>
 
         <?php
             }
@@ -178,7 +179,6 @@
                 {
                 ?>
             <form action="connection.php" method="POST" >
-
             <div class="register_form">
                 <label for="customer_login">Login :</label>
                 <input type="text" class="register_form"
@@ -186,60 +186,224 @@
                 name="customer_login" >
                 <?php // if(isset($error_login)){ echo $error_login ;} ?>
             </div>
-
             <div class="register_form">
                 <label for="customer_password">Mot de passe : </label>
                 <input type="password" class="register_form"
                 id="customer_password"
                 name="customer_password" >
             </div>
-
             <div>
               <input class="btn btn-outline-primary" type="submit" value="Envoyer"
                 name="customer_submit">
             </div>
-            <?php
+<?php
 
-                        if (isset($connect_msg)) {
-                            if (count($connect_msg) > 0) {
+            if (isset($connect_msg)) {
+                if (count($connect_msg) > 0) {
+                ?>
+        <div class="error">
+<?php
+    foreach ($connect_msg as $msg) {
+                        echo "<p>" . $msg . "</p>";
+                    }
+                }
+            }
+        ?>
+    </div>
+    </form>
+
+<?php
+
+        }
+
+        public function All_profil_display_with_update($All_infos, $column_name)
+        {
+            $customer_ = ['customer_', '_'];
+            $space = ['', '&nbsp'];
+
+            $update = new \controllers\Customers();
+
+            echo "<table>";
+
+            foreach ($column_name as $key => $column) {
+                if ($column["COLUMN_NAME"] !== "customer_password") {
+                    echo "<th>";
+                    echo str_replace($customer_, $space, $column["COLUMN_NAME"]);
+
+                    echo "</th>";
+                }
+            }
+        ?>
+            </tr>
+
+        <?php
+            foreach ($All_infos as $infos_key => $values) {
+                        foreach ($column_name as $key => $column) {
+                            if ($column["COLUMN_NAME"] !== "customer_password") {
+
                             ?>
-                        <div class="error">
-                        <?php foreach ($connect_msg as $msg) {
-                                                echo "<p>" . $msg . "</p>";
-                                            }
-                                        }
-                                    }
-                                ?>
-            </div>
-            </form>
-
+                    <td><?php
+    if ($column["COLUMN_NAME"] == "customer_statut") {
+                        if ($values["customer_statut"] == 1) {
+                            ?><p><?php echo "Utilisateur"; ?></p><?php
+} else {
+                            ?><p><?php echo "Administrateur"; ?></p><?php
+}
+                        ?><form action="admin_profils.php" method="POST">
+                        <label for="customer_statut">Modifier le niveau de privilège :</label>
+                            <select name="customer_statut">
+                                <option value="1">Utilisateurs</option>
+                                <option value="2">Administrateur</option>
+                            </select>
+                        <input type="submit" name="admin_submit_<?php echo $values["customer_id"]; ?>" class="register_form" value="Modifier">
+                    </form>
+                        <?php $update->updateStatut(@$_POST["customer_statut"], $values["customer_id"]);
+                                            } else {
+                                                ?><p><?php echo $values[$column["COLUMN_NAME"]]; ?></p><?php
+    }
+                    ?>
+                    </td>
             <?php
-
+                }
+                            }
+                            echo "</tr>";
+                        }
+                        echo "</table>";
+                        echo "</form>";
                     }
 
-                    public function All_profil_display($All_infos, $column_name)
-                    {
+        public function One_profil_display($one_customer_info, $update_msg)
+        {
+        ?>
+            <p>Nom : <?php echo $one_customer_info['customer_lastname']?></p>
+            <form action="profil.php" method="POST" >
+                <label for="customer_lastname">Modifier le nom:</label>
+                <input type="text" name="customer_lastname">
+                <input type="submit" value ="modifier" name ="lastname">
+            </form>
 
-                        echo "<table>";
+            <p>Prénom : <?php echo $one_customer_info['customer_firstname']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_firstname">Modifier le prénom:</label>
+                <input type="text" name="customer_firstname">
+                <input type="submit" value ="modifier" name ="firstname">
+            </form>
 
-                        foreach ($column_name as $key => $column) {
-                            echo "<th>";
-                            echo $column["COLUMN_NAME"];
-                            echo "</th>";
+            <p>Courriel : <?php echo $one_customer_info['customer_email']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_email">Modifier le courriel:</label>
+                <input type="text" name="customer_email">
+                <input type="submit" value ="modifier" name ="email">
+            </form>
+
+            <p>Mot de passe</p>
+            <form action="profil.php" method="POST">
+                <label for="customer_password">Modifier le mot de passe:</label>
+                <input type="password" name="customer_password">
+                <label for="customer_cpassword">Confirmer le mot de passe:</label>
+                <input type="password" name="customer_cpassword">
+                <input type="submit" value ="modifier" name ="password">
+            </form>
+
+            <p>Organisation ou personne : <?php echo $one_customer_info['customer_organisation_or_person']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_organisation_or_person">
+                Modifier le statut juridique : </label>
+                <select name="customer_organisation_or_person">
+                    <option value="organisation">Organisation</option>
+                    <option value="personne">Particulier</option>
+                </select>
+                <input type="submit" value ="modifier" name ="orga_or_person">
+            </form>
+
+            <p>Pays : <?php echo $one_customer_info['customer_country']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_country">
+                Modifier le pays (2 caractère max) : </label>
+                <input type="text"
+                name="customer_country" >
+                <input type="submit" value ="modifier" name ="country">
+            </form>
+
+            <p>Ville : <?php echo $one_customer_info['customer_city']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_city">
+                Modifier la ville : </label>
+                <input type="text"
+                name="customer_city" >
+                <input type="submit" value ="modifier" name ="city">
+            </form>
+
+            <p>Code postale : <?php echo $one_customer_info['customer_postcode']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_postcode">
+                Modifier le code postale : </label>
+                <input type="text"
+                name="customer_postcode" >
+                <input type="submit" value ="modifier" name ="postcode">
+            </form>
+
+            <p>Etats, Métropole ou DOM TOM  : <?php echo $one_customer_info['customer_state']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_state">
+                Modifier l'Etat, métropole ou DOM TOM : </label>
+                <input type="text"
+                name="customer_state" >
+                <input type="submit" value ="modifier" name ="state">
+            </form>
+
+            <p>Adresse N°1  : <?php echo $one_customer_info['customer_adress_line_1']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_adress_line_1">
+                Modifier l'adresse N°1 : </label>
+                <input type="text"
+                name="customer_adress_line_1" >
+                <input type="submit" value ="modifier" name ="adress_1">
+            </form>
+
+            <p>Adresse N°2  : <?php echo $one_customer_info['customer_adress_line_2']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_adress_line_2">
+                Modifier l'adresse N°2 : </label>
+                <input type="text"
+                name="customer_adress_line_2" >
+                <input type="submit" value ="modifier" name ="adress_2">
+            </form>
+
+            <p>Adresse N°3  : <?php echo $one_customer_info['customer_adress_line_3']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_adress_line_3">
+                Modifier l'adresse N°3 : </label>
+                <input type="text"
+                name="customer_adress_line_3" >
+                <input type="submit" value ="modifier" name ="adress_3">
+            </form>
+
+            <p>Adresse N°4  : <?php echo $one_customer_info['customer_adress_line_4']?></p>
+            <form action="profil.php" method="POST">
+                <label for="customer_adress_line_4">
+                Modifier l'adresse N°4 : </label>
+                <input type="text"
+                name="customer_adress_line_4" >
+                <input type="submit" value ="modifier" name ="adress_4">
+<?php
+
+    if (isset($update_msg)) {
+                if (count($update_msg) > 0) {
+                ?>
+        <div class="error">
+            <?php
+
+            foreach ($update_msg as $msg) {
+                    echo "<p>" . $msg . "</p>";
+                            }
+
                         }
+                    }
                     ?>
-                        </tr>
-                        <?php
-                            foreach ($All_infos as $infos_key => $values) {
-                                        foreach ($column_name as $key => $column) {
-                                            echo "<td>";
-                                            echo $values[$column["COLUMN_NAME"]];
-                                            echo "</td>";
-                                        }
-                                        echo "</tr>";
-                                    }
+            </form>
+            <?php
 
-                                    echo "</table>";
+    }
 
-                                }
-                        }
+}

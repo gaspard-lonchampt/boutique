@@ -3,7 +3,7 @@
 namespace Models;
 
 /**
- * Class regroupant les conditions avant d'éffectuer les fonctions clients
+ * Class regroupant les requêtes SQL pour les fonctions clients
  */
 class Customers extends Models
 {
@@ -40,7 +40,7 @@ class Customers extends Models
     }
 
     /**
-     * Inscription du client
+     * Inscription du client avec les paramètres passés dans le controlleurs
      *
      * @return void
      */
@@ -141,7 +141,13 @@ class Customers extends Models
         $requete->execute();
 
     }
-
+    
+    /**
+     * Permet de récupérer toutes les informations de l'utilisateurs avec son login, sert aussi de checker si le login existe, car si il ne trouve rien il renvoie false
+     *
+     * @param  mixed $customer_login
+     * @return void
+     */
     public function getAllinfos($customer_login)
     {
 
@@ -193,7 +199,7 @@ class Customers extends Models
 
     public function getDroit()
     {
-        $requete = $this->connexion->prepare("SELECT id_droit FROM utilisateurs WHERE login = :login");
+        $requete = $this->pdo->prepare("SELECT id_droit FROM utilisateurs WHERE login = :login");
         $requete->bindParam(':login', $this->login);
 
         $requete->execute();
@@ -202,9 +208,103 @@ class Customers extends Models
 
         return $result['id_droit'];
     }
-
-    public function update() 
+    
+    /**
+     * Changement du statut utilisateur, 1 = regulier, 2 = admin. Deux paramètres à fournir reçu du controllers
+     *
+     * @param  int $value
+     * @param  int $id
+     * @return void
+     */
+    public function updateStatut($value, $id) 
     {
-        
+        $column = "customer_statut";
+        $this->update($this->table, $column, $value, $id);
     }
+
+    // /**
+    //  * Inscription du client avec les paramètres passés dans le controlleurs
+    //  *
+    //  * @return void
+    //  */
+    // public function update(
+    //     $customer_id,
+    //     $customer_email,
+    //     $customer_login,
+    //     $customer_password,
+    //     $customer_lastname,
+    //     $customer_firstname,
+    //     $customer_organisation_or_person,
+    //     $customer_country,
+    //     $customer_city,
+    //     $customer_postcode,
+    //     $customer_state,
+    //     $customer_adress_line_1,
+    //     $customer_adress_line_2,
+    //     $customer_adress_line_3,
+    //     $customer_adress_line_4
+    // ) {
+
+    //     // echo "<pre>";
+    //     // var_dump($this->pdo);
+    //     // echo "</pre>";
+
+    //     // echo "<pre>";
+    //     // var_dump($_POST);
+    //     // echo "</pre>";
+
+    //     // echo "Ici fonction register dans controller";
+
+    //     $requete = "UPDATE customer SET
+    //             customer_email=:customer_email,
+    //              customer_login=:customer_login,
+    //              customer_password=:customer_password,
+    //              customer_lastname=:customer_lastname,
+    //              customer_firstname=:customer_firstname,
+    //              customer_organisation_or_person=:customer_organisation_or_person,
+    //              customer_country=:customer_country,
+    //              customer_city=:customer_city,
+    //              customer_postcode=:customer_postcode,
+    //              customer_state=:customer_state,
+    //              customer_adress_line_1=:customer_adress_line_1,
+    //              customer_adress_line_2=:customer_adress_line_2,
+    //              customer_adress_line_3=:customer_adress_line_3,
+    //              customer_adress_line_4=:customer_adress_line_4 
+    //              WHERE customer_id=:customer_id";
+
+    //     $requete = $this->pdo->prepare($requete);
+
+    //     $requete->bindParam(':customer_email', $customer_email);
+    //     $requete->bindParam(':customer_login', $customer_login);
+    //     $requete->bindParam(':customer_password', $customer_password);
+    //     $requete->bindParam(':customer_lastname', $customer_lastname);
+    //     $requete->bindParam(':customer_firstname', $customer_firstname);
+    //     $requete->bindParam(
+    //         ':customer_organisation_or_person',
+    //         $customer_organisation_or_person
+    //     );
+    //     $requete->bindParam(':customer_country', $customer_country);
+    //     $requete->bindParam(':customer_city', $customer_city);
+    //     $requete->bindParam(':customer_postcode', $customer_postcode);
+    //     $requete->bindParam(':customer_state', $customer_state);
+    //     $requete->bindParam(
+    //         ':customer_adress_line_1',
+    //         $customer_adress_line_1
+    //     );
+    //     $requete->bindParam(
+    //         ':customer_adress_line_2',
+    //         $customer_adress_line_2
+    //     );
+    //     $requete->bindParam(
+    //         ':customer_adress_line_3',
+    //         $customer_adress_line_3
+    //     );
+    //     $requete->bindParam(
+    //         ':customer_adress_line_4',
+    //         $customer_adress_line_4
+    //     );
+
+    //     $requete->execute();
+
+    // }
 }

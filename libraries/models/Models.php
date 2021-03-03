@@ -3,6 +3,9 @@
 namespace Models;
 
 
+/**
+ * Models est la classe qui regroupe le CRUD et d'autres fonctions génériques utiles
+ */
 class Models
 {
     protected $pdo;
@@ -92,9 +95,10 @@ class Models
      */
     public function update($table, $column, $value, $id)
     {
-        $sql = "UPDATE {$table} SET `{$column}` = {$value} WHERE id = :id";
+        $sql = "UPDATE {$table} SET `{$column}` = {$value} WHERE customer_id=:id";
         $query = $this->pdo->prepare($sql);
-        $query->execute(['id' => $id]);
+        $query->execute([''
+            'id' => $id]);
         return $query;
     }
 

@@ -11,4 +11,4 @@ $column_name = $All_profil_display->getColumnName();
 $All_infos = $All_profil_display->All_profil_display();
 
 
-$view->All_profil_display($All_infos, $column_name);
+$view->All_profil_display_with_update($All_infos, $column_name);
