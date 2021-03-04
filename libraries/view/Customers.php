@@ -1,8 +1,8 @@
 <?php
 
     namespace View;
-
-    require_once 'libraries/autoload.php';
+    
+    // require_once '../autoload.php';
 
     /**
      * Customers view class est un ensemble de fonction qui regroupe l'affichage du HTML pour la partie client
@@ -22,7 +22,7 @@
 
         ?>
 
-        <form action="inscription.php" method="POST" >
+        <form action="inscription.html.php" method="POST" >
 
             <div class="register_form">
                 <label for="customer_email">Email :</label>
@@ -178,7 +178,7 @@
                 public function connect_form($connect_msg)
                 {
                 ?>
-            <form action="connection.php" method="POST" >
+            <form action="connection.html.php" method="POST" >
             <div class="register_form">
                 <label for="customer_login">Login :</label>
                 <input type="text" class="register_form"
@@ -249,7 +249,7 @@
 } else {
                             ?><p><?php echo "Administrateur"; ?></p><?php
 }
-                        ?><form action="admin_profils.php" method="POST">
+                        ?><form action="customer.html.php" method="POST">
                         <label for="customer_statut">Modifier le niveau de privilège :</label>
                             <select name="customer_statut">
                                 <option value="1">Utilisateurs</option>
@@ -276,28 +276,28 @@
         {
         ?>
             <p>Nom : <?php echo $one_customer_info['customer_lastname']?></p>
-            <form action="profil.php" method="POST" >
+            <form action="profil.html.php" method="POST" >
                 <label for="customer_lastname">Modifier le nom:</label>
                 <input type="text" name="customer_lastname">
                 <input type="submit" value ="modifier" name ="lastname">
             </form>
 
             <p>Prénom : <?php echo $one_customer_info['customer_firstname']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_firstname">Modifier le prénom:</label>
                 <input type="text" name="customer_firstname">
                 <input type="submit" value ="modifier" name ="firstname">
             </form>
 
             <p>Courriel : <?php echo $one_customer_info['customer_email']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_email">Modifier le courriel:</label>
                 <input type="text" name="customer_email">
                 <input type="submit" value ="modifier" name ="email">
             </form>
 
             <p>Mot de passe</p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_password">Modifier le mot de passe:</label>
                 <input type="password" name="customer_password">
                 <label for="customer_cpassword">Confirmer le mot de passe:</label>
@@ -305,19 +305,19 @@
                 <input type="submit" value ="modifier" name ="password">
             </form>
 
-            <p>Organisation ou personne : <?php echo $one_customer_info['customer_organisation_or_person']?></p>
-            <form action="profil.php" method="POST">
+            <p>Professionnel ou particulier : <?php echo $one_customer_info['customer_organisation_or_person']?></p>
+            <form action="profil.html.php" method="POST">
                 <label for="customer_organisation_or_person">
-                Modifier le statut juridique : </label>
+                Modifier le statut : </label>
                 <select name="customer_organisation_or_person">
-                    <option value="organisation">Organisation</option>
-                    <option value="personne">Particulier</option>
+                    <option value="Professionnel">Professionnel</option>
+                    <option value="Particulier">Particulier</option>
                 </select>
                 <input type="submit" value ="modifier" name ="orga_or_person">
             </form>
 
             <p>Pays : <?php echo $one_customer_info['customer_country']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_country">
                 Modifier le pays (2 caractère max) : </label>
                 <input type="text"
@@ -326,7 +326,7 @@
             </form>
 
             <p>Ville : <?php echo $one_customer_info['customer_city']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_city">
                 Modifier la ville : </label>
                 <input type="text"
@@ -335,7 +335,7 @@
             </form>
 
             <p>Code postale : <?php echo $one_customer_info['customer_postcode']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_postcode">
                 Modifier le code postale : </label>
                 <input type="text"
@@ -344,7 +344,7 @@
             </form>
 
             <p>Etats, Métropole ou DOM TOM  : <?php echo $one_customer_info['customer_state']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_state">
                 Modifier l'Etat, métropole ou DOM TOM : </label>
                 <input type="text"
@@ -353,7 +353,7 @@
             </form>
 
             <p>Adresse N°1  : <?php echo $one_customer_info['customer_adress_line_1']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_adress_line_1">
                 Modifier l'adresse N°1 : </label>
                 <input type="text"
@@ -362,7 +362,7 @@
             </form>
 
             <p>Adresse N°2  : <?php echo $one_customer_info['customer_adress_line_2']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_adress_line_2">
                 Modifier l'adresse N°2 : </label>
                 <input type="text"
@@ -371,7 +371,7 @@
             </form>
 
             <p>Adresse N°3  : <?php echo $one_customer_info['customer_adress_line_3']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_adress_line_3">
                 Modifier l'adresse N°3 : </label>
                 <input type="text"
@@ -380,7 +380,7 @@
             </form>
 
             <p>Adresse N°4  : <?php echo $one_customer_info['customer_adress_line_4']?></p>
-            <form action="profil.php" method="POST">
+            <form action="profil.html.php" method="POST">
                 <label for="customer_adress_line_4">
                 Modifier l'adresse N°4 : </label>
                 <input type="text"

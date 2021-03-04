@@ -16,7 +16,7 @@ class Products extends Models
      * @param int $id
      * @return mixed
      */
-    public function findAll()
+    public function findAllproduct()
     {
         $sql = "SELECT `product_id`, ref_product_types.product_type_description, `product_name`, `product_description`, `other_product_details` FROM `products`NATURAL JOIN ref_product_types";
 

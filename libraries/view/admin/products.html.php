@@ -108,7 +108,7 @@ if (isset($_GET['delete_Product']))
                 <tbody>
                 <?php
 
-                $allProduits = $Produits -> findAll();
+                $allProduits = $Produits -> findAllproduct();
 
                 foreach ($allProduits as $produit)
                 {

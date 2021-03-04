@@ -193,51 +193,61 @@ class Customers extends Controllers
         return $getColumnName;
     }
 
-    public function updateStatut($value, $id)
-    {
-        $submit = "admin_submit_" . $id;
-        if (isset($_POST[$submit])) {
-            $this->model->updateStatut($value, $id);
-            header('Location: admin_profils.php');
-            exit();
-        }
-
-    }
-
     public function One_profil_display($customer_login)
     {
         $one_customer_info = $this->model->getAllinfos($customer_login);
         return $one_customer_info;
     }
 
-    public function update()
+    public function updateStatut($value, $id)
+    {
+        $submit = "admin_submit_" . $id;
+        if (isset($_POST[$submit])) {
+            $this->model->updateStatut($value, $id);
+            header('Location: customer.html.php');
+            exit();
+        }
+    }
+    
+    /**
+     * Modification du profil utilisateur par l'user, vérifie les conditions puis envoie au Model
+     *
+     * @return void
+     */
+    public function updateProfil()
     {
         $update_msg = [];
-        $table = "customer";
 
-        if (isset($_POST['firstname'])) {
-            if (empty($_POST['customer_firstname'])) {
+        if (isset($_POST['lastname'])) {
+            if (empty($this->customer_lastname)) {
                 $update_msg[] = "Veuillez remplir le champ à modifier";
                 return $update_msg;
             } else {
-                $table = "customer";
-                $column = "customer_firstname";
-                $value = ":" . $_POST['customer_firstname'];
+                $column = "customer_lastname";
+                $value = $this->customer_lastname;
                 $id = $_SESSION['customer']['customer_id'];
-                $this->model->update($table, $column, $value, $id);
+                $this->model->updateProfil($column, $value, $id);
+                header('Location: profil.html.php');
+                exit();
             }
-
         }
 
-        if (isset($_POST['lastname'])) {
-            if (empty($_POST['customer_lastname'])) {
+        if (isset($_POST['firstname'])) {
+            if (empty($this->customer_firstname)) {
                 $update_msg[] = "Veuillez remplir le champ à modifier";
                 return $update_msg;
+            } else {
+                $column = "customer_firstname";
+                $value = $this->customer_firstname;
+                $id = $_SESSION['customer']['customer_id'];
+                $this->model->updateProfil($column, $value, $id);
+                header('Location: profil.html.php');
+                exit();
             }
         }
 
         if (isset($_POST['email'])) {
-            if (empty($_POST['customer_email'])) {
+            if (empty($this->customer_email)) {
                 $update_msg[] = "Veuillez remplir le champ à modifier";
                 return $update_msg;
             }
@@ -246,17 +256,81 @@ class Customers extends Controllers
                 $update_msg[] = "Veuillez entrer une adresse courriel valide";
                 return $update_msg;
             }
+            // \var_dump($_SESSION['customer']);
+            if ($this->model->checkMail($_SESSION['customer']['customer_email']) == true) {
+                $register_msg[] = "Ce courriel n'est pas disponible,
+                    veuillez en choisir un autre";
+                return $register_msg;
+            } else {
+                $column = "customer_email";
+                $value = $this->customer_email;
+                $id = $_SESSION['customer']['customer_id'];
+                $this->model->updateProfil($column, $value, $id);
+                header('Location: profil.html.php');
+                exit();
+            }
         }
 
-        return $update_msg;
+        if (isset($_POST['orga_or_person'])) {
+            if (empty($this->customer_organisation_or_person)) {
+                $update_msg[] = "Veuillez remplir le champ à modifier";
+                return $update_msg;
+            } else {
+                $column = "customer_organisation_or_person";
+                $value = $this->customer_organisation_or_person;
+                $id = $_SESSION['customer']['customer_id'];
+                $this->model->updateProfil($column, $value, $id);
+                header('Location: profil.html.php');
+                exit();
+            }
+        }
 
-        $column = "customer_firstname";
-        $value = $_POST['customer_firstname'];
+        if (isset($_POST['country'])) {
+            if (empty($this->customer_country)) {
+                $update_msg[] = "Veuillez remplir le champ à modifier";
+                return $update_msg;
+            }
 
-        // $table = "customer";
-        // $id = $_SESSION['customer']['customer_id'];
-        // $column = $_POST;
-        // $this->model->update($table, $column, $value, $id);
+            if (strlen($this->customer_country) > 2) {
+                $update_msg[] = "Deux caractères maximum";
+                return $update_msg;
+            } else {
+                $column = "customer_country";
+                $value = $this->customer_country;
+                $id = $_SESSION['customer']['customer_id'];
+                $this->model->updateProfil($column, $value, $id);
+                header('Location: profil.html.php');
+                exit();
+            }
+        }
+
+        if (isset($_POST['city'])) {
+            if (empty($this->customer_city)) {
+                $update_msg[] = "Veuillez remplir le champ à modifier";
+                return $update_msg;
+            } else {
+                $column = "customer_city";
+                $value = $this->customer_city;
+                $id = $_SESSION['customer']['customer_id'];
+                $this->model->updateProfil($column, $value, $id);
+                header('Location: profil.html.php');
+                exit();
+            }
+        }
+
+        if (isset($_POST['postcode'])) {
+            if (empty($this->customer_postcode)) {
+                $update_msg[] = "Veuillez remplir le champ à modifier";
+                return $update_msg;
+            } else {
+                $column = "customer_postcode";
+                $value = $this->customer_postcode;
+                $id = $_SESSION['customer']['customer_id'];
+                $this->model->updateProfil($column, $value, $id);
+                header('Location: profil.html.php');
+                exit();
+            }
+        }
 
     }
 

@@ -165,6 +165,32 @@ class Customers extends Models
 
         return $customer_getAllinfos;
     }
+     
+     /**
+      * Permet de vérifier si le mail existe, renvoie false si n'existe pas
+      *
+      * @param  mixed $customer_email
+      * @return void
+      */
+     public function checkMail($customer_email)
+    {
+
+        $requete = $this->pdo->prepare(
+            "SELECT * FROM customer WHERE customer_email = :customer_email "
+        );
+
+        $requete->bindParam(
+            ':customer_email',
+            $customer_email
+        );
+
+        $requete->execute();
+        $customer_checkMail = $requete->fetch();
+
+        return $customer_checkMail;
+    }
+
+
 
     // public function update($id)
     // {
@@ -219,6 +245,11 @@ class Customers extends Models
     public function updateStatut($value, $id) 
     {
         $column = "customer_statut";
+        $this->update($this->table, $column, $value, $id);
+    }
+
+    public function updateProfil($column, $value, $id) 
+    {   
         $this->update($this->table, $column, $value, $id);
     }
 

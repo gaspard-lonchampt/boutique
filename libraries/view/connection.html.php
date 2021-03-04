@@ -1,6 +1,7 @@
 <?php
 
-require_once 'libraries/autoload.php';
+require_once '../autoload.php';
+
 
 $view = new \view\Customers();
 

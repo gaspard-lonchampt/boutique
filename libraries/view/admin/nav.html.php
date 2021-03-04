@@ -19,13 +19,16 @@ require_once '../../../template/layout.html.php';
                     <a class="nav-link" href="products.html.php">Produits</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Clients</a>
+                    <a class="nav-link" href="customer.html.php">Clients</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="categories-attribute.html.php">Catégories et Attributs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="inventaire.html.php">Inventaire</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href="../inscription.html.php">Retour au site</a>
                 </li>
             </ul>
         </div>
