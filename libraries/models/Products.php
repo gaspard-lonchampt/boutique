@@ -66,7 +66,7 @@ class Products extends Models
             //on definit une session
             $_SESSION['product'] = $produit;
 
-            var_dump($_SESSION['product']);
+            //var_dump($_SESSION['product']);
             // $_SESSION['product_id'] = $produit['product_id'];
             // $_SESSION['product_type_description'] = $produit['product_type_description'];
             // $_SESSION['product_name'] = $produit ['product_name'];
@@ -109,10 +109,10 @@ class Products extends Models
                 $sql = "INSERT INTO `products` (`product_type_id`, `product_name`, `product_description`, `other_product_details`) VALUES ((SELECT product_type_id from ref_product_types where product_type_id = :product_type_id), :product_name, :product_description, :other_product_details)";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':product_type_id', $type, PDO::PARAM_INT);
-                $query->bindValue(':product_name', $nom, PDO::PARAM_STR);
-                $query->bindValue(':product_description', $description, PDO::PARAM_STR);
-                $query->bindValue(':other_product_details', $other, PDO::PARAM_STR);
+                $query->bindValue(':product_type_id', $type);
+                $query->bindValue(':product_name', $nom);
+                $query->bindValue(':product_description', $description);
+                $query->bindValue(':other_product_details', $other);
                 $query->execute();
 
                 $_SESSION['message'] = "Le produit a été ajouté";
@@ -120,9 +120,9 @@ class Products extends Models
                 $attribute = 1;
                 $sql = "INSERT INTO `products_image`(`attribute_value_id`, `product_image_1`, `product_image_2`) VALUES (:attribute_value_id, :product_image_1, :product_image_2);";
                 $requete = $this->pdo->prepare($sql);
-                $requete->bindValue(':attribute_value_id', $attribute, PDO::PARAM_INT);
-                $requete->bindValue(':product_image_1', 'no-pic.JPG', PDO::PARAM_STR);
-                $requete->bindValue(':product_image_2', 'no-pic.JPG', PDO::PARAM_STR);
+                $requete->bindValue(':attribute_value_id', $attribute);
+                $requete->bindValue(':product_image_1', 'no-pic.JPG');
+                $requete->bindValue(':product_image_2', 'no-pic.JPG');
                 $requete->execute();
                 $_SESSION['message'] = "L'image' a été ajouté";
                 //header('Location:products.html.php');
@@ -154,11 +154,11 @@ class Products extends Models
                 $sql = "UPDATE `products` SET `product_type_id`=:product_type_id, `product_name`=:product_name, `product_description`=:product_description, `other_product_details`=:other_product_details WHERE product_id=:product_id";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':product_id', $id, PDO::PARAM_INT);
-                $query->bindValue(':product_type_id', $type, PDO::PARAM_INT);
-                $query->bindValue(':product_name', $nom, PDO::PARAM_STR);
-                $query->bindValue(':product_description', $description, PDO::PARAM_STR);
-                $query->bindValue(':other_product_details', $other, PDO::PARAM_STR);
+                $query->bindValue(':product_id', $id);
+                $query->bindValue(':product_type_id', $type);
+                $query->bindValue(':product_name', $nom);
+                $query->bindValue(':product_description', $description);
+                $query->bindValue(':other_product_details', $other);
                 $query->execute();
 
                 $_SESSION['message'] = "Le produit a été modifié";
@@ -187,7 +187,7 @@ class Products extends Models
             $query = $this->pdo->prepare($sql);
 
             //On accroches les paramètres
-            $query->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+            $query->bindValue(':product_id', $product_id);
 
             // On exécute la requête
             $query->execute();
@@ -206,7 +206,7 @@ class Products extends Models
             $query2 = $this->pdo->prepare($sql2);
 
             //On accroches les paramètres
-            $query2->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+            $query2->bindValue(':product_id', $product_id);
 
             // On exécute la requête
 
@@ -249,13 +249,9 @@ class Products extends Models
 
                         if ($deplacement)
                         {
-                            $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                            ]);
                             $sql = "UPDATE `products_image` SET `product_image_1` = :product_image_1 WHERE product_id = :product_id";
-                            $updateAvatar = $pdo->prepare($sql);
-                            $updateAvatar->bindValue(':product_id', $_POST['product_id'], PDO::PARAM_INT);
+                            $updateAvatar = $this->pdo->prepare($sql);
+                            $updateAvatar->bindValue(':product_id', $_POST['product_id']);
                             $updateAvatar->bindValue(':product_image_1', $_POST['product_id'] . "." . $extensionsUpload);
                             $updateAvatar->execute();
                         }
@@ -297,13 +293,9 @@ class Products extends Models
 
                         if ($deplacement)
                         {
-                            $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                            ]);
                             $sql = "UPDATE `products_image` SET `product_image_2` = :product_image_2 WHERE product_id = :product_id";
-                            $updateAvatar = $pdo->prepare($sql);
-                            $updateAvatar->bindValue(':product_id', $_POST['product_id'], PDO::PARAM_INT);
+                            $updateAvatar = $this->pdo->prepare($sql);
+                            $updateAvatar->bindValue(':product_id', $_POST['product_id']);
                             $updateAvatar->bindValue(':product_image_2', $_POST['product_id'] . "-2." . $extensionsUpload);
                             $updateAvatar->execute();
                         }
@@ -351,15 +343,15 @@ class Products extends Models
                 $attribut = $_POST['attribut'];
                 $quantity = $_POST['quantity'];
                 $price = $_POST['price'];
-                $id = $_SESSION['product_id'];
+                $id = $_SESSION['product']['product_id'];
 
                 $sql = "INSERT INTO `stock`(`product_id`, `attribute_value_id`, `quantity`, `price`) VALUES (:id, :attribute_value_id, :quantity, :price)";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':id', $id, PDO::PARAM_INT);
-                $query->bindValue(':attribute_value_id', $attribut, PDO::PARAM_INT);
-                $query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
-                $query->bindValue(':price', $price, PDO::PARAM_INT);
+                $query->bindValue(':id', $id);
+                $query->bindValue(':attribute_value_id', $attribut);
+                $query->bindValue(':quantity', $quantity);
+                $query->bindValue(':price', $price);
                 $query->execute();
 
                 $_SESSION['message'] = "Le stock a été ajouté";
@@ -385,9 +377,9 @@ class Products extends Models
 
                 $sql = "UPDATE `stock` SET `quantity`= :quantity, `price`= :price WHERE `stock_id` = :stock_id";
                 $query = $this->pdo->prepare($sql);
-                $query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
-                $query->bindValue(':price', $price, PDO::PARAM_INT);
-                $query->bindValue(':stock_id', $stock_id, PDO::PARAM_INT);
+                $query->bindValue(':quantity', $quantity);
+                $query->bindValue(':price', $price);
+                $query->bindValue(':stock_id', $stock_id);
                 $query->execute();
 
                 $_SESSION['message'] = "l'inventaire à été modifier";
@@ -414,7 +406,7 @@ class Products extends Models
             $query = $this->pdo->prepare($sql);
 
             //On accroches les paramètres
-            $query->bindValue(':stock_id', $stock_id, PDO::PARAM_INT);
+            $query->bindValue(':stock_id', $stock_id);
 
             // On exécute la requête
             $query->execute();
@@ -435,7 +427,7 @@ class Products extends Models
             $query2 = $this->pdo->prepare($sql2);
 
             //On accroches les paramètres
-            //$query2->bindValue(':stock', $stock_id, PDO::PARAM_INT);
+            //$query2->bindValue(':stock', $stock_id);
 
             echo 'yo';
             var_dump($query2);

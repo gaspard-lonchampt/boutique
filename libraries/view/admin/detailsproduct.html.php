@@ -69,14 +69,14 @@ $Produits->displayproducts();
             <?php
             if (!empty($_SESSION['product']['product_image_1'])) {
                 ?>
-                <img src="../images/<?= $_SESSION['product']['product_image_1']?>" />
+                <img src="../images/<?= $_SESSION['product']['product_image_1']?>" style="width:400px;"/>
                 <?php
             }
             ?>
             <?php
             if (!empty($_SESSION['product']['product_image_2'])) {
                 ?>
-                <img src="../images/<?= $_SESSION['product']['product_image_2']?>" />
+                <img src="../images/<?= $_SESSION['product']['product_image_2']?>" style="width:400px;"/>
                 <?php
             }
             ?>

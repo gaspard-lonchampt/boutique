@@ -110,7 +110,7 @@ class Categories extends Models
 
     public function findAllAttribut()
     {
-        $sql = "SELECT `attribute_value_id`, `product_type_id`, ref_product_types.product_type_description, `attribute_color`, `attribute_size` FROM `attribute_value` NATURAL JOIN `ref_product_types` ORDER BY `attribute_color`, `attribute_size`, `product_type_description`";
+        $sql = "SELECT `attribute_value_id`, `product_type_id`, ref_product_types.product_type_description, `attribute_color`, `attribute_size` FROM `attribute_value` NATURAL JOIN `ref_product_types` ORDER BY `product_type_id`, `attribute_color`, `attribute_size`, `product_type_description`";
         $resultats= $this->pdo->query($sql);
         $attributs = $resultats->fetchAll();
         return $attributs;
