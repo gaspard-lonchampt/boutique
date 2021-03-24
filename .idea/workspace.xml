@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="changement order by">
-      <change afterPath="$PROJECT_DIR$/libraries/models/Panier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/boutique/addpanier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/boutique/listeproducts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/2-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/videos/1.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/videos/1025329778-preview.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/videos/2.mp4" afterDir="false" />
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="page produit boutique">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/models/Categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Categories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/admin/detailsproduct.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/detailsproduct.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +122,7 @@
       <workItem from="1614941341161" duration="3745000" />
       <workItem from="1615194350387" duration="3198000" />
       <workItem from="1615991056301" duration="593000" />
-      <workItem from="1616573075978" duration="20562000" />
+      <workItem from="1616573075978" duration="21534000" />
     </task>
     <task id="LOCAL-00001" summary="test insert table product sur index.php">
       <created>1613576337508</created>
@@ -288,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614782944359</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="page produit boutique">
+      <created>1616601251632</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1616601251632</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +316,8 @@
     <MESSAGE value="a faire : afficher images sur page inventaire.html.php" />
     <MESSAGE value="merge admin" />
     <MESSAGE value="changement order by" />
-    <option name="LAST_COMMIT_MESSAGE" value="changement order by" />
+    <MESSAGE value="page produit boutique" />
+    <option name="LAST_COMMIT_MESSAGE" value="page produit boutique" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

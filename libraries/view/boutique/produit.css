@@ -123,3 +123,43 @@ video#bgvid {
 }
 
 .vide { grid-area: vide; }
+
+
+/*******PARTIE BLANCHE DESCRIPTION************/
+
+#descrptionproduit {
+    margin-top: 10vh;
+    background-color: #FAF9F5;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+.grid-container2 {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-rows: 1fr;
+    gap: 3px 84px;
+    grid-template-areas:
+    "aside description";
+    background-color: #FAF9F5;
+}
+
+.description {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    gap: 0px 0px;
+    grid-template-areas:
+    ".";
+    grid-area: description;
+}
+
+.aside {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    gap: 0px 0px;
+    grid-template-areas:
+    ".";
+    grid-area: aside;
+}
+

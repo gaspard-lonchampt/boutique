@@ -86,6 +86,15 @@ $Produits->inventaire($_SESSION['product']['product_id']);
         </div>
     </section>
 
+    <section id="descrptionproduit">
+        <div class="grid-container2">
+            <div class="description">
+                <?= $_SESSION['product'][ 'product_description']; ?>
+            </div>
+            <div class="aside"></div>
+        </div>
+    </section>
+
 </body>
 
 </html>
