@@ -100,9 +100,8 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                 $allproduits = $Produits->associated();
                 foreach ($allproduits as $products)
                 {?>
-                <div>
-                    <div class="titre1"><?= $products['product_name'] ?></div>
-                    <div class="image1"><img src="../images/<?= $products['product_image_1']?>" style="width:200px;" alt="<?= $products['product_name']; ?>"/></div>
+                <div id="border">
+                    <div class="image1"><a href="produit.php?product_id=<?= $products['product_id'] ?>"><img src="../images/<?= $products['product_image_1']?>" style="width:200px;" alt="<?= $products['product_name']; ?>"/></a></div>
                     <div class="prix-voir1">
                         <div class="bouton1">
                             <a href="produit.php?product_id=<?= $products['product_id'] ?>">Voir le produit</a>
