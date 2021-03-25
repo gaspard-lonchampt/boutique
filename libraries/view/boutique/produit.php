@@ -4,12 +4,9 @@ $repere = 1;
 require_once '../../autoload.php';
 $Produits = new \Models\Products();
 
-$_GET['product_id'] = 1;
-$_SESSION['product']['product_id'] = 1;
 
 $Produits->displayproducts();
 $Produits->inventaire($_SESSION['product']['product_id']);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +24,8 @@ $Produits->inventaire($_SESSION['product']['product_id']);
     <section id="main-content">
         <!-- VIDEO DE FOND DECRAN -->
         <video autoplay loop id="bgvid">
-            <source src="../videos/1.mp4" type="video/webm">
-            <source src="../videos/1.mp4" type="video/mp4">
+            <source src="../videos/3.mp4" type="video/webm">
+            <source src="../videos/3.mp4 type="video/mp4">
         </video>
 
         <!-- Information produit-->
@@ -54,7 +51,7 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                         <h3><?= $_SESSION['stock'][1]['price']; ?> €</h3>
                     </div>
 
-                    <div class="quantity">
+                    <div class="quantite">
                         Quantité :<br>
                         <input type="number" value="1" max="3">
                     </div>
@@ -89,9 +86,33 @@ $Produits->inventaire($_SESSION['product']['product_id']);
     <section id="descrptionproduit">
         <div class="grid-container2">
             <div class="description">
+                <h2>Description du produit : </h2>
                 <?= $_SESSION['product'][ 'product_description']; ?>
             </div>
             <div class="aside"></div>
+        </div>
+    </section>
+    <section id="associ">
+        <h2>Vous aimerez aussi : </h2>
+        <div class="produitassocies">
+            <div class="art1">
+                <?php
+                $allproduits = $Produits->associated();
+                foreach ($allproduits as $products)
+                {?>
+                <div>
+                    <div class="titre1"><?= $products['product_name'] ?></div>
+                    <div class="image1"><img src="../images/<?= $products['product_image_1']?>" style="width:200px;" alt="<?= $products['product_name']; ?>"/></div>
+                    <div class="prix-voir1">
+                        <div class="bouton1">
+                            <a href="produit.php?product_id=<?= $products['product_id'] ?>">Voir le produit</a>
+                        </div>
+                    </div>
+                </div>
+                    <?php
+                    }
+                    ?>
+            </div>
         </div>
     </section>
 
