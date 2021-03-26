@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="image en hover">
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/7-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/8-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/10-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/21_SBQ_JACKET_GRN_FRNT_1080x.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/22_SBQ_JACKET_GRN_BACK_1024x.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/9-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/Tie-Dyed-HOODIE_classic_both.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/Tie-Dyed-HOODIE_classic_both1.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +136,7 @@
       <workItem from="1614941341161" duration="3745000" />
       <workItem from="1615194350387" duration="3198000" />
       <workItem from="1615991056301" duration="593000" />
-      <workItem from="1616573075978" duration="42680000" />
+      <workItem from="1616573075978" duration="51146000" />
     </task>
     <task id="LOCAL-00001" summary="test insert table product sur index.php">
       <created>1613576337508</created>
@@ -314,7 +320,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616763855625</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="image en hover">
+      <created>1616765981364</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1616765981364</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

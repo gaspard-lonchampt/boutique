@@ -440,4 +440,12 @@ class Products extends Models
         return $products;
 
     }
+    public function findAllProductsWithImages(){
+        $sql = "SELECT * FROM `products` NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id GROUP BY products.product_id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $products = $query->fetchAll();
+
+        return $products;
+    }
 }

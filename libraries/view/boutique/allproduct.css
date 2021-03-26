@@ -1,0 +1,141 @@
+*, html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Average', serif;
+}
+h1, h2, h3 {
+    font-family: 'Fjalla One', sans-serif;
+}
+/***Disposition de la page***/
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "filtre parent parent parent"
+    "filtre parent parent parent"
+    "filtre parent parent parent";
+}
+
+.filtre { grid-area: filtre; }
+
+.parent {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "child"
+    "child"
+    "child"
+    "child"
+    "child"
+    "child";
+    grid-area: parent;
+}
+
+.child {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "image"
+    "image1"
+    "titre"
+    "other"
+    "price"
+    "bouton";
+    grid-area: child;
+}
+
+.image {
+    grid-area: image;
+    display: flex;
+    justify-content: center;
+    background-color: #FAF9F5;
+    padding: 15px;
+    position: relative;
+}
+.image img {
+     position: absolute;
+     overflow: hidden;
+     width: 150px;
+     height: 150px;
+ }
+.one {
+    z-index: 9999;
+    transition: opacity .5s;
+}
+.one:hover{
+    opacity: 0;
+}
+
+.titre {
+    grid-area: titre;
+    font-family: 'Fjalla One', sans-serif;
+    background-color: #FFC805;
+    padding: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.other {
+    grid-area: other;
+    display: flex;
+    /*justify-content: center;*/
+    background-color: #FAF9F5;
+    color: #0F0F0F;
+}
+
+.price {
+    grid-area: price;
+    display: flex;
+    /*justify-content: center;*/
+    background-color: #FAF9F5;
+    color: #0F0F0F;
+}
+
+.bouton1 {
+    grid-area: bouton1;
+    background-color: #FAF9F5;
+    color: #0F0F0F;
+    padding: 0 15px 15px 15px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.bouton1 a {
+    text-align: center;
+    margin-top: 1rem;
+    background-color:#FFC805;
+    border-radius:6px;
+    border:1px solid #FFC805;
+    display:inline-block;
+    cursor:pointer;
+    color:#333333;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+}
+.bouton1 a:hover {
+    background-color: #EDB900;
+}
+
+/***AFFICHAGE DES CARD***/
+
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.child {
+    flex: 1 0 27%;
+    margin: 5px;
+    height: 200px;
+    background-color: #FAF9F5;
+    width: 100px;
+}
