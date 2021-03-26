@@ -44,7 +44,8 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                     </div>
 
                     <div class="image">
-                        <img src="../images/<?= $_SESSION['product']['product_image_1']?>" style="width:400px;" alt="<?= $_SESSION['product']['product_name']; ?>"/>
+                        <img class="one" src="../images/<?= $_SESSION['product']['product_image_1']?>" style="width:400px;" alt="<?= $_SESSION['product']['product_name']; ?>"/>
+                        <img class="two" src="../images/<?= $_SESSION['product']['product_image_2']?>" style="width:400px;" alt="<?= $_SESSION['product']['product_name']; ?>"/>
                     </div>
 
                     <div class="prix">
@@ -68,7 +69,7 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                     </div>
 
                     <div class="panier">
-                        <input type="submit" name="addtobasket" value="Ajouter au panier">
+                        <a href="addpanier.php?id=<?= $_SESSION['product']['product_id'] ?>">Ajouter au Panier</a>
                     </div>
                 </div>
             </form>
@@ -101,7 +102,12 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                 foreach ($allproduits as $products)
                 {?>
                 <div id="border">
-                    <div class="image1"><a href="produit.php?product_id=<?= $products['product_id'] ?>"><img src="../images/<?= $products['product_image_1']?>" style="width:200px;" alt="<?= $products['product_name']; ?>"/></a></div>
+                    <div class="image1">
+                        <a href="produit.php?product_id=<?= $products['product_id'] ?>">
+                            <img class="one" src="../images/<?= $products['product_image_1']?>" style="width:200px;" alt="<?= $products['product_name']; ?>"/>
+                            <img class="two" src="../images/<?= $products['product_image_2']?>" style="width:200px;" alt="<?= $products['product_name']; ?>"/>
+                        </a>
+                    </div>
                     <div class="prix-voir1">
                         <div class="bouton1">
                             <a href="produit.php?product_id=<?= $products['product_id'] ?>">Voir le produit</a>

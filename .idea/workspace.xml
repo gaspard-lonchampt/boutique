@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="page produit boutique terminé">
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="page produit type en attente de panier">
+      <change afterPath="$PROJECT_DIR$/libraries/view/boutique/panier.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/1-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/3-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/4-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/5-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/6-2.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/models/Panier.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Panier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/addpanier.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/addpanier.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.php" afterDir="false" />
     </list>
@@ -95,6 +102,11 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\projectpool2\boutique\libraries\view\images" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Model.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/libraries/models/Model.php">
       <method v="2" />
@@ -123,7 +135,7 @@
       <workItem from="1614941341161" duration="3745000" />
       <workItem from="1615194350387" duration="3198000" />
       <workItem from="1615991056301" duration="593000" />
-      <workItem from="1616573075978" duration="31984000" />
+      <workItem from="1616573075978" duration="41282000" />
     </task>
     <task id="LOCAL-00001" summary="test insert table product sur index.php">
       <created>1613576337508</created>
@@ -293,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616677265242</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="page produit type en attente de panier">
+      <created>1616682323158</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1616682323158</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +352,8 @@
     <MESSAGE value="changement order by" />
     <MESSAGE value="page produit boutique" />
     <MESSAGE value="page produit boutique terminé" />
-    <option name="LAST_COMMIT_MESSAGE" value="page produit boutique terminé" />
+    <MESSAGE value="page produit type en attente de panier" />
+    <option name="LAST_COMMIT_MESSAGE" value="page produit type en attente de panier" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

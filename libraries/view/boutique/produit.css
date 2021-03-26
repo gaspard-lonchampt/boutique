@@ -59,11 +59,25 @@ video#bgvid {
 }
 
 .image {
+    height: 430px;
     grid-area: image;
     display: flex;
     justify-content: center;
     background-color: #FAF9F5;
     padding: 15px;
+    position: relative;
+}
+/*******SUPPERPOSER LES IMAGES**********/
+.image img, .image1 img {
+    position: absolute;
+    overflow: hidden;
+}
+.one {
+    z-index: 9999;
+    transition: opacity .5s;
+}
+.one:hover{
+    opacity: 0;
 }
 
 .prix {
@@ -96,7 +110,7 @@ video#bgvid {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-.panier input {
+.panier a {
     width: 100%;
     text-align: center;
     padding: 5px;
@@ -204,6 +218,11 @@ video#bgvid {
     margin-top: 10px;
     margin-bottom: 10px;
     padding: 15px;
+}
+
+.image1 {
+    height: 200px;
+    width: 200px;
 }
 
 .bouton1 a {
