@@ -49,7 +49,7 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                     </div>
 
                     <div class="prix">
-                        <h3><?= $_SESSION['stock'][1]['price']; ?> €</h3>
+                        <h3><?= $_SESSION['stock'][0]['price']; ?> €</h3>
                     </div>
 
                     <div class="quantite">
