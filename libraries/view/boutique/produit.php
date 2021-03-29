@@ -1,7 +1,6 @@
 <?php
-session_start();
-$repere = 1;
 require_once '../../autoload.php';
+$repere = 1;
 require_once 'layout_front.html.php';
 require_once 'header.html.php';
 $Produits = new \Models\Products();

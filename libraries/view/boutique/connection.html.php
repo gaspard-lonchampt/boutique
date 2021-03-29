@@ -1,11 +1,10 @@
 <?php
-session_start();
-// var_dump($_SESSION['customer']);
+
+require_once '../../autoload.php';
 if (isset($_SESSION['customer']['customer_id']) > "0") {
     header('Location: profil.html.php');
 }
 
-require_once '../../autoload.php';
 require_once 'layout_front.html.php';
 require_once 'header.html.php';
 

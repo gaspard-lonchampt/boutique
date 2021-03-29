@@ -1,6 +1,5 @@
 <?php
 $repere = 1;
-session_start();
 require_once '../../autoload.php';
 require_once 'layout_front.html.php';
 require_once 'header.html.php';

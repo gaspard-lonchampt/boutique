@@ -1,6 +1,4 @@
 <?php
-
-    // session_start();
     require_once 'layout_front.html.php';
 
     if (isset($_SESSION['customer'])) {
