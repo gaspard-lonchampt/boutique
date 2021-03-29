@@ -154,11 +154,11 @@ class Products extends Models
                 $sql = "UPDATE `products` SET `product_type_id`=:product_type_id, `product_name`=:product_name, `product_description`=:product_description, `other_product_details`=:other_product_details WHERE product_id=:product_id";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':product_id', $id, PDO::PARAM_INT);
-                $query->bindValue(':product_type_id', $type, PDO::PARAM_INT);
-                $query->bindValue(':product_name', $nom, PDO::PARAM_STR);
-                $query->bindValue(':product_description', $description, PDO::PARAM_STR);
-                $query->bindValue(':other_product_details', $other, PDO::PARAM_STR);
+                $query->bindValue(':product_id', $id);
+                $query->bindValue(':product_type_id', $type);
+                $query->bindValue(':product_name', $nom);
+                $query->bindValue(':product_description', $description);
+                $query->bindValue(':other_product_details', $other);
                 $query->execute();
 
                 $_SESSION['message'] = "Le produit a été modifié";

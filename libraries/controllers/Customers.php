@@ -67,7 +67,7 @@ class Customers extends Controllers
             }
 
             if (strlen($this->customer_country) > 2 || is_numeric($this->customer_country)) {
-                $register_msg[] = "Veuillez indiquer deux caractères maximum en lettre";
+                $register_msg[] = "Veuillez indiquer votre pays en deux lettres maximum";
                 return $register_msg;
             }
 
