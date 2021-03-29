@@ -14,12 +14,18 @@ $Produits->inventaire($_SESSION['product']['product_id']);
         <!-- VIDEO DE FOND DECRAN -->
         <video autoplay loop id="bgvid">
             <source src="../videos/3.mp4" type="video/webm">
-            <source src="../videos/3.mp4 type="video/mp4">
+            <source src="../videos/3.mp4" type="video/mp4">
         </video>
 
         <!-- Information produit-->
         <div class="grid-container">
 
+            <!-- titre à gauche -->
+            <div class="left">
+                <div class="empty"></div>
+                <div class="h2"><h2><?= $_SESSION['product']['other_product_details']; ?></h2></div>
+                <div class="vide"></div>
+            </div>
 
             <form method="post">
                 <!-- card blanche -->
@@ -64,12 +70,6 @@ $Produits->inventaire($_SESSION['product']['product_id']);
         </form>
 
 
-        <!-- titre à gauche -->
-        <div class="left">
-            <div class="empty"></div>
-            <div class="h2"><h2><?= $_SESSION['product']['other_product_details']; ?></h2></div>
-            <div class="vide"></div>
-        </div>
     </div>
 </section>
 

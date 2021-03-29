@@ -8,7 +8,7 @@
 }
 /*Video Produit*/
 video#bgvid {
-    position: fixed; center: 0; top: -15%;
+    position: fixed; center: 0; top: -5%;
     min-width: 100%; min-height: 100%;
     width: auto; height: auto; z-index: -100;
     background-size: cover;
@@ -255,7 +255,7 @@ video#bgvid {
     box-sizing: border-box;
     font-family: 'Average', serif;
 }
-h1, h2, h3, a {
+h1, h2, h3 {
     font-family: 'Fjalla One', sans-serif;
 }
 /***Disposition de la page***/
