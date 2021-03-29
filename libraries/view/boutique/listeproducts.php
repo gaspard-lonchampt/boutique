@@ -38,3 +38,6 @@ $Produits = new \Models\Products();
     ?>
     </tbody>
 </table>
+
+<?php
+require_once 'footer.html.php';

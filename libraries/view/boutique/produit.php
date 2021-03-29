@@ -2,25 +2,15 @@
 session_start();
 $repere = 1;
 require_once '../../autoload.php';
+require_once 'layout_front.html.php';
+require_once 'header.html.php';
 $Produits = new \Models\Products();
 
 
 $Produits->displayproducts();
 $Produits->inventaire($_SESSION['product']['product_id']);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Espace Admin -</title>
 
-    <link rel="stylesheet" href="produit.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Average&family=Fjalla+One&display=swap" rel="stylesheet">
-</head>
-<body>
     <section id="main-content">
         <!-- VIDEO DE FOND DECRAN -->
         <video autoplay loop id="bgvid">
@@ -121,6 +111,5 @@ $Produits->inventaire($_SESSION['product']['product_id']);
         </div>
     </section>
 
-</body>
-
-</html>
+<?php
+require_once 'footer.html.php';
