@@ -1,43 +1,32 @@
 <?php
-session_start();
-$repere = 1;
 require_once '../../autoload.php';
+$repere = 1;
+require_once 'layout_front.html.php';
+require_once 'header.html.php';
 $Produits = new \Models\Products();
 
 
 $Produits->displayproducts();
 $Produits->inventaire($_SESSION['product']['product_id']);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Espace Admin -</title>
 
-    <link rel="stylesheet" href="allproduct.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Average&family=Fjalla+One&display=swap" rel="stylesheet">
-</head>
-<body>
-<section id="main-content">
-    <!-- VIDEO DE FOND DECRAN -->
-    <video autoplay loop id="bgvid">
-        <source src="../videos/3.mp4" type="video/webm">
-        <source src="../videos/3.mp4" type="video/mp4">
-    </video>
+    <section id="main-content">
+        <!-- VIDEO DE FOND DECRAN -->
+        <video autoplay loop id="bgvid">
+            <source src="../videos/3.mp4" type="video/webm">
+            <source src="../videos/3.mp4 type="video/mp4">
+        </video>
 
-    <!-- Information produit-->
-    <div class="grid-container01">
+        <!-- Information produit-->
+        <div class="grid-container">
 
 
-        <form method="post">
-            <!-- card blanche -->
-            <div class="card01">
-                <div class="titre01">
-                    <h1><?= $_SESSION['product']['product_name']; ?></h1>
-                </div>
+            <form method="post">
+                <!-- card blanche -->
+                <div class="card">
+                    <div class="titre">
+                        <h1><?= $_SESSION['product']['product_name']; ?></h1>
+                    </div>
 
                 <div class="cat">
                     <?= $_SESSION['product']['product_type_description']; ?>
@@ -121,6 +110,5 @@ $Produits->inventaire($_SESSION['product']['product_id']);
     </div>
 </section>
 
-</body>
-
-</html>
+<?php
+require_once 'footer.html.php';

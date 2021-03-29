@@ -1,25 +1,15 @@
 <?php
-session_start();
 $repere = 1;
 require_once '../../autoload.php';
+require_once 'layout_front.html.php';
+require_once 'header.html.php';
+
 $Produits = new \Models\Products();
 $allProduits = $Produits->findAllProductsWithImages();
 $Categories = new \Models\Categories();
 //var_dump($allProduits);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Espace Admin -</title>
 
-    <link rel="stylesheet" href="allproduct.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Average&family=Fjalla+One&display=swap" rel="stylesheet">
-</head>
-<body>
 <div class="grid-container">
     <div class="filtre">
         <h3>FILTRES</h3>
@@ -107,5 +97,6 @@ $Categories = new \Models\Categories();
         ?>
     </div>
 </div>
-</body>
-</html>
+
+<?php
+require_once 'footer.html.php';
