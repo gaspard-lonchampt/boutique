@@ -27,7 +27,8 @@ class Products extends Models
         return $articles;
     }
 
-    public function displayProductInventaire(){
+    public function displayProductInventaire()
+    {
         $sql = "SELECT * FROM ref_product_types NATURAL JOIN stock NATURAL JOIN products;";
         $resultats = $this->pdo->query($sql);
         // On fouille le résultat pour en extraire les données réelles
@@ -43,8 +44,7 @@ class Products extends Models
     public function displayproducts()
     {
         // Est-ce qu'il existe et n'est pas vide dans l'url?
-        if (isset($_GET['product_id']) && !empty($_GET['product_id']))
-        {
+        if (isset($_GET['product_id']) && !empty($_GET['product_id'])) {
             // On nettoie l'id envoyé
             $product_id = strip_tags($_GET['product_id']);
 
@@ -66,7 +66,7 @@ class Products extends Models
             //on definit une session
             $_SESSION['product'] = $produit;
 
-            var_dump($_SESSION['product']);
+            //var_dump($_SESSION['product']);
             // $_SESSION['product_id'] = $produit['product_id'];
             // $_SESSION['product_type_description'] = $produit['product_type_description'];
             // $_SESSION['product_name'] = $produit ['product_name'];
@@ -77,11 +77,11 @@ class Products extends Models
 
             /**  ca marchait, mais ça marche plus ¯\_(ツ)_/¯
              * ça n'affiche pas la fiche produit meme si elle existe
-            // On vérifie si le produit existe
-            if (!$produit){
-            $_SESSION['erreur'] = "Cet id n'existe pas";
-            header('Location: products.html.php');
-            }
+             * // On vérifie si le produit existe
+             * if (!$produit){
+             * $_SESSION['erreur'] = "Cet id n'existe pas";
+             * header('Location: products.html.php');
+             * }
              */
         } else {
             $_SESSION['erreur'] = "URL invalide";
@@ -99,8 +99,7 @@ class Products extends Models
             if (isset($_POST['product_type_id']) && !empty($_POST['product_type_id'])
                 && isset($_POST['product_name']) && !empty($_POST['product_name'])
                 && isset($_POST['product_description']) && !empty($_POST['product_description'])
-                && isset($_POST['other_product_details']) && !empty($_POST['other_product_details']))
-            {
+                && isset($_POST['other_product_details']) && !empty($_POST['other_product_details'])) {
                 $type = strip_tags($_POST["product_type_id"]);
                 $nom = strip_tags($_POST["product_name"]);
                 $description = strip_tags($_POST["product_description"]);
@@ -109,10 +108,10 @@ class Products extends Models
                 $sql = "INSERT INTO `products` (`product_type_id`, `product_name`, `product_description`, `other_product_details`) VALUES ((SELECT product_type_id from ref_product_types where product_type_id = :product_type_id), :product_name, :product_description, :other_product_details)";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':product_type_id', $type, PDO::PARAM_INT);
-                $query->bindValue(':product_name', $nom, PDO::PARAM_STR);
-                $query->bindValue(':product_description', $description, PDO::PARAM_STR);
-                $query->bindValue(':other_product_details', $other, PDO::PARAM_STR);
+                $query->bindValue(':product_type_id', $type);
+                $query->bindValue(':product_name', $nom);
+                $query->bindValue(':product_description', $description);
+                $query->bindValue(':other_product_details', $other);
                 $query->execute();
 
                 $_SESSION['message'] = "Le produit a été ajouté";
@@ -120,14 +119,13 @@ class Products extends Models
                 $attribute = 1;
                 $sql = "INSERT INTO `products_image`(`attribute_value_id`, `product_image_1`, `product_image_2`) VALUES (:attribute_value_id, :product_image_1, :product_image_2);";
                 $requete = $this->pdo->prepare($sql);
-                $requete->bindValue(':attribute_value_id', $attribute, PDO::PARAM_INT);
-                $requete->bindValue(':product_image_1', 'no-pic.JPG', PDO::PARAM_STR);
-                $requete->bindValue(':product_image_2', 'no-pic.JPG', PDO::PARAM_STR);
+                $requete->bindValue(':attribute_value_id', $attribute);
+                $requete->bindValue(':product_image_1', 'no-pic.JPG');
+                $requete->bindValue(':product_image_2', 'no-pic.JPG');
                 $requete->execute();
                 $_SESSION['message'] = "L'image' a été ajouté";
                 //header('Location:products.html.php');
-            }
-            else {
+            } else {
                 $_SESSION['erreur'] = "le formulaire n'est pas complet";
             }
         }
@@ -137,7 +135,8 @@ class Products extends Models
      * GESTION DES PRODUITS -> Modifier un produit
      *
      */
-    public function updateproduct(){
+    public function updateproduct()
+    {
         if (isset($_POST['modifierlesodonnees'])) {
             if (isset($_POST['product_id']) && !empty($_POST['product_id'])
                 && isset($_POST['product_type_id']) && !empty($_POST['product_type_id'])
@@ -154,11 +153,11 @@ class Products extends Models
                 $sql = "UPDATE `products` SET `product_type_id`=:product_type_id, `product_name`=:product_name, `product_description`=:product_description, `other_product_details`=:other_product_details WHERE product_id=:product_id";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':product_id', $id, PDO::PARAM_INT);
-                $query->bindValue(':product_type_id', $type, PDO::PARAM_INT);
-                $query->bindValue(':product_name', $nom, PDO::PARAM_STR);
-                $query->bindValue(':product_description', $description, PDO::PARAM_STR);
-                $query->bindValue(':other_product_details', $other, PDO::PARAM_STR);
+                $query->bindValue(':product_id', $id);
+                $query->bindValue(':product_type_id', $type);
+                $query->bindValue(':product_name', $nom);
+                $query->bindValue(':product_description', $description);
+                $query->bindValue(':other_product_details', $other);
                 $query->execute();
 
                 $_SESSION['message'] = "Le produit a été modifié";
@@ -187,7 +186,7 @@ class Products extends Models
             $query = $this->pdo->prepare($sql);
 
             //On accroches les paramètres
-            $query->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+            $query->bindValue(':product_id', $product_id);
 
             // On exécute la requête
             $query->execute();
@@ -196,7 +195,7 @@ class Products extends Models
             $produit = $query->fetch();
 
             // On vérifie si le produit existe
-            if (!$produit){
+            if (!$produit) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
             }
 
@@ -206,7 +205,7 @@ class Products extends Models
             $query2 = $this->pdo->prepare($sql2);
 
             //On accroches les paramètres
-            $query2->bindValue(':product_id', $product_id, PDO::PARAM_INT);
+            $query2->bindValue(':product_id', $product_id);
 
             // On exécute la requête
 
@@ -223,99 +222,76 @@ class Products extends Models
     /**
      * UPDATE IMAGE ICI (1 et 2 en deux if séparé)
      */
-    public function updateimage(){
-        if (isset($_POST['updateimg1']))
-        {
+    public function updateimage()
+    {
+        if (isset($_POST['updateimg1'])) {
             //Vérification que ce ne soit pas vide
-            if (isset($_FILES['photo']) && !empty($_FILES['photo']['name']))
-            {
+            if (isset($_FILES['photo']) && !empty($_FILES['photo']['name'])) {
                 //On définit la taille de l'image
                 $tailleMax = 2097152;
                 //On définit les formats valides
                 $extensionsValide = ['jpg', 'jpeg', 'gif', 'png'];
 
-                if ($_FILES['photo']['size'] <= $tailleMax)
-                {
+                if ($_FILES['photo']['size'] <= $tailleMax) {
                     //on renvoie l'enxtension du fichier avec '.' devant = strrchr
                     //on va venir ignorer le 1er charactère la chaine = substr : 1
                     //on met tout en minuscule = strtolower
-                    $extensionsUpload = strtolower(substr(strrchr($_FILES['photo']['name'],'.'),1));
-                    if (in_array($extensionsUpload, $extensionsValide))
-                    {
+                    $extensionsUpload = strtolower(substr(strrchr($_FILES['photo']['name'], '.'), 1));
+                    if (in_array($extensionsUpload, $extensionsValide)) {
                         //on détermine où les photos seront upload
                         $chemin = "../images/" . $_POST['product_id'] . "." . $extensionsUpload;
                         //on va les placer dans le bon dossier
                         $deplacement = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
 
-                        if ($deplacement)
-                        {
-                            $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                            ]);
+                        if ($deplacement) {
                             $sql = "UPDATE `products_image` SET `product_image_1` = :product_image_1 WHERE product_id = :product_id";
-                            $updateAvatar = $pdo->prepare($sql);
-                            $updateAvatar->bindValue(':product_id', $_POST['product_id'], PDO::PARAM_INT);
+                            $updateAvatar = $this->pdo->prepare($sql);
+                            $updateAvatar->bindValue(':product_id', $_POST['product_id']);
                             $updateAvatar->bindValue(':product_image_1', $_POST['product_id'] . "." . $extensionsUpload);
                             $updateAvatar->execute();
-                        }
-                        else {
+                        } else {
                             $_SESSION['erreur'] = "Erreur durant l'importation de la photo";
                         }
-                    }
-                    else {
+                    } else {
                         $_SESSION['erreur'] = "La photo doit être au format : jpg, jpeg, gif, png.";
                     }
-                }
-                else {
+                } else {
                     $_SESSION['erreur'] = "L'image est trop lourde, 2Mo maximum";
                 }
             }
         }
-        if (isset($_POST['updateimg2']))
-        {
+        if (isset($_POST['updateimg2'])) {
             //Vérification que ce ne soit pas vide
-            if (isset($_FILES['photo']) && !empty($_FILES['photo']['name']))
-            {
+            if (isset($_FILES['photo']) && !empty($_FILES['photo']['name'])) {
                 //On définit la taille de l'image
                 $tailleMax = 2097152;
                 //On définit les formats valides
                 $extensionsValide = ['jpg', 'jpeg', 'gif', 'png'];
 
-                if ($_FILES['photo']['size'] <= $tailleMax)
-                {
+                if ($_FILES['photo']['size'] <= $tailleMax) {
                     //on renvoie l'enxtension du fichier avec '.' devant = strrchr
                     //on va venir ignorer le 1er charactère la chaine = substr : 1
                     //on met tout en minuscule = strtolower
-                    $extensionsUpload = strtolower(substr(strrchr($_FILES['photo']['name'],'.'),1));
-                    if (in_array($extensionsUpload, $extensionsValide))
-                    {
+                    $extensionsUpload = strtolower(substr(strrchr($_FILES['photo']['name'], '.'), 1));
+                    if (in_array($extensionsUpload, $extensionsValide)) {
                         //on détermine où les photos seront upload
                         $chemin = "../images/" . $_POST['product_id'] . "-2." . $extensionsUpload;
                         //on va les placer dans le bon dossier
                         $deplacement = move_uploaded_file($_FILES['photo']['tmp_name'], $chemin);
 
-                        if ($deplacement)
-                        {
-                            $pdo = new PDO('mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '', [
-                                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-                            ]);
+                        if ($deplacement) {
                             $sql = "UPDATE `products_image` SET `product_image_2` = :product_image_2 WHERE product_id = :product_id";
-                            $updateAvatar = $pdo->prepare($sql);
-                            $updateAvatar->bindValue(':product_id', $_POST['product_id'], PDO::PARAM_INT);
+                            $updateAvatar = $this->pdo->prepare($sql);
+                            $updateAvatar->bindValue(':product_id', $_POST['product_id']);
                             $updateAvatar->bindValue(':product_image_2', $_POST['product_id'] . "-2." . $extensionsUpload);
                             $updateAvatar->execute();
-                        }
-                        else {
+                        } else {
                             $_SESSION['erreur'] = "Erreur durant l'importation de la photo";
                         }
-                    }
-                    else {
+                    } else {
                         $_SESSION['erreur'] = "La photo doit être au format : jpg, jpeg, gif, png.";
                     }
-                }
-                else {
+                } else {
                     $_SESSION['erreur'] = "L'image est trop lourde, 2Mo maximum";
                 }
             }
@@ -325,7 +301,8 @@ class Products extends Models
     /**
      * Affiche l'inventaire à d'un produit défini par product_id
      */
-    public function inventaire($id){
+    public function inventaire($id)
+    {
         $sql = "SELECT * FROM `attribute_value` 
                     NATURAL JOIN stock
                 WHERE product_id = :product_id";
@@ -333,38 +310,37 @@ class Products extends Models
         $query->bindValue(':product_id', $id);
         $query->execute();
         $stock = $query->fetchAll();
+        $_SESSION['stock'] = $stock;
         return $stock;
     }
 
     /**
      * Insert le stock d'un produit définit par son product_id
      */
-    public function insertstock() {
-        if (isset($_POST["addStock"]))
-        {
+    public function insertstock()
+    {
+        if (isset($_POST["addStock"])) {
             if (isset($_POST['attribut']) && !empty($_POST['attribut'])
                 && isset($_POST['quantity']) && !empty($_POST['quantity'])
                 && isset($_POST['price']) && !empty($_POST['price'])
-                && isset($_POST['product_id']))
-            {
+                && isset($_POST['product_id'])) {
 
                 $attribut = $_POST['attribut'];
                 $quantity = $_POST['quantity'];
                 $price = $_POST['price'];
-                $id = $_SESSION['product_id'];
+                $id = $_SESSION['product']['product_id'];
 
                 $sql = "INSERT INTO `stock`(`product_id`, `attribute_value_id`, `quantity`, `price`) VALUES (:id, :attribute_value_id, :quantity, :price)";
                 $query = $this->pdo->prepare($sql);
                 //var_dump($query);
-                $query->bindValue(':id', $id, PDO::PARAM_INT);
-                $query->bindValue(':attribute_value_id', $attribut, PDO::PARAM_INT);
-                $query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
-                $query->bindValue(':price', $price, PDO::PARAM_INT);
+                $query->bindValue(':id', $id);
+                $query->bindValue(':attribute_value_id', $attribut);
+                $query->bindValue(':quantity', $quantity);
+                $query->bindValue(':price', $price);
                 $query->execute();
 
                 $_SESSION['message'] = "Le stock a été ajouté";
-            }
-            else {
+            } else {
                 $_SESSION['erreur'] = "le formulaire n'est pas complet";
             }
         }
@@ -375,19 +351,17 @@ class Products extends Models
      */
     public function updateStock()
     {
-        if (isset($_POST['modifierlestock']))
-        {
-            if (isset($_POST['quantite']) && isset($_POST['prix']) && isset($_POST['stock_id']))
-            {
+        if (isset($_POST['modifierlestock'])) {
+            if (isset($_POST['quantite']) && isset($_POST['prix']) && isset($_POST['stock_id'])) {
                 $quantity = $_POST['quantite'];
                 $price = $_POST['prix'];
                 $stock_id = $_POST['stock_id'];
 
                 $sql = "UPDATE `stock` SET `quantity`= :quantity, `price`= :price WHERE `stock_id` = :stock_id";
                 $query = $this->pdo->prepare($sql);
-                $query->bindValue(':quantity', $quantity, PDO::PARAM_INT);
-                $query->bindValue(':price', $price, PDO::PARAM_INT);
-                $query->bindValue(':stock_id', $stock_id, PDO::PARAM_INT);
+                $query->bindValue(':quantity', $quantity);
+                $query->bindValue(':price', $price);
+                $query->bindValue(':stock_id', $stock_id);
                 $query->execute();
 
                 $_SESSION['message'] = "l'inventaire à été modifier";
@@ -414,7 +388,7 @@ class Products extends Models
             $query = $this->pdo->prepare($sql);
 
             //On accroches les paramètres
-            $query->bindValue(':stock_id', $stock_id, PDO::PARAM_INT);
+            $query->bindValue(':stock_id', $stock_id);
 
             // On exécute la requête
             $query->execute();
@@ -425,7 +399,7 @@ class Products extends Models
             var_dump($stock);
 
             // On vérifie si le produit existe
-            if (!$stock){
+            if (!$stock) {
                 $_SESSION['erreur'] = "Cet id n'existe pas";
             }
 
@@ -435,7 +409,7 @@ class Products extends Models
             $query2 = $this->pdo->prepare($sql2);
 
             //On accroches les paramètres
-            //$query2->bindValue(':stock', $stock_id, PDO::PARAM_INT);
+            //$query2->bindValue(':stock', $stock_id);
 
             echo 'yo';
             var_dump($query2);
@@ -448,5 +422,30 @@ class Products extends Models
             echo 'pas id';
             $_SESSION['erreur'] = "il y a un autre problème";
         }
+    }
+
+    /**
+     * select all associeted products on page produit.php
+     */
+
+    public function associated()
+    {
+        $others = $_SESSION['product']['other_product_details'];
+        $sql = "SELECT * FROM `products` NATURAL JOIN products_image WHERE `other_product_details` = :others LIMIT 3";
+        $query = $this->pdo->prepare($sql);
+        $query->bindValue(':others', $others);
+        $query->execute();
+        $products = $query->fetchAll();
+
+        return $products;
+
+    }
+    public function findAllProductsWithImages(){
+        $sql = "SELECT * FROM `products` NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id GROUP BY products.product_id";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $products = $query->fetchAll();
+
+        return $products;
     }
 }

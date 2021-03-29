@@ -1,0 +1,247 @@
+*, html {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Average', serif;
+}
+/*Video Produit*/
+video#bgvid {
+        position: fixed; center: 0; top: -15%;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto; z-index: -100;
+    background-size: cover;
+}
+
+.grid-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 3px 84px;
+    grid-template-areas:
+    "left card";
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content min-content min-content min-content min-content min-content min-content;
+    gap: 0px 0px;
+    grid-template-areas:
+    "titre"
+    "cat"
+    "image"
+    "image"
+    "prix"
+    "quantite"
+    "taille"
+    "panier";
+    grid-area: card;
+}
+
+.titre {
+    padding: 15px 0 0 15px;
+    grid-area: titre;
+    font-family: 'Fjalla One', sans-serif;
+    background-color: #FAF9F5;
+    padding: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.cat {
+    grid-area: cat;
+    background-color: #FAF9F5;
+    padding: 15px;
+}
+
+.image {
+    height: 430px;
+    grid-area: image;
+    display: flex;
+    justify-content: center;
+    background-color: #FAF9F5;
+    padding: 15px;
+    position: relative;
+}
+/*******SUPPERPOSER LES IMAGES**********/
+.image img, .image1 img {
+    position: absolute;
+    overflow: hidden;
+}
+.one {
+    z-index: 9999;
+    transition: opacity .5s;
+}
+.one:hover{
+    opacity: 0;
+}
+
+.prix {
+    grid-area: prix;
+    display: flex;
+    justify-content: center;
+    background-color: #0F0F0F;
+    color: #FAF9F5;
+}
+
+.quantite {
+    grid-area: quantite;
+    background-color: #0F0F0F;
+    padding-left: 15px;
+    color: #FAF9F5;
+}
+
+.taille {
+    grid-area: taille;
+    background-color: #0F0F0F;
+    padding-left: 15px;
+    color: #FAF9F5;
+}
+
+.panier {
+    grid-area: panier;
+    background-color: #0F0F0F;
+    padding: 0 15px 15px 15px;
+    color: #FAF9F5;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.panier a {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    margin-top: 1rem;
+    box-shadow:inset 0px 1px 0px 0px #FFC805;
+    background:linear-gradient(to bottom, #FFC805 5%, #FFC805 100%);
+    background-color:#FFC805;
+    border-radius:6px;
+    border:1px solid #FFC805;
+    display:inline-block;
+    cursor:pointer;
+    color:#333333;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #FFC805;
+}
+
+.left {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.6fr 0.5fr 1.9fr;
+    gap: 0px 0px;
+    grid-template-areas:
+    "empty"
+    "h2"
+    "vide";
+    grid-area: left;
+}
+
+.empty { grid-area: empty; }
+
+.h2 {
+    grid-area: h2;
+    font-family: 'Fjalla One', sans-serif;
+    font-size: xxx-large;
+    color: #FFC805;
+}
+
+.vide { grid-area: vide; }
+
+
+/*******PARTIE BLANCHE DESCRIPTION************/
+
+#descrptionproduit {
+    margin-top: 10vh;
+    background-color: #FAF9F5;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+}
+.grid-container2 {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    grid-template-rows: 1fr;
+    gap: 3px 84px;
+    grid-template-areas:
+    "aside description";
+    background-color: #FAF9F5;
+}
+
+.description {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    gap: 0px 0px;
+    grid-template-areas:
+    ".";
+    grid-area: description;
+}
+
+.description h2 {
+    background-color: #FFC805;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.aside {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content;
+    gap: 0px 0px;
+    grid-template-areas:
+    ".";
+    grid-area: aside;
+}
+
+/*** PRODUITS ASSOCIES ***/
+#associ {
+    background-color: #FAF9F5;
+    margin: auto;
+    padding-bottom: 15px;
+}
+.art1 {
+    display: flex;
+    justify-content: space-around;
+}
+
+#border {
+    border: solid #FFC805;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+.image1 {
+    height: 200px;
+    width: 200px;
+}
+
+.bouton1 a {
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    margin-top: 1rem;
+    box-shadow:inset 0px 1px 0px 0px #FFC805;
+    background:linear-gradient(to bottom, #FFC805 5%, #FFC805 100%);
+    background-color:#FFC805;
+    border-radius:6px;
+    border:1px solid #FFC805;
+    display:inline-block;
+    cursor:pointer;
+    color:#333333;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 24px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #FFC805;
+}
