@@ -159,9 +159,9 @@ class Customers extends Controllers
 
             if (count($connect_msg) == 0) {
                 $this->customer_id = $customer_getAllinfos['customer_id'];
-                session_start();
                 $_SESSION['customer'] = $customer_getAllinfos;
-                $connect_msg[] = "Connection réussi";
+                $connect_msg[] = "Connection réussi, redirection dans quelques secondes";
+                header("Refresh:3");
                 return $connect_msg;
             } else {
                 return $connect_msg;

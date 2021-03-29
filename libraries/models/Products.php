@@ -441,7 +441,7 @@ class Products extends Models
 
     }
     public function findAllProductsWithImages(){
-        $sql = "SELECT * FROM `products` NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id GROUP BY products.product_id";
+        $sql = "SELECT products.product_id, product_type_id, product_name, product_description, other_product_details, stock.price, products_image.product_image_1, products_image.product_image_2 FROM products NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id GROUP BY products.product_id, product_type_id, product_name, product_description, other_product_details, stock.price, products_image.product_image_1, products_image.product_image_2";
         $query = $this->pdo->prepare($sql);
         $query->execute();
         $products = $query->fetchAll();

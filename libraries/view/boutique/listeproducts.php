@@ -1,6 +1,9 @@
 <?php
 $repere = 1;
 require_once '../../autoload.php';
+require_once '../../template/layout_front.html.php';
+require_once '../../template/header.html.php';
+
 
 $Panier = new \Models\Panier();
 $Produits = new \Models\Products();
