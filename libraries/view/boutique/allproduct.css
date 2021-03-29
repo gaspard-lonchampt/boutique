@@ -61,11 +61,11 @@ h1, h2, h3 {
     position: relative;
 }
 .image img {
-     position: absolute;
-     overflow: hidden;
-     width: 150px;
-     height: 150px;
- }
+    position: absolute;
+    overflow: hidden;
+    width: 150px;
+    height: 150px;
+}
 .one {
     z-index: 9999;
     transition: opacity .5s;
