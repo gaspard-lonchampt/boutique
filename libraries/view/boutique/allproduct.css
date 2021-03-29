@@ -8,7 +8,7 @@
 }
 /*Video Produit*/
 video#bgvid {
-    position: fixed; center: 0; top: -5%;
+    position: fixed; 
     min-width: 100%; min-height: 100%;
     width: auto; height: auto; z-index: -100;
     background-size: cover;
@@ -147,7 +147,6 @@ video#bgvid {
 .empty { grid-area: empty; }
 
 .h2 {
-    grid-area: h2;
     font-family: 'Fjalla One', sans-serif;
     font-size: xxx-large;
     color: #FFC805;
@@ -255,8 +254,8 @@ video#bgvid {
     box-sizing: border-box;
     font-family: 'Average', serif;
 }
-h1, h2, h3 {
-    font-family: 'Fjalla One', sans-serif;
+h1, h2, h3, a {
+    font-family: 'Fjalla One', sans-serif !important;
 }
 /***Disposition de la page***/
 .grid-container {

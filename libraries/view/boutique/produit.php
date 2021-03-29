@@ -18,20 +18,22 @@ $Produits->inventaire($_SESSION['product']['product_id']);
         </video>
 
         <!-- Information produit-->
-        <div class="grid-container">
 
-            <!-- titre à gauche -->
-            <div class="left">
-                <div class="empty"></div>
-                <div class="h2"><h2><?= $_SESSION['product']['other_product_details']; ?></h2></div>
-                <div class="vide"></div>
-            </div>
+            <form class="mt-6 pt-6 is-flex is-align-content-center is-justify-content-center" method="post">
 
-            <form method="post">
+                <!-- titre à gauche -->
+            <!-- <div class="is-flex is-align-content-center is-justify-content-center"> -->
+                <!-- <div class="empty"></div> -->
+                <div class="mt-6 pt-6 h2 is-flex is-align-content-center is-justify-content-flex-end column is-half">
+                    <h2 class="mt-6 pt-6 is-flex is-align-content-center is-justify-content-flex-end"> <?= $_SESSION['product']['other_product_details']; ?></h2>
+                </div>
+                <!-- <div class="vide"></div> -->
+            <!-- </div> -->
+
                 <!-- card blanche -->
-                <div class="card">
+                <div class="card container column is-one-quarter mt-6 p-0">
                     <div class="titre">
-                        <h1><?= $_SESSION['product']['product_name']; ?></h1>
+                        <h1 class="has-text-centered p-1"> <?= $_SESSION['product']['product_name']; ?></h1>
                     </div>
 
                 <div class="cat">
@@ -67,6 +69,7 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                     <a href="addpanier.php?id=<?= $_SESSION['product']['product_id'] ?>">Ajouter au Panier</a>
                 </div>
             </div>
+        
         </form>
 
 
