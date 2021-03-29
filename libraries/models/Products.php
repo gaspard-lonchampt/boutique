@@ -29,7 +29,9 @@ class Products extends Models
 
     public function displayProductInventaire()
     {
-        $sql = "SELECT * FROM ref_product_types NATURAL JOIN stock NATURAL JOIN products;";
+        $sql = "SELECT products.product_id, product_type_id, product_name, product_description, other_product_details,
+        stock.price, products_image.product_image_1, products_image.product_image_2 
+        FROM products NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id";
         $resultats = $this->pdo->query($sql);
         // On fouille le résultat pour en extraire les données réelles
         $stock = $resultats->fetchAll();
@@ -441,11 +443,59 @@ class Products extends Models
 
     }
     public function findAllProductsWithImages(){
-        $sql = "SELECT * FROM `products` NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id GROUP BY products.product_id";
+        $sql = "SELECT products.product_id, product_type_id, product_name, product_description, other_product_details,
+        stock.price, products_image.product_image_1, products_image.product_image_2 
+        FROM products NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id 
+        GROUP BY products.product_id, product_type_id, product_name, product_description, other_product_details, 
+                 stock.price, products_image.product_image_1, products_image.product_image_2";
         $query = $this->pdo->prepare($sql);
         $query->execute();
         $products = $query->fetchAll();
 
         return $products;
     }
+
+    /**
+     * filtre par artiste
+     */
+    public function artistefiltre()
+    {
+        $sql ="SELECT `other_product_details` FROM products GROUP BY `other_product_details` ORDER BY other_product_details";
+
+        $resultats = $this->pdo->query($sql);
+        // On fouille le résultat pour en extraire les données réelles
+        $articles = $resultats->fetchAll();
+
+        return $articles;
+    }
+
+    /**
+     * filtre par couleur
+     */
+    public function couleurfiltre()
+    {
+        $sql ="SELECT`attribute_color` FROM attribute_value GROUP BY `attribute_color` ORDER BY `attribute_color`";
+
+        $resultats = $this->pdo->query($sql);
+        // On fouille le résultat pour en extraire les données réelles
+        $articles = $resultats->fetchAll();
+
+        return $articles;
+    }
+
+    /**
+     * filtre par taille
+     */
+    public function taillefiltre()
+    {
+        $sql ="SELECT`attribute_size` FROM attribute_value GROUP BY `attribute_size` ORDER BY `attribute_size`";
+
+        $resultats = $this->pdo->query($sql);
+        // On fouille le résultat pour en extraire les données réelles
+        $articles = $resultats->fetchAll();
+
+        return $articles;
+    }
+
+
 }

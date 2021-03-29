@@ -14,8 +14,7 @@ $inventaire = new \Models\Products();
             <!-- AFFICHAGE DU TABLEAU AVEC PRODUITS -->
             <table class="table">
                 <thead>
-                <th> </th>
-                <th>Catégorie</th>
+                <th>Image</th>
                 <th>Produit</th>
                 <th>Description</th>
                 <th>Couleur</th>
@@ -32,13 +31,10 @@ $inventaire = new \Models\Products();
                 {
                     //var_dump($produit);
                     echo ('<tr>
-                                   <td><img src="../images/" style="width: 100px" /></td>
-                                   <td>' . $produit['product_type_description'] . '</td>
+                                   <td><img src="../images/' . $produit['product_image_1'] . '" style="width: 100px" /></td>
                                    <td>' . $produit['product_name'] . '</td>
                                    <td>' . $produit['product_description'] . '</td>
-                                   <td>' . $produit['attribute_value_id'] . '</td>
-                                   <td>(pareil)</td>
-                                   <td>' . $produit['quantity'] . '</td>
+                                   <td> </td>
                                    <td>' . $produit['price'] . '</td>
                                    <td><a href="detailsproduct.html.php?product_id=' . $produit['product_id'] . '" class="btn btn-info">Voir les details</a></td>
                                    

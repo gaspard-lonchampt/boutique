@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="class product rename, + function insert product">
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="pre merge">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/models/Panier.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/admin/inventaire.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/inventaire.html.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/addpanier.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/listeproducts.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/panier.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,7 +23,7 @@
     <execution />
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="Marie_view_admin_produit" />
+    <option name="BRANCH" value="marie_panier" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -33,8 +43,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="Marie_view_admin_produit" />
-                    <option name="lastUsedInstant" value="1613665843" />
+                    <option name="branchName" value="marie_filtres-categories" />
+                    <option name="lastUsedInstant" value="1617008149" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -51,6 +61,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="php_installation_&lt;version&gt;" />
   <component name="ProjectId" id="1oZC8ZN8q0nFGnpFlkli5Nh52cZ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -127,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613725771178</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="pre merge">
+      <created>1617007692625</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617007692625</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,18 +158,32 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="marie_filtres-categories" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test insert table product sur index.php" />
     <MESSAGE value="ajout de view" />
     <MESSAGE value="page produits.html.php" />
     <MESSAGE value="class product rename, + function insert product" />
-    <option name="LAST_COMMIT_MESSAGE" value="class product rename, + function insert product" />
+    <MESSAGE value="pre merge" />
+    <option name="LAST_COMMIT_MESSAGE" value="pre merge" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -7,13 +7,13 @@
 }
 /*Video Produit*/
 video#bgvid {
-        position: fixed; center: 0; top: -15%;
+    position: fixed; center: 0; top: -15%;
     min-width: 100%; min-height: 100%;
     width: auto; height: auto; z-index: -100;
     background-size: cover;
 }
 
-.grid-container {
+.grid-container01 {
     width: 90%;
     margin: auto;
     margin-top: 30px;
@@ -22,29 +22,29 @@ video#bgvid {
     grid-template-rows: 1fr;
     gap: 3px 84px;
     grid-template-areas:
-    "left card";
+    "left card01";
 }
 
-.card {
+.card01 {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: min-content min-content min-content min-content min-content min-content min-content min-content;
     gap: 0px 0px;
     grid-template-areas:
-    "titre"
+    "titre01"
     "cat"
-    "image"
-    "image"
-    "prix"
-    "quantite"
-    "taille"
-    "panier";
-    grid-area: card;
+    "image01"
+    "image01"
+    "prix01"
+    "quantite01"
+    "taille01"
+    "panier01";
+    grid-area: card01;
 }
 
-.titre {
+.titre01 {
     padding: 15px 0 0 15px;
-    grid-area: titre;
+    grid-area: titre01;
     font-family: 'Fjalla One', sans-serif;
     background-color: #FAF9F5;
     padding: 15px;
@@ -58,9 +58,9 @@ video#bgvid {
     padding: 15px;
 }
 
-.image {
+.image01 {
     height: 430px;
-    grid-area: image;
+    grid-area: image01;
     display: flex;
     justify-content: center;
     background-color: #FAF9F5;
@@ -68,49 +68,49 @@ video#bgvid {
     position: relative;
 }
 /*******SUPPERPOSER LES IMAGES**********/
-.image img, .image1 img {
+.image01 img, .image1 img {
     position: absolute;
     overflow: hidden;
 }
-.one {
+.one01 {
     z-index: 9999;
     transition: opacity .5s;
 }
-.one:hover{
+.one01:hover{
     opacity: 0;
 }
 
-.prix {
-    grid-area: prix;
+.prix01 {
+    grid-area: prix01;
     display: flex;
     justify-content: center;
     background-color: #0F0F0F;
     color: #FAF9F5;
 }
 
-.quantite {
-    grid-area: quantite;
+.quantite01 {
+    grid-area: quantite01;
     background-color: #0F0F0F;
     padding-left: 15px;
     color: #FAF9F5;
 }
 
-.taille {
-    grid-area: taille;
+.taille01 {
+    grid-area: taille01;
     background-color: #0F0F0F;
     padding-left: 15px;
     color: #FAF9F5;
 }
 
-.panier {
-    grid-area: panier;
+.panier01 {
+    grid-area: panier01;
     background-color: #0F0F0F;
     padding: 0 15px 15px 15px;
     color: #FAF9F5;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
-.panier a {
+.panier01 a {
     width: 100%;
     text-align: center;
     padding: 5px;
