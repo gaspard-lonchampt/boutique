@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="pre merge">
+      <change afterPath="$PROJECT_DIR$/libraries/view/boutique/accueil.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/videos/Mystery - 38200.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/models/Panier.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/Database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/admin/inventaire.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/inventaire.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/addpanier.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/listeproducts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/panier.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="marie_filtres-categories" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -69,6 +65,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -178,6 +175,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test insert table product sur index.php" />
     <MESSAGE value="ajout de view" />
     <MESSAGE value="page produits.html.php" />

@@ -458,7 +458,7 @@ class Products extends Models
     /**
      * filtre par artiste
      */
-    public function artistefiltre()
+    public function displayartistefiltre()
     {
         $sql ="SELECT `other_product_details` FROM products GROUP BY `other_product_details` ORDER BY other_product_details";
 
@@ -472,7 +472,7 @@ class Products extends Models
     /**
      * filtre par couleur
      */
-    public function couleurfiltre()
+    public function displaycouleurfiltre()
     {
         $sql ="SELECT`attribute_color` FROM attribute_value GROUP BY `attribute_color` ORDER BY `attribute_color`";
 
@@ -486,7 +486,7 @@ class Products extends Models
     /**
      * filtre par taille
      */
-    public function taillefiltre()
+    public function displaytaillefiltre()
     {
         $sql ="SELECT`attribute_size` FROM attribute_value GROUP BY `attribute_size` ORDER BY `attribute_size`";
 
@@ -497,5 +497,22 @@ class Products extends Models
         return $articles;
     }
 
+    public function filtre($tab) {
+        $in = str_repeat('?,', count($tab) - 1) . '?';
+        $sql = "SELECT * FROM `stock` as s
+inner join attribute_value as av on av.attribute_value_id = s.attribute_value_id
+inner join ref_product_types as rf on rf.product_type_id = av.product_type_id
+inner join products as p on p.product_id = s.product_id
+inner join products_image as pi on pi.product_id = p.product_id
+where rf.product_type_description in ($in)
+and p.other_product_details in ($in)
+and av.attribute_size in ($in)
+and av.attribute_color in  ($in)
+";
+        $query = $this->pdo->prepare($sql);
+        $query->execute($tab);
+        $data = $query->fetchAll();
+        return($data);
+    }
 
 }
