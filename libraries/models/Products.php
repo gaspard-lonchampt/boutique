@@ -63,10 +63,12 @@ class Products extends Models
 
             // On récupère le produit
             $produit = $query->fetch();
-
+            
             //var_dump($produit);
             //on definit une session
             $_SESSION['product'] = $produit;
+
+            return $produit;
 
             //var_dump($_SESSION['product']);
             // $_SESSION['product_id'] = $produit['product_id'];

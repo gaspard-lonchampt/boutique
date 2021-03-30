@@ -66,7 +66,7 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                 </div>
 
                 <div class="panier01">
-                    <a href="addpanier.php?id=<?= $_SESSION['product']['product_id'] ?>">Ajouter au Panier</a>
+                    <a href="addpanier.php?product_id=<?= $_SESSION['product']['product_id'] ?>">Ajouter au Panier</a>
                 </div>
             </div>
         
