@@ -442,6 +442,10 @@ class Products extends Models
         return $products;
 
     }
+
+    /**
+     * pour la page store
+     */
     public function findAllProductsWithImages(){
         $sql = "SELECT products.product_id, product_type_id, product_name, product_description, other_product_details,
         stock.price, products_image.product_image_1, products_image.product_image_2 
@@ -453,6 +457,42 @@ class Products extends Models
         $products = $query->fetchAll();
 
         return $products;
+    }
+    /**
+     *
+     */
+    public function findProductWithImages()
+    {
+        $sql = "SELECT
+                    products.product_id,
+                    product_type_id,
+                    product_name,
+                    product_description,
+                    other_product_details,
+                    stock.price,
+                    products_image.product_image_1,
+                    products_image.product_image_2
+                FROM
+                    products
+                NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id
+                GROUP BY
+                    products.product_id,
+                    product_type_id,
+                    product_name,
+                    product_description,
+                    other_product_details,
+                    stock.price,
+                    products_image.product_image_1,
+                    products_image.product_image_2
+                ORDER BY
+                    product_id
+                DESC
+                LIMIT 4";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $product = $query->fetchAll();
+
+        return $product;
     }
 
     /**

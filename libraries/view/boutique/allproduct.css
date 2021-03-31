@@ -426,12 +426,66 @@ h1, h2, h3 {
 }
 
 /****ACCUEIL***************************************************/
-.background-image01 iframe{
+.background-image01 {
+    height: 40vh;
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    transform: scale(1.2);
+    color: #FAF9F5;
+}
+.background-image01 h1 {
+    font-size: xxx-large;
+    text-align: center;
+    margin-top: 25%;
+}
+.background-image01 h1 span {
+    color: #FFC805;
+    font-family: 'Fjalla One', sans-serif;
+}
+#contentaccueil {
+    padding: 50px 0;
+    background-color: #FAF9F5;
+    font-family: 'Average', serif;
+}
+#accueil #parent {
+    display: flex;
+    padding-bottom: 50px;
+}
+#accueil .child {
+    width: fit-content;
+}
+#voirproduit {
+    margin-top: 30px;
+    width: 100%;
+    background-color: #FAF9F5;
+    padding-bottom: 50px;
+}
+#voirproduit #btnaccueil {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    background-color:#FFC805;
+    border-radius:6px;
+    border: #FFC805;
+    padding: 5px;
+}
+#voirproduit #btnaccueil a {
+    color: #0F0F0F;
+}
+.background-image02 {
+    background-image: url("../images/corde.png");
+    background-position: center;
+    background-attachment: fixed;
+    height: 90vh;
+}
+
+#artisteaccueil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: xx-large;
+    padding-top: 50px;
+}
+#artisteaccueil p:hover {
+    color: #FFC805;
+    cursor: pointer;
 }

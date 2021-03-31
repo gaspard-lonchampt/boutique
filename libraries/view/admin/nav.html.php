@@ -27,6 +27,9 @@ require_once '../../../template/layout.html.php';
                 <li class="nav-item">
                     <a class="nav-link" href="inventaire.html.php">Inventaire</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="ahonneur.php">Articles à l'honneur</a>
+                </li>
                  <li class="nav-item">
                     <a class="nav-link" href="../inscription.html.php">Retour au site</a>
                 </li>

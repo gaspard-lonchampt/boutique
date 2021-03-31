@@ -3,8 +3,69 @@ $repere = 1;
 require_once '../../autoload.php';
 require_once 'layout_front.html.php';
 require_once 'header.html.php';
-?>
-<div class="background-image01">
-    <iframe id="player" frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media" title="YouTube video player" src="https://www.youtube.com/embed/2p3zZoraK9g?&amp;autoplay=1&amp;controls=0&amp;loop=1&amp;showinfo=0&amp;autohide=1&amp;rel=0&amp;mute=1&amp;index=4&amp;enablejsapi=1&amp;widgetid=1"></iframe>
-</div>
 
+$Produits = new \Models\Products();
+$allProduits = $Produits->findProductWithImages();
+?>
+<main id="accueil">
+    <div class="background-image01">
+        <video autoplay="" loop="" id="bgvid">
+            <source src="../videos/Mystery%20-%2038200.mp4" type="video/webm">
+            <source src="../videos/Mystery%20-%2038200.mp4" type="video/mp4">
+        </video>
+        <H1>Les dernières <span>merch</span> de vos artistes</H1>
+    </div>
+    <div id="contentaccueil">
+        <h2>Nos produits phares</h2>
+        <div id="parent" style="background-color: #FAF9F5" >
+
+            <?php
+            foreach ($allProduits as $produit) {
+                ?>
+                <div class="child">
+
+                    <div id="content-item">
+                        <div class="titre">
+                            <h2><?= $produit['product_name']; ?></h2>
+                        </div>
+                        <div class="image">
+                            <a href="produit.php?product_id=<?= $produit['product_id'] ?>">
+                                <img class="one" src="../images/<?= $produit['product_image_1']?>" alt="<?= $produit['product_name']; ?>"/>
+                                <img class="two" src="../images/<?= $produit['product_image_2']?>" alt="<?= $produit['product_name']; ?>"/>
+                            </a>
+                        </div>
+                        <div class="other">
+                            <h3><?= $produit['other_product_details']; ?></h3>
+                        </div>
+                        <div class="price">
+                            <h3><?= $produit['price']; ?> €</h3>
+                        </div>
+                        <div class="bouton1">
+                            <a href="produit.php?product_id=<?= $produit['product_id'] ?>">Voir le produit</a>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <div id="voirproduit">
+            <button id="btnaccueil"><a href="allproduct.php">Voir tous les articles</a></button>
+        </div>
+
+        <div class="background-image02">
+        </div>
+
+        <div id="artisteaccueil">
+            <p>Mac Miller</p>
+            <p>BTS</p>
+            <p>Suicidal Tendencies</p>
+            <p>Tyler the creator : GOLF WANG</p>
+            <p>SchoolBoy</p>
+        </div>
+
+    </div>
+</main>
+
+<?php
+require_once 'footer.html.php';
