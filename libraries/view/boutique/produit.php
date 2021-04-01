@@ -8,6 +8,13 @@ $Produits = new \Models\Products();
 
 $Produits->displayproducts();
 $Produits->inventaire($_SESSION['product']['product_id']);
+
+
+if (isset($_POST['taille']) && isset($_POST['quantity'])) {
+    $taille[] = $_POST['taille'];
+    $quantity[] = $_POST['quantity'];
+
+}
 ?>
 
     <section id="main-content">
@@ -19,7 +26,7 @@ $Produits->inventaire($_SESSION['product']['product_id']);
 
         <!-- Information produit-->
 
-            <form class="mt-6 pt-6 is-flex is-align-content-center is-justify-content-center" method="post">
+            <form class="mt-6 pt-6 is-flex is-align-content-center is-justify-content-center" method="POST" action="addpanier.php?product_id=<?= $_SESSION['product']['product_id'] ?>">
 
                 <!-- titre à gauche -->
             <!-- <div class="is-flex is-align-content-center is-justify-content-center"> -->
@@ -51,7 +58,7 @@ $Produits->inventaire($_SESSION['product']['product_id']);
 
                 <div class="quantite01">
                     Quantité :<br>
-                    <input type="number" value="1" max="3">
+                    <input name="quantity" type="number" value="1" max="3">
                 </div>
 
                 <div class="taille01">
@@ -66,7 +73,7 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                 </div>
 
                 <div class="panier01">
-                    <a href="addpanier.php?product_id=<?= $_SESSION['product']['product_id'] ?>">Ajouter au Panier</a>
+                    <input type="submit" href="addpanier.php?product_id=<?= $_SESSION['product']['product_id'] ?>">Ajouter au Panier</input>
                 </div>
             </div>
         
