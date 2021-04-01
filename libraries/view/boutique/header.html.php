@@ -28,7 +28,7 @@
         Boutique
       </a>
 
-      <a class="navbar-item">
+      <a class="navbar-item" href="panier.php">
         Panier
       </a>
 
