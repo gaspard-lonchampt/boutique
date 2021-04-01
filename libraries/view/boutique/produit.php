@@ -9,12 +9,6 @@ $Produits = new \Models\Products();
 $Produits->displayproducts();
 $Produits->inventaire($_SESSION['product']['product_id']);
 
-
-if (isset($_POST['taille']) && isset($_POST['quantity'])) {
-    $taille[] = $_POST['taille'];
-    $quantity[] = $_POST['quantity'];
-
-}
 ?>
 
     <section id="main-content">

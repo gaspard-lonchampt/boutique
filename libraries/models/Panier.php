@@ -22,8 +22,10 @@ class Panier extends Models
     public function add($Produits_id, $taille, $quantity)
     {
         // $_SESSION['panier'][$Produits['product_id']] = 1;
-        array_push([$_SESSION['panier'][$Produits_id]], $taille, $quantity);
-        // $_SESSION['panier'][$Produits_id] = 1;
+        // array_push([$_SESSION['panier'][$Produits_id]], $taille, $quantity);
+        $_SESSION['panier'][$Produits_id] = 1;
+        $_SESSION['panier'][] = $taille;
+        $_SESSION['panier'][] = $quantity;
     }
 
     public function displaypanier()
