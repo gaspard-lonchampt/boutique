@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="il reste à faire les filtres sur la page store">
-      <change afterPath="$PROJECT_DIR$/libraries/view/images/corde.png" afterDir="false" />
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="il reste à faire les filtres sur la page store, accueil.php a revoir">
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/11-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/13-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/13.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/14-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/14.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/15-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/15.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/16-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/17-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/17.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/51vWGDdCOBL._SY445_SX342_QL70_ML2_.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/571750-concerts-debout-les-professionnels-de-la-musique-interpellent-le-gouvernement-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/624002_1-e1554288864637.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/701f2377b1111cc16a7e9cf35428c196.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/Little-dragon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/Rodeo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/Vwel96K.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/artworks-136EFIzrEg3AVyHI-54oGwg-t500x500.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/gaou2014-1707s0102.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/ggzuuwqh4qs21.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/kidcudi.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/kidcudi2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/libraries/view/images/l-astrolabe-scene-de-musiques-actuelles-orleans-.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/admin/categories-attribute.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/categories-attribute.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/admin/detailsproduct.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/detailsproduct.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/admin/nav.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/nav.html.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/view/admin/products.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/products.html.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/view/boutique/accueil.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/accueil.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +187,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617128810287</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="il reste à faire les filtres sur la page store, accueil.php a revoir">
+      <created>1617151159801</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617151159801</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -203,7 +232,8 @@
     <MESSAGE value="class product rename, + function insert product" />
     <MESSAGE value="pre merge" />
     <MESSAGE value="il reste à faire les filtres sur la page store" />
-    <option name="LAST_COMMIT_MESSAGE" value="il reste à faire les filtres sur la page store" />
+    <MESSAGE value="il reste à faire les filtres sur la page store, accueil.php a revoir" />
+    <option name="LAST_COMMIT_MESSAGE" value="il reste à faire les filtres sur la page store, accueil.php a revoir" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

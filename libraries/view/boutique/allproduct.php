@@ -16,7 +16,7 @@ if(isset($_GET['searchitem'])) {
         if ($value != 'Filtrer')
         array_push($tab, $value);
     }
-    var_dump($_GET);
+    //var_dump($_GET);
     //var_dump($_GET);
     $allsearchProduits = $Produits->filtre($tab);
 

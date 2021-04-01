@@ -545,14 +545,64 @@ inner join ref_product_types as rf on rf.product_type_id = av.product_type_id
 inner join products as p on p.product_id = s.product_id
 inner join products_image as pi on pi.product_id = p.product_id
 where rf.product_type_description in ($in)
-and p.other_product_details in ($in)
-and av.attribute_size in ($in)
-and av.attribute_color in  ($in)
+group by s.product_id
 ";
         $query = $this->pdo->prepare($sql);
         $query->execute($tab);
         $data = $query->fetchAll();
         return($data);
+    }
+
+
+
+    /**
+     * Affichage de la cat music dans accueil
+     */
+    public function findMusic()
+    {
+        $sql = "SELECT
+    *
+FROM
+    products
+INNER JOIN products_image ON products.product_id = products_image.product_id
+INNER JOIN stock ON products.product_id = stock.product_id
+INNER JOIN attribute_value ON products.product_type_id = attribute_value.product_type_id
+WHERE
+    attribute_value.product_type_id = 2
+ORDER BY
+    products.product_id
+ASC
+    LIMIT 4";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
+        return($data);
+
+    }
+
+    public function findProduit()
+    {
+        $sql = "SELECT
+    *
+FROM
+    products
+INNER JOIN products_image ON products.product_id = products_image.product_id
+INNER JOIN stock ON products.product_id = stock.product_id
+INNER JOIN attribute_value ON products.product_type_id = attribute_value.product_type_id
+INNER JOIN ref_product_types ON ref_product_types.product_type_id = attribute_value.product_type_id
+WHERE
+    ref_product_types.parent_product_type_code = 1
+GROUP BY
+    products.product_id
+ORDER BY
+    products.product_id
+DESC
+LIMIT 4";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
+        return($data);
+
     }
 
 }
