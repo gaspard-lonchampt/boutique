@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'nav.html.php';
 $repere = 1;
 require_once '../../autoload.php';
@@ -19,7 +18,7 @@ $Categories = new \Models\Categories();
  */
 if (isset($_GET['delete_Product']))
 {
-   $Produits->deleteProduct($_GET['hiddenDeleteProduct']);
+    $Produits->deleteProduct($_GET['hiddenDeleteProduct']);
 }
 ?>
 <main class="container">
@@ -58,41 +57,41 @@ if (isset($_GET['delete_Product']))
              * AFFICHAGE DU FORM POUR AJOUT PRODUIT
              */
             if (isset($_POST['addProduct']) || (isset($_POST['formAddProduct']))) {
-            ?>
+                ?>
 
-            <!-- AJOUT DES PRODUITS -->
-            <?php $Produits->insertproduct();
-            if (isset($_POST['addProduct']))
-            { ?>
-            <form action="products.html.php" method="post">
-                <div class="form-group">
-                    <label for="attribut">Type de produit</label>
-                    <select name="product_type_id" id="product_type_id" class="form-control">
-                        <?php
-                        $allCat = $Categories->findAllCategories();
-                        foreach ($allCat as $cat)
-                        {
-                            echo ('<option value="' . $cat['product_type_id'] . '"> type : ' . $cat['product_type_description'] . '</option>');
-                        }?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="product_name">Nom du produit</label>
-                    <input type="text" name="product_name" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="product_description">Description du produit</label>
-                    <input type="text" name="product_description" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="other_product_details">Détail du produit</label>
-                    <input type="text" name="other_product_details" class="form-control">
-                </div>
-                <button type="submit" name="formAddProduct" class="btn btn-success">Valider !</button>
-            </form>
-            <!-- FIN AJOUT DES PRODUITS -->
-                <?php
-            }
+                <!-- AJOUT DES PRODUITS -->
+                <?php $Produits->insertproduct();
+                if (isset($_POST['addProduct']))
+                { ?>
+                    <form action="products.html.php" method="post">
+                        <div class="form-group">
+                            <label for="attribut">Type de produit</label>
+                            <select name="product_type_id" id="product_type_id" class="form-control">
+                                <?php
+                                $allCat = $Categories->findAllCategories();
+                                foreach ($allCat as $cat)
+                                {
+                                    echo ('<option value="' . $cat['product_type_id'] . '"> type : ' . $cat['product_type_description'] . '</option>');
+                                }?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="product_name">Nom du produit</label>
+                            <input type="text" name="product_name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="product_description">Description du produit</label>
+                            <input type="text" name="product_description" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="other_product_details">Détail du produit</label>
+                            <input type="text" name="other_product_details" class="form-control">
+                        </div>
+                        <button type="submit" name="formAddProduct" class="btn btn-success">Valider !</button>
+                    </form>
+                    <!-- FIN AJOUT DES PRODUITS -->
+                    <?php
+                }
             }
             ?>
 

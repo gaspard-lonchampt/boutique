@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once 'nav.html.php';
 $repere = 1;
 require_once '../../autoload.php';

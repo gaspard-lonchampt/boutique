@@ -13,6 +13,11 @@ video#bgvid {
     width: auto; height: auto; z-index: -100;
     background-size: cover;
 }
+video#bgvid {
+    position: fixed;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+}
 
 .grid-container01 {
     width: 90%;
@@ -426,12 +431,83 @@ h1, h2, h3 {
 }
 
 /****ACCUEIL***************************************************/
-.background-image01 iframe{
+.background-image01 {
+    height: 40vh;
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    transform: scale(1.2);
+    color: #FAF9F5;
+}
+.background-image01 h1 {
+    font-size: xxx-large;
+    text-align: center;
+    margin-top: 25%;
+}
+.background-image01 h1 span {
+    color: #FFC805;
+    font-family: 'Fjalla One', sans-serif;
+}
+#contentaccueil {
+    background-color: #FAF9F5;
+    font-family: 'Average', serif;
+}
+#contentaccueil .h2 {
+    width: 100%;
+    font-size: 10VH;
+    font-stretch: ultra-expanded;
+    color: #333333;
+    letter-spacing: 10px;
+}
+#accueil #parent {
+    display: flex;
+    padding-bottom: 50px;
+}
+#accueil .child {
+    width: fit-content;
+}
+#voirproduit {
+    margin-top: 30px;
+    width: 100%;
+    background-color: #FAF9F5;
+    padding-bottom: 50px;
+}
+#voirproduit #btnaccueil {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    background-color:#FFC805;
+    border-radius:6px;
+    border: #FFC805;
+    padding: 5px;
+}
+#voirproduit #btnaccueil a {
+    color: #0f0f0f;
+}
+.background-image02 {
+    height: 70vh;
+    background: #FAF9F5;
+}
+
+#artisteaccueil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: xx-large;
+    padding-top: 50px;
+}
+#artisteaccueil p:hover {
+    color: #FFC805;
+    cursor: pointer;
+}
+
+.bgc001, .bgc002 {
+    width: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+}
+.bgc001 {
+    background-image: url("../images/l-astrolabe-scene-de-musiques-actuelles-orleans-.jpg");
+}
+.bgc002 {
+    background-image: url("../images/571750-concerts-debout-les-professionnels-de-la-musique-interpellent-le-gouvernement-2.jpg");
 }
