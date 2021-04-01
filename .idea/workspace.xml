@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="accueil et filtre sur catégorie">
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="premerge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -13,7 +13,7 @@
     <execution />
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="marie_panier" />
+    <option name="BRANCH" value="marie-page-accueil" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -165,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617151159801</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="premerge">
+      <created>1617278690627</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617278690627</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,13 +189,28 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="marie_filtres-categories" />
+                        <option value="origin/main" />
                       </list>
                     </value>
                   </entry>
                 </map>
               </option>
             </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/Gaspard_nav" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
@@ -204,7 +226,8 @@
     <MESSAGE value="pre merge" />
     <MESSAGE value="il reste à faire les filtres sur la page store" />
     <MESSAGE value="il reste à faire les filtres sur la page store, accueil.php a revoir" />
-    <option name="LAST_COMMIT_MESSAGE" value="il reste à faire les filtres sur la page store, accueil.php a revoir" />
+    <MESSAGE value="premerge" />
+    <option name="LAST_COMMIT_MESSAGE" value="premerge" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

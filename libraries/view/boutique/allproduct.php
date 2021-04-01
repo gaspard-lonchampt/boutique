@@ -43,42 +43,6 @@ if (isset($_GET['voir'])) {
                     echo ('<input type="checkbox" id="scales" name="category' . $cat['product_type_description'] . '" value="' . $cat['product_type_description'] . '"> <label for="' . $cat['product_type_description'] . '">' . $cat['product_type_description'] . '</label> <br>');
                 }?></p>
             </section>
-            <section id="artistefiltre">
-                <h4>Artistes</h4>
-                <p><?php
-                $ALLartistes = $Produits->displayartistefiltre();
-                foreach ($ALLartistes as $artiste)
-                {
-                    //var_dump($artiste);
-                    echo ('<input type="checkbox" id="scales" name="artiste' . $artiste['other_product_details'] . '" value="' . $artiste['other_product_details'] . '"> <label for="' . $artiste['other_product_details'] . '">' . $artiste['other_product_details'] . '</label> <br>');
-                }?></p>
-            </section>
-            <section id="couleurfiltre">
-                <h4>Couleurs</h4>
-                <p><?php
-                $ALLcouleur = $Produits->displaycouleurfiltre();
-                foreach ($ALLcouleur as $couleur)
-                {
-                    //var_dump($artiste);
-                    if ($couleur['attribute_color'] == 'DEFAULT')
-                        echo '';
-                    else
-                    echo ('<input type="checkbox" id="scales" name="couleur' . $couleur['attribute_color'] . '" value="' . $couleur['attribute_color'] . '"> <label for="' . $couleur['attribute_color'] . '">' . $couleur['attribute_color'] . '</label> <br>');
-                }?></p>
-            </section>
-            <section id="taillefiltre">
-                <h4>Taille</h4>
-                <p><?php
-                $ALLtailles = $Produits->displaytaillefiltre();
-                foreach ($ALLtailles as $taille)
-                {
-                    //var_dump($artiste);
-                    if ($taille['attribute_size'] == 'DEFAULT')
-                        echo '';
-                    else
-                    echo ('<input type="checkbox" id="scales" name="taille' . $taille['attribute_size'] . '" value="' . $taille['attribute_size'] . '"> <label for="' . $taille['attribute_size'] . '">' . $taille['attribute_size'] . '</label> <br>');
-                }?></p>
-            </section>
             <input type='submit' value="Filtrer" name="searchitem">
         </form>
     </div>
