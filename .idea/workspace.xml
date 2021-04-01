@@ -1,18 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="pre merge">
+    <list default="true" id="2847139a-5954-4252-b871-ce9183c077d5" name="Default Changelist" comment="accueil et filtre sur catégorie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/models/Panier.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/models/Products.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/models/Products.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/admin/inventaire.html.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/admin/inventaire.html.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/addpanier.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/allproduct.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/listeproducts.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/panier.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.css" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libraries/view/boutique/produit.php" beforeDir="false" afterPath="$PROJECT_DIR$/libraries/view/boutique/produit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,10 +18,18 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="marie-page-accueil" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
@@ -43,12 +41,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="marie_filtres-categories" />
-                    <option name="lastUsedInstant" value="1617008149" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1617278663" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1613643889" />
+                    <option name="branchName" value="marie-page-accueil" />
+                    <option name="lastUsedInstant" value="1617128829" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="marie_filtres-categories" />
+                    <option name="lastUsedInstant" value="1617008149" />
                   </RecentBranch>
                 </list>
               </option>
@@ -69,6 +71,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -90,6 +93,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="PHP Script.Model.php" />
         <item itemvalue="PHP Script.Model.php" />
         <item itemvalue="PHP Script.Model.php" />
       </list>
@@ -147,7 +151,21 @@
       <option name="project" value="LOCAL" />
       <updated>1617007692625</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="il reste à faire les filtres sur la page store">
+      <created>1617128810287</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617128810287</updated>
+    </task>
+    <task id="LOCAL-00008" summary="il reste à faire les filtres sur la page store, accueil.php a revoir">
+      <created>1617151159801</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1617151159801</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -178,12 +196,15 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test insert table product sur index.php" />
     <MESSAGE value="ajout de view" />
     <MESSAGE value="page produits.html.php" />
     <MESSAGE value="class product rename, + function insert product" />
     <MESSAGE value="pre merge" />
-    <option name="LAST_COMMIT_MESSAGE" value="pre merge" />
+    <MESSAGE value="il reste à faire les filtres sur la page store" />
+    <MESSAGE value="il reste à faire les filtres sur la page store, accueil.php a revoir" />
+    <option name="LAST_COMMIT_MESSAGE" value="il reste à faire les filtres sur la page store, accueil.php a revoir" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -13,6 +13,11 @@ video#bgvid {
     width: auto; height: auto; z-index: -100;
     background-size: cover;
 }
+video#bgvid {
+    position: fixed;
+    min-width: 100%; min-height: 100%;
+    width: auto; height: auto;
+}
 
 .grid-container01 {
     width: 90%;
@@ -260,7 +265,7 @@ h1, h2, h3, a {
 /***Disposition de la page***/
 .grid-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     gap: 0px 0px;
     grid-template-areas:
@@ -293,13 +298,13 @@ h1, h2, h3, a {
     background-color: #FAF9F5;
     height: 150px;
     place-content: center;
-    width: 110px;
+    width: 125px;
 }
 .image img {
     position: absolute;
     overflow: hidden;
-    height: 150px;
     width: 150px;
+    margin-top: 5px;
 }
 .one {
     z-index: 9999;
@@ -375,13 +380,133 @@ h1, h2, h3, a {
 
 .filtre {
     grid-area: filtre;
-    position: fixed;
-    padding: 5px;
+    font-size: 13px;
+    background-color: #eae7e3;
+    border-top-right-radius: 5px;
+    padding-left: 5px;
+    padding-bottom: 15px;
+}
+.filtre h3 {
+    padding: 5px 0 0 15px;
 }
 .filtre form section {
     margin: 5px 0 5px 0;
+    padding: 3px;
 }
-.filtre form section p {
+.filtre form section h4 {
     margin-bottom: 5px;
     text-align: center;
+    background-color: #f8d74b;
+}
+.filtre form section p {
+    height: 10em;
+    overflow-y: auto;
+    background-color: #dddcd8;
+    padding-left: 5px;
+    line-height: normal;
+}
+.filtre form input {
+    margin-top: 1em;
+    background-color:#FFC805;
+    border-radius:6px;
+    border:1px solid #FFC805;
+    cursor:pointer;
+    color:#333333;
+    padding:6px 24px;
+}
+
+#voir {
+    position: absolute;
+    top: 60px;
+    left: 190px;
+    background-color: #f1cd4a;
+    border:1px solid #FFC805;
+    border-radius:6px;
+    padding: 3px;
+    cursor:pointer;
+}
+#voir:hover {
+    text-decoration: underline;
+}
+
+/****ACCUEIL***************************************************/
+.background-image01 {
+    height: 40vh;
+    width: 100%;
+    color: #FAF9F5;
+}
+.background-image01 h1 {
+    font-size: xxx-large;
+    text-align: center;
+    margin-top: 25%;
+}
+.background-image01 h1 span {
+    color: #FFC805;
+    font-family: 'Fjalla One', sans-serif;
+}
+#contentaccueil {
+    background-color: #FAF9F5;
+    font-family: 'Average', serif;
+}
+#contentaccueil .h2 {
+    width: 100%;
+    font-size: 10VH;
+    font-stretch: ultra-expanded;
+    color: #333333;
+    letter-spacing: 10px;
+}
+#accueil #parent {
+    display: flex;
+    padding-bottom: 50px;
+}
+#accueil .child {
+    width: fit-content;
+}
+#voirproduit {
+    margin-top: 30px;
+    width: 100%;
+    background-color: #FAF9F5;
+    padding-bottom: 50px;
+}
+#voirproduit #btnaccueil {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    background-color:#FFC805;
+    border-radius:6px;
+    border: #FFC805;
+    padding: 5px;
+}
+#voirproduit #btnaccueil a {
+    color: #0f0f0f;
+}
+.background-image02 {
+    height: 70vh;
+    background: #FAF9F5;
+}
+
+#artisteaccueil {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: xx-large;
+    padding-top: 50px;
+}
+#artisteaccueil p:hover {
+    color: #FFC805;
+    cursor: pointer;
+}
+
+.bgc001, .bgc002 {
+    width: 100%;
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+}
+.bgc001 {
+    background-image: url("../images/l-astrolabe-scene-de-musiques-actuelles-orleans-.jpg");
+}
+.bgc002 {
+    background-image: url("../images/571750-concerts-debout-les-professionnels-de-la-musique-interpellent-le-gouvernement-2.jpg");
 }

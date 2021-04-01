@@ -442,6 +442,10 @@ class Products extends Models
         return $products;
 
     }
+
+    /**
+     * pour la page store
+     */
     public function findAllProductsWithImages(){
         $sql = "SELECT products.product_id, product_type_id, product_name, product_description, other_product_details,
         stock.price, products_image.product_image_1, products_image.product_image_2 
@@ -454,11 +458,47 @@ class Products extends Models
 
         return $products;
     }
+    /**
+     *
+     */
+    public function findProductWithImages()
+    {
+        $sql = "SELECT
+                    products.product_id,
+                    product_type_id,
+                    product_name,
+                    product_description,
+                    other_product_details,
+                    stock.price,
+                    products_image.product_image_1,
+                    products_image.product_image_2
+                FROM
+                    products
+                NATURAL JOIN products_image INNER JOIN stock ON products.product_id = stock.product_id
+                GROUP BY
+                    products.product_id,
+                    product_type_id,
+                    product_name,
+                    product_description,
+                    other_product_details,
+                    stock.price,
+                    products_image.product_image_1,
+                    products_image.product_image_2
+                ORDER BY
+                    product_id
+                DESC
+                LIMIT 4";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $product = $query->fetchAll();
+
+        return $product;
+    }
 
     /**
      * filtre par artiste
      */
-    public function artistefiltre()
+    public function displayartistefiltre()
     {
         $sql ="SELECT `other_product_details` FROM products GROUP BY `other_product_details` ORDER BY other_product_details";
 
@@ -472,7 +512,7 @@ class Products extends Models
     /**
      * filtre par couleur
      */
-    public function couleurfiltre()
+    public function displaycouleurfiltre()
     {
         $sql ="SELECT`attribute_color` FROM attribute_value GROUP BY `attribute_color` ORDER BY `attribute_color`";
 
@@ -486,7 +526,7 @@ class Products extends Models
     /**
      * filtre par taille
      */
-    public function taillefiltre()
+    public function displaytaillefiltre()
     {
         $sql ="SELECT`attribute_size` FROM attribute_value GROUP BY `attribute_size` ORDER BY `attribute_size`";
 
@@ -497,5 +537,72 @@ class Products extends Models
         return $articles;
     }
 
+    public function filtre($tab) {
+        $in = str_repeat('?,', count($tab) - 1) . '?';
+        $sql = "SELECT * FROM `stock` as s
+inner join attribute_value as av on av.attribute_value_id = s.attribute_value_id
+inner join ref_product_types as rf on rf.product_type_id = av.product_type_id
+inner join products as p on p.product_id = s.product_id
+inner join products_image as pi on pi.product_id = p.product_id
+where rf.product_type_description in ($in)
+group by s.product_id
+";
+        $query = $this->pdo->prepare($sql);
+        $query->execute($tab);
+        $data = $query->fetchAll();
+        return($data);
+    }
+
+
+
+    /**
+     * Affichage de la cat music dans accueil
+     */
+    public function findMusic()
+    {
+        $sql = "SELECT
+    *
+FROM
+    products
+INNER JOIN products_image ON products.product_id = products_image.product_id
+INNER JOIN stock ON products.product_id = stock.product_id
+INNER JOIN attribute_value ON products.product_type_id = attribute_value.product_type_id
+WHERE
+    attribute_value.product_type_id = 2
+ORDER BY
+    products.product_id
+ASC
+    LIMIT 4";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
+        return($data);
+
+    }
+
+    public function findProduit()
+    {
+        $sql = "SELECT
+    *
+FROM
+    products
+INNER JOIN products_image ON products.product_id = products_image.product_id
+INNER JOIN stock ON products.product_id = stock.product_id
+INNER JOIN attribute_value ON products.product_type_id = attribute_value.product_type_id
+INNER JOIN ref_product_types ON ref_product_types.product_type_id = attribute_value.product_type_id
+WHERE
+    ref_product_types.parent_product_type_code = 1
+GROUP BY
+    products.product_id
+ORDER BY
+    products.product_id
+DESC
+LIMIT 4";
+        $query = $this->pdo->prepare($sql);
+        $query->execute();
+        $data = $query->fetchAll();
+        return($data);
+
+    }
 
 }
