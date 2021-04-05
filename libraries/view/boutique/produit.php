@@ -9,6 +9,10 @@ $Produits = new \Models\Products();
 $Produits->displayproducts();
 $Produits->inventaire($_SESSION['product']['product_id']);
 
+if (isset($_POST['submit'])) {
+    $_POST['prix'] = $_SESSION['stock'][0]['price'];
+}
+
 ?>
 
     <section id="main-content">
@@ -47,12 +51,12 @@ $Produits->inventaire($_SESSION['product']['product_id']);
                 </div>
 
                 <div class="prix01">
-                    <h3><?= $_SESSION['stock'][0]['price']; ?> €</h3>
+                    <h3 name="prix" ><?= $_SESSION['stock'][0]['price']; ?> €</h3>
                 </div>
 
                 <div class="quantite01">
                     Quantité :<br>
-                    <input name="quantity" type="number" value="1" max="3">
+                    <input name="quantity" type="number" value="1" max="3" min="1">
                 </div>
 
                 <div class="taille01">
