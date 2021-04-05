@@ -32,6 +32,13 @@
         Panier
       </a>
 
+    <?php if ($_SESSION['customer']['customer_statut'] == "2"): ?>
+      <a class="navbar-item" href="../admin/inventaire.html.php">
+       Admin
+     </a>
+    <?php endif;
+    ?>
+
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           En savoir plus

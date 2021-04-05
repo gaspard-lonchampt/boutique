@@ -1,5 +1,12 @@
 <?php
+require_once '../../autoload.php';
 require_once '../../../template/layout.html.php';
+
+if ($_SESSION['customer']['customer_statut'] !== "2") {
+    header('Location: ../boutique/redirection.html.php');
+}
+
+
 ?>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -31,7 +38,7 @@ require_once '../../../template/layout.html.php';
                     <a class="nav-link" href="ahonneur.php">Articles à l'honneur</a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="../inscription.html.php">Retour au site</a>
+                    <a class="nav-link" href="../boutique/accueil.php">Retour au site</a>
                 </li>
             </ul>
         </div>

@@ -3,6 +3,9 @@ $repere = 1;
 require_once '../../autoload.php';
 require_once 'nav.html.php';
 
+
+
+
 $view = new \view\Customers();
 
 

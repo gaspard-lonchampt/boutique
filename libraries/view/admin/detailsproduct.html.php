@@ -1,7 +1,10 @@
 <?php
+require_once '../../autoload.php';
 require_once 'nav.html.php';
 $repere = 1;
-require_once '../../autoload.php';
+
+
+
 
 
 $Produits = new \Models\Products();

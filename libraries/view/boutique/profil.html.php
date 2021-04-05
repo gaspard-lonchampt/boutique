@@ -2,7 +2,7 @@
 require_once '../../autoload.php';
 
 if (!isset($_SESSION['customer']['customer_id']) > "0") {
-    header('Location: connection.html.php');
+    header('Location: redirection.html.php');
 }
 
 require_once 'layout_front.html.php';

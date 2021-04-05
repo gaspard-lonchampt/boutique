@@ -245,6 +245,7 @@ class Customers extends Models
     public function updateStatut($value, $id) 
     {
         $column = "customer_statut";
+        $_SESSION['customer']['customer_statut'] = $value;
         $this->update($this->table, $column, $value, $id);
     }
 

@@ -290,7 +290,8 @@
                 ?> </div> <?php
             }
                     ?>
-            <div class="box is-flex-direction-column is-align-content-center is-justify-content-center">
+           
+            <div class="box container is-flex-direction-column is-align-content-center is-justify-content-center mt-6">
             <p>Nom :                     <?php echo $one_customer_info['customer_lastname'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST" >
                 <label for="customer_lastname">Modifier le nom:</label>
@@ -301,7 +302,7 @@
             </form>
             </div>
 
-            <div class="box">
+            <div class="box container">
             <p>Prénom :                          <?php echo $one_customer_info['customer_firstname'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_firstname">Modifier le prénom:</label>
@@ -309,7 +310,7 @@
                 <input  class="button is-small is-rounded is-warning" type="submit" value ="modifier" name ="firstname"></div>
             </form>
             </div>
-            <div class="box">
+            <div class="box container">
             <p>Courriel :                                                                                                     <?php echo $one_customer_info['customer_email'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_email">Modifier le courriel:</label>
@@ -318,7 +319,7 @@
             </form>
             </div>
 
-            <div class="box">
+            <div class="box container">
             <p>Mot de passe</p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_password">Modifier le mot de passe:</label>
@@ -330,7 +331,7 @@
             </form>
             </div>
 
-            <div class="box">
+            <div class="box container">
             <p>Professionnel ou particulier :                                                                                                                                                                                     <?php echo $one_customer_info['customer_organisation_or_person'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_organisation_or_person">
@@ -344,7 +345,7 @@
             </form>
             </div>
 
-            <div class="box">
+            <div class="box container">
             <p>Pays :                                                                                     <?php echo $one_customer_info['customer_country'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_country">
@@ -356,7 +357,7 @@
             </form>
             </div>
 
-            <div class="box">
+            <div class="box container">
             <p>Ville :                                                                                         <?php echo $one_customer_info['customer_city'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_city">
@@ -369,7 +370,7 @@
             </form>
             </div>
 
-<div class="box">
+<div class="box container">
             <p>Code postale :                                                                                                                     <?php echo $one_customer_info['customer_postcode'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_postcode">
@@ -378,7 +379,7 @@
                 name="customer_postcode" ><div class="pt-2">
                 <input class="button is-small is-rounded is-warning" type="submit" value ="modifier" name ="postcode"></div>
             </form></div>
-<div class="box">
+<div class="box container">
             <p>Etats, Métropole ou DOM TOM  :                                                                                                                                                                                         <?php echo $one_customer_info['customer_state'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_state">
@@ -387,7 +388,7 @@
                 name="customer_state" ><div class="pt-2">
                 <input class="button is-small is-rounded is-warning" type="submit" value ="modifier" name ="state"></div>
             </form></div>
-<div class="box">
+<div class="box container">
             <p>Adresse N°1  :                                                                                                                         <?php echo $one_customer_info['customer_adress_line_1'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_adress_line_1">
@@ -396,7 +397,7 @@
                 name="customer_adress_line_1" ><div class="pt-2">
                 <input class="button is-small is-rounded is-warning" type="submit" value ="modifier" name ="adress_1"></div>
             </form></div>
-<div class="box">
+<div class="box container">
             <p>Adresse N°2  :                                                                                                                         <?php echo $one_customer_info['customer_adress_line_2'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_adress_line_2">
@@ -405,7 +406,7 @@
                 name="customer_adress_line_2" ><div class="pt-2">
                 <input class="button is-small is-rounded is-warning" type="submit" value ="modifier" name ="adress_2"></div>
             </form></div>
-<div class="box">
+<div class="box container">
             <p>Adresse N°3  :                                                                                                                         <?php echo $one_customer_info['customer_adress_line_3'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_adress_line_3">
@@ -415,7 +416,7 @@
                 <input class="button is-small is-rounded is-warning" type="submit" value ="modifier" name ="adress_3"></div>
             </form></div>
 
-<div class="box">
+<div class="box container">
             <p>Adresse N°4  :                                                                                                                         <?php echo $one_customer_info['customer_adress_line_4'] ?></p>
             <form class="pt-3 is-flex-direction-column" action="profil.html.php" method="POST">
                 <label for="customer_adress_line_4">
@@ -426,6 +427,7 @@
             </div>
             </form>
              </div>
+             
 <?php
 
  
