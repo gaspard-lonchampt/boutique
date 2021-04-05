@@ -18,9 +18,9 @@ if (isset($_GET['product_id'])) {
     // var_dump($Produits);
     // echo "</pre>";
 
-    echo "<pre>";
-    var_dump($_SESSION['panier']);
-    echo "</pre>";
+    // echo "<pre>";
+    // var_dump($_SESSION['panier']);
+    // echo "</pre>";
 
     // echo "<pre>";
     // var_dump($_POST);
