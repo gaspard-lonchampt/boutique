@@ -14,8 +14,9 @@
         $Panier->del($_GET['del']);
     }
 
-    // todo : 
-    // renvoyer vers la co si on va vers le checkout sans être co 
+    $total = 0;
+    // todo :
+    // renvoyer vers la co si on va vers le checkout sans être co
     // enregistrer les infos du panier en BDD
     // recapitulatif des commandes dans le profil
 ?>
@@ -58,7 +59,7 @@
 
     </div>
     <?php endforeach;?>
-    <!-- <div class="card column is-vcentered is-flex mt-6 is-align-items-center">
+    <div class="card column is-vcentered is-flex mt-6 is-align-items-center">
         <div class="column is-half has-text-centered is-flex is-justify-content-center is-align-content-center is-align-items-center">
             <div class="column is-one-quarter"></div>
             <div class="column is-one-fifth"></div>
@@ -67,9 +68,9 @@
         <div class="column has-text-centered"></div>
         <div class="column has-text-centered"></div>
         <div class="column has-text-centered"></div>
-        <div class="column has-text-centered">Grand Total:€</div>
+        <div class="column has-text-centered">Grand Total:  <?php echo $Panier->montantTotal(); ?>€</div>
 
-    </div> -->
+    </div>
         <div class="container mt-6 is-flex is-justify-content-flex-end">
 <?php if (empty($_SESSION['panier'])): ?>
         <a href="">
@@ -79,7 +80,7 @@
         <a href="checkout.php">
         <input class="button is-warning" type="submit" value="Procéder au paiement"></input>
         </a></div>
-<?php endif; ?>
+<?php endif;?>
 
 </section>
 

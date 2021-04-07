@@ -1,4 +1,5 @@
 <?php
+
     require_once 'layout_front.html.php';
 
     if (isset($_SESSION['customer'])) {
@@ -32,12 +33,22 @@
         Panier
       </a>
 
-    <?php if ($_SESSION['customer']['customer_statut'] == "2"): ?>
+       <a class="navbar-item">
+        <form method="POST" action="">
+        <input type="search" class="input is-small is-rounded" name="recherche">
+        <button type="submit" value="Rechercher..."></button>
+        </form>
+      </a>
+
+
+
+    <?php if (isset($_SESSION['customer']['customer_statut'])): ?>
+<?php if ($_SESSION['customer']['customer_statut'] == "2"): ?>
       <a class="navbar-item" href="../admin/inventaire.html.php">
        Admin
      </a>
-    <?php endif;
-    ?>
+    <?php endif;?>
+<?php endif;?>
 
       <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
@@ -68,12 +79,12 @@
 <?php if ($repere != "0") {?>
         <a class="button is-warning" href="profil.html.php">
            Profil
-          </a> 
+          </a>
 <?php } else {?>
          <a class="button is-warning" href="inscription.html.php">
            Inscription
-          </a> 
-<?php } ?>         
+          </a>
+<?php }?>
 
 
 <?php if ($repere != "0") {?>

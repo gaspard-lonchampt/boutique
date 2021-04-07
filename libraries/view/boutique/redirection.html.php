@@ -4,7 +4,7 @@ require_once '../../autoload.php';
 require_once 'layout_front.html.php';
 require_once 'header.html.php'; 
 
-var_dump($_SESSION['customer']['customer_statut']);
+// var_dump($_SESSION['customer']['customer_statut']);
 ?>
 
 
