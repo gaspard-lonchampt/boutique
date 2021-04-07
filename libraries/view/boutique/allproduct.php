@@ -46,12 +46,19 @@ if (isset($_GET['voir'])) {
             <input type='submit' value="Filtrer" name="searchitem">
         </form>
     </div>
+
+
+
+    <!--nav bar search-->
     <?php
-        if (!isset($_GET['searchitem'])) {
+    if (isset($_GET['navbarseach'])) {
     ?>
-            <div class="parent">
+    <div class="parent" style="margin-top: 30px">
+        <form method="get" action="allproduct.php">
+            <input type="submit" id="voir" name="voir" value="<-- Voir tous les produits">
+        </form>
         <?php
-        foreach ($allProduits as $produit) {
+        foreach ($navbarsearchProduits as $produit) {
             ?>
             <div class="child">
 
@@ -61,8 +68,8 @@ if (isset($_GET['voir'])) {
                     </div>
                     <div class="image">
                         <a href="produit.php?product_id=<?= $produit['product_id'] ?>">
-                            <img class="one" src="../images/<?= $produit['product_image_1']?>" alt="<?= $_SESSION['product']['product_name']; ?>"/>
-                            <img class="two" src="../images/<?= $produit['product_image_2']?>" alt="<?= $_SESSION['product']['product_name']; ?>"/>
+                            <img class="one" src="../images/<?= $produit['product_image_1']?>" alt="<?= $produit['product_name']; ?>"/>
+                            <img class="two" src="../images/<?= $produit['product_image_2']?>" alt="<?= $produit['product_name']; ?>"/>
                         </a>
                     </div>
                     <div class="other">
@@ -80,47 +87,86 @@ if (isset($_GET['voir'])) {
         }
         ?>
     </div>
+    <?php
+    }
+    if (isset($_GET['searchitem'])) {
+    ?>
+            <!--catégorie search-->
+        <div class="parent" style="margin-top: 30px">
+            <form method="get" action="allproduct.php">
+                <input type="submit" id="voir" name="voir" value="<-- Voir tous les produits">
+            </form>
             <?php
-            }
-        else {
-            ?>
-            <div class="parent" style="margin-top: 30px">
-                <form method="get" action="allproduct.php">
-                    <input type="submit" id="voir" name="voir" value="<-- Voir tous les produits">
-                </form>
-                <?php
-                foreach ($allsearchProduits as $produit) {
-                    ?>
-                    <div class="child">
+            foreach ($allsearchProduits as $produit) {
+                ?>
+                <div class="child">
 
-                        <div id="content-item">
-                            <div class="titre">
-                                <h2><?= $produit['product_name']; ?></h2>
-                            </div>
-                            <div class="image">
-                                <a href="produit.php?product_id=<?= $produit['product_id'] ?>">
-                                    <img class="one" src="../images/<?= $produit['product_image_1']?>" alt="<?= $_SESSION['product']['product_name']; ?>"/>
-                                    <img class="two" src="../images/<?= $produit['product_image_2']?>" alt="<?= $_SESSION['product']['product_name']; ?>"/>
-                                </a>
-                            </div>
-                            <div class="other">
-                                <h3><?= $produit['other_product_details']; ?></h3>
-                            </div>
-                            <div class="price">
-                                <h3><?= $produit['price']; ?> €</h3>
-                            </div>
-                            <div class="bouton1">
-                                <a href="produit.php?product_id=<?= $produit['product_id'] ?>">Voir le produit</a>
-                            </div>
+                    <div id="content-item">
+                        <div class="titre">
+                            <h2><?= $produit['product_name']; ?></h2>
+                        </div>
+                        <div class="image">
+                            <a href="produit.php?product_id=<?= $produit['product_id'] ?>">
+                                <img class="one" src="../images/<?= $produit['product_image_1']?>" alt="<?= $produit['product_name']; ?>"/>
+                                <img class="two" src="../images/<?= $produit['product_image_2']?>" alt="<?= $produit['product_name']; ?>"/>
+                            </a>
+                        </div>
+                        <div class="other">
+                            <h3><?= $produit['other_product_details']; ?></h3>
+                        </div>
+                        <div class="price">
+                            <h3><?= $produit['price']; ?> €</h3>
+                        </div>
+                        <div class="bouton1">
+                            <a href="produit.php?product_id=<?= $produit['product_id'] ?>">Voir le produit</a>
                         </div>
                     </div>
-                    <?php
-                }
-                ?>
-            </div>
-            <?php
-        }
+                </div>
+                <?php
+            }
             ?>
+        </div>
+        <?php
+    }
+    else {
+    ?>
+            <!--affichage de tous les produits-->
+        <div class="parent">
+            <?php
+            foreach ($allProduits as $produit) {
+                ?>
+                <div class="child">
+
+                    <div id="content-item">
+                        <div class="titre">
+                            <h2><?= $produit['product_name']; ?></h2>
+                        </div>
+                        <div class="image">
+                            <a href="produit.php?product_id=<?= $produit['product_id'] ?>">
+                                <img class="one" src="../images/<?= $produit['product_image_1']?>" alt="<?= $produit['product_name']; ?>"/>
+                                <img class="two" src="../images/<?= $produit['product_image_2']?>" alt="<?= $produit['product_name']; ?>"/>
+                            </a>
+                        </div>
+                        <div class="other">
+                            <h3><?= $produit['other_product_details']; ?></h3>
+                        </div>
+                        <div class="price">
+                            <h3><?= $produit['price']; ?> €</h3>
+                        </div>
+                        <div class="bouton1">
+                            <a href="produit.php?product_id=<?= $produit['product_id'] ?>">Voir le produit</a>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+        </div>
+        <?php
+    }
+    ?>
+
+
 </div>
 
 <?php

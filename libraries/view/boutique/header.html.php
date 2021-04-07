@@ -8,6 +8,19 @@
         $repere = "0";
     }
 
+$itemsearch = new \Models\Products();
+    if(isset($_GET['navbarsearch'])) {
+
+        $tab = array();
+
+        foreach ($_GET as $value){
+            if ($value != 'Rechercher')
+                array_push($tab, $value);
+        }
+        $navbarsearchProduits = $itemsearch->filtrenavbar($tab);
+
+    }
+
 ?>
 
 <nav class="navbar container" role="navigation" aria-label="main navigation">
@@ -34,11 +47,13 @@
       </a>
 
        <a class="navbar-item">
-        <form method="POST" action="">
-        <input type="search" class="input is-small is-rounded" name="recherche">
-        <button type="submit" value="Rechercher..."></button>
+        <form method="GET" action="">
+        <input type="search" class="input is-small is-rounded" name="recherche" placeholder="recherche par couleur...">
+        <input type="submit" value="Rechercher" name="navbarsearch">
         </form>
       </a>
+
+
 
 
 
