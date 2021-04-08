@@ -16,9 +16,6 @@ if ($_SESSION['customer']['customer_statut'] !== "2") {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Accueil</a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Commandes</a>
                 </li>
@@ -34,11 +31,8 @@ if ($_SESSION['customer']['customer_statut'] !== "2") {
                 <li class="nav-item">
                     <a class="nav-link" href="inventaire.html.php">Inventaire</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="ahonneur.php">Articles à l'honneur</a>
-                </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="../boutique/accueil.php">Retour au site</a>
+                    <a class="nav-link" href="../../../accueil.php">Retour au site</a>
                 </li>
             </ul>
         </div>

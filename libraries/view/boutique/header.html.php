@@ -61,14 +61,14 @@ $itemsearch = new \Models\Products();
       <?php endif ?>
         Panier
       </a>
-
+<!--
        <a class="navbar-item">
         <form method="GET" action="">
         <input type="search" class="input is-small is-rounded" name="recherche" placeholder="recherche par couleur...">
         <input type="submit" value="Rechercher" name="navbarsearch">
         </form>
       </a>
-
+          -->
 
 
 <?php if (isset($_SESSION['customer']['customer_statut'])): ?>

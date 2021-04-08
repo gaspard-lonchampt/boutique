@@ -25,11 +25,11 @@ $Panier= new \Models\Panier();
 // var_dump($Produits);
 // echo "</pre>";
 echo "<pre>";
-var_dump($_SESSION['panier']);
+//var_dump($_SESSION['panier']);
 echo "</pre>";
 
 echo "<pre>";
-var_dump($_SESSION['customer']);
+//var_dump($_SESSION['customer']);
 echo "</pre>";
 
 // unset($_SESSION['panier']);

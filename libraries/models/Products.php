@@ -91,7 +91,7 @@ class Products extends Models
              */
         } else {
             $_SESSION['erreur'] = "URL invalide";
-            header('Location: products.html.php');
+            //header('Location: products.html.php');
         }
     }
 
@@ -402,7 +402,7 @@ class Products extends Models
             // On récupère le produit
             $stock = $query->fetch();
 
-            var_dump($stock);
+            //var_dump($stock);
 
             // On vérifie si le produit existe
             if (!$stock) {
@@ -417,11 +417,11 @@ class Products extends Models
             //On accroches les paramètres
             //$query2->bindValue(':stock', $stock_id);
 
-            echo 'yo';
-            var_dump($query2);
+            //echo 'yo';
+            //var_dump($query2);
             // On exécute la requête
             $query2->execute([$stock_id]);
-            echo 'ya';
+
             $_SESSION['message'] = "stock supprimé";
 
         } else {
@@ -544,17 +544,34 @@ class Products extends Models
     public function filtre($tab) {
         $in = str_repeat('?,', count($tab) - 1) . '?';
         $sql = "SELECT * FROM `stock` as s
-inner join attribute_value as av on av.attribute_value_id = s.attribute_value_id
-inner join ref_product_types as rf on rf.product_type_id = av.product_type_id
-inner join products as p on p.product_id = s.product_id
-inner join products_image as pi on pi.product_id = p.product_id
-where rf.product_type_description in ($in)
-group by s.product_id
-";
+                inner join attribute_value as av on av.attribute_value_id = s.attribute_value_id
+                inner join ref_product_types as rf on rf.product_type_id = av.product_type_id
+                inner join products as p on p.product_id = s.product_id
+                inner join products_image as pi on pi.product_id = p.product_id
+                where rf.product_type_description in ($in)
+                group by s.product_id
+                ";
         $query = $this->pdo->prepare($sql);
         $query->execute($tab);
         $data = $query->fetchAll();
         return($data);
+    }
+
+    public function filtrenavbar($tab) {
+        $in = str_repeat('?,', count($tab) - 1) . '?';
+        $sql = "SELECT * FROM `stock` as s
+                    inner join attribute_value as av on av.attribute_value_id = s.attribute_value_id
+                    inner join ref_product_types as rf on rf.product_type_id = av.product_type_id
+                    inner join products as p on p.product_id = s.product_id
+                    inner join products_image as pi on pi.product_id = p.product_id
+                    where  av.attribute_color in ($in)
+                    group by s.product_id
+                    ";
+        $query = $this->pdo->prepare($sql);
+        $query->execute($tab);
+        $searchitem = $query->fetchAll();
+        //header('location:libraries/view/boutique/allproduct.php');
+        return($searchitem);
     }
 
 
