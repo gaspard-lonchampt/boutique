@@ -129,6 +129,10 @@ class Panier extends Models
         unset($_SESSION['panier'][$Produits_id]);
     }
 
+    public function displayCommand() {
+        $sql = "SELECT "
+    }
+
     public function insertCommand()
     {
         $requete = "INSERT INTO orders
