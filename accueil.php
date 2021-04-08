@@ -24,7 +24,7 @@ $allProduit =$Produits->findProduit();
             <?php
             foreach ($allProduits as $produit) {
                 ?>
-                <div class="child">
+                <div class="child card">
 
                     <div id="content-item">
                         <div class="titre">
@@ -63,7 +63,7 @@ $allProduit =$Produits->findProduit();
             <?php
             foreach ($allMusic as $produit) {
                 ?>
-                <div class="child">
+                <div class="child card">
 
                     <div id="content-item">
                         <div class="titre">
@@ -103,7 +103,7 @@ $allProduit =$Produits->findProduit();
             <?php
             foreach ($allProduit as $produit) {
                 ?>
-                <div class="child">
+                <div class="child card">
 
                     <div id="content-item">
                         <div class="titre">

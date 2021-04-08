@@ -1,5 +1,5 @@
 <?php
-
+    
     require_once 'layout_front.html.php';
 
     if (isset($_SESSION['customer'])) {
@@ -17,6 +17,7 @@ $itemsearch = new \Models\Products();
             if ($value != 'Rechercher')
                 array_push($tab, $value);
         }
+        
         $navbarsearchProduits = $itemsearch->filtrenavbar($tab);
 
     }
@@ -61,14 +62,14 @@ $itemsearch = new \Models\Products();
       <?php endif ?>
         Panier
       </a>
-<!--
-       <a class="navbar-item">
+
+       <!-- <a class="navbar-item">
         <form method="GET" action="">
         <input type="search" class="input is-small is-rounded" name="recherche" placeholder="recherche par couleur...">
         <input type="submit" value="Rechercher" name="navbarsearch">
         </form>
-      </a>
-          -->
+      </a> -->
+
 
 
 <?php if (isset($_SESSION['customer']['customer_statut'])): ?>

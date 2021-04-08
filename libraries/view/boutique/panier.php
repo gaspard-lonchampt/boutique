@@ -76,7 +76,7 @@
         <a href="checkout.php">
         <input class="button is-warning" type="submit" value="Procéder au paiement"></input>
         </a></div>
-<?php endif;?>
+<?php endif; ?>
 
 </section>
 
