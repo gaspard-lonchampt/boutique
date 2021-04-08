@@ -42,8 +42,6 @@ class Panier extends Models
                 if ($id == $Produits_id) {
                     $quantity = $_SESSION['panier'][$Produits_id]['quantity'] + $quantity;
                     $_SESSION['panier'][$Produits_id]['quantity'] = $quantity;
-                    echo "ici quantité additionné";
-                    var_dump($quantity);
                     break;
                 }
             }if ($_SESSION['panier'] != $Produits_id) {
@@ -129,8 +127,32 @@ class Panier extends Models
         unset($_SESSION['panier'][$Produits_id]);
     }
 
-    public function displayCommand() {
-        $sql = "SELECT "
+    public function displayCommand()
+    {
+        $requete = "SELECT * FROM orders WHERE customer_id = :customer_id";
+        $requete = $this->pdo->prepare($requete);
+        $requete->bindParam(':customer_id', $_SESSION['customer']['customer_id']);
+        $requete->execute();
+
+        $commande = $requete->fetchall();
+        // echo "<pre>";
+        // var_dump($commande);
+        // echo "</pre>";
+
+
+        // foreach ($commande as $commande) {
+        //     $requete = "SELECT * FROM order_items WHERE order_id = :order_id";
+        //     $requete = $this->pdo->prepare($requete);
+        //     $requete->bindParam(':order_id', $commande['order_id']);
+        //     $requete->execute();
+        //     $item = $requete->fetchall();
+        //     // echo "<pre>";
+        //     // var_dump($item);
+        //     // echo "</pre>";
+        // }
+
+        return $commande;
+
     }
 
     public function insertCommand()
@@ -161,7 +183,7 @@ class Panier extends Models
         $requete->execute();
 
         $id_commande = $this->pdo->lastInsertId();
-        echo "ici print";
+
         print $this->pdo->lastInsertId();
 
         $panier = $this->displaypanier();
