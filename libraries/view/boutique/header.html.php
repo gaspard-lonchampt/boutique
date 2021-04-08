@@ -1,5 +1,5 @@
 <?php
-
+    require_once '../../autoload.php';
     require_once 'layout_front.html.php';
 
     if (isset($_SESSION['customer'])) {
@@ -17,6 +17,7 @@ $itemsearch = new \Models\Products();
             if ($value != 'Rechercher')
                 array_push($tab, $value);
         }
+        
         $navbarsearchProduits = $itemsearch->filtrenavbar($tab);
 
     }
