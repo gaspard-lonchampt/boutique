@@ -35,7 +35,7 @@ $commande = new \models\Panier();
 $affichage = $commande->displayCommand();
 
 // echo "<pre>";
-// var_dump($affichage);
+//var_dump($affichage);
 // echo "</pre>";
 
 
