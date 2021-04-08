@@ -426,14 +426,14 @@ h1, h2, h3, a {
 
 /****ACCUEIL***************************************************/
 .background-image01 {
-    height: 40vh;
+    height: 100vh;
     width: 100%;
     color: #FAF9F5;
 }
 .background-image01 h1 {
     font-size: xxx-large;
     text-align: center;
-    margin-top: 25%;
+    margin-top: 5%;
 }
 .background-image01 h1 span {
     color: #FFC805;

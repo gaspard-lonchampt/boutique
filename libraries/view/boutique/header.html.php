@@ -1,5 +1,5 @@
 <?php
-    require_once '../../autoload.php';
+    
     require_once 'layout_front.html.php';
 
     if (isset($_SESSION['customer'])) {
@@ -63,12 +63,12 @@ $itemsearch = new \Models\Products();
         Panier
       </a>
 
-       <a class="navbar-item">
+       <!-- <a class="navbar-item">
         <form method="GET" action="">
         <input type="search" class="input is-small is-rounded" name="recherche" placeholder="recherche par couleur...">
         <input type="submit" value="Rechercher" name="navbarsearch">
         </form>
-      </a>
+      </a> -->
 
 
 
