@@ -155,6 +155,33 @@ class Panier extends Models
 
     }
 
+       public function displayCommandAdmin()
+    {
+        $requete = "SELECT * FROM orders";
+        $requete = $this->pdo->prepare($requete);
+        $requete->execute();
+
+        $commande = $requete->fetchall();
+        // echo "<pre>";
+        // var_dump($commande);
+        // echo "</pre>";
+
+
+        // foreach ($commande as $commande) {
+        //     $requete = "SELECT * FROM order_items WHERE order_id = :order_id";
+        //     $requete = $this->pdo->prepare($requete);
+        //     $requete->bindParam(':order_id', $commande['order_id']);
+        //     $requete->execute();
+        //     $item = $requete->fetchall();
+        //     // echo "<pre>";
+        //     // var_dump($item);
+        //     // echo "</pre>";
+        // }
+
+        return $commande;
+
+    }
+
     public function insertCommand()
     {
         $requete = "INSERT INTO orders

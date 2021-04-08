@@ -161,7 +161,7 @@
             <!-- patate -->
 
             <div class="control">
-                <input class="button is-primary" type="submit" value="Envoyer"
+                <input class="button is-warning" type="submit" value="Envoyer"
                 name="customer_submit">
             </div>
 
@@ -210,10 +210,11 @@
             </div>
             <div>
               <div class="control">
-                <input class="button is-primary" type="submit" value="Envoyer"
+                <input class="button is-warning" type="submit" value="Envoyer"
                 name="customer_submit">
             </div>
             </form>
+            </div>
 <?php
 
         }

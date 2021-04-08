@@ -23,7 +23,6 @@ $commande = new \models\Panier();
 
     <div class="card column is-flex mb-6 is-align-items-center">
     <div class="column is-half is-flex">
-        <div class="column is-half has-text-centered pr-0"></div>
         <div class="column has-text-centered pr-6">Numéro de commande</div>
     </div>
         <div class="column has-text-centered">Statut de la commande</div>
@@ -50,7 +49,11 @@ foreach ($affichage as $affichage): ?>
         <div class="column is-half has-text-centered is-flex is-justify-content-center is-align-content-center is-align-items-center">
             <div class="column is-centered"><h2><?php echo $affichage["order_id"]; ?> </h2></div>
         </div>
-        <div class="column has-text-centered"><?php echo $affichage["order_status_code"]; ?>
+        <div class="column has-text-centered"><?php if($affichage["order_status_code"]) {
+            echo "Commande en attente de validation";
+        } else {
+            echo "Commande validé";
+        }; ?>
 </div>
         <div class="column has-text-centered"><?php echo $affichage["date_order_placed"]; ?> </div>
         <div class="column has-text-centered"><?php echo $affichage["order_details"];
@@ -60,17 +63,9 @@ foreach ($affichage as $affichage): ?>
     </div>
 <?php endforeach;?>
 
-<?php
-echo "<pre>";
-var_dump($affichage);
-echo "</pre>";
-?>
-
-
-
 
 <div class="container">
-<h2 class="has-text-centered">Modifier vos informations</h2>
+<h2 class="has-text-centered mt-6">Modifier vos informations</h2>
 </div>
 <?php
 

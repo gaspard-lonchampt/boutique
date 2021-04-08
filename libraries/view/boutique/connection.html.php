@@ -17,4 +17,5 @@ $connect_msg = $connect->connect();
 
 $view->connect_form($connect_msg);
 
+
 require_once 'footer.html.php';
