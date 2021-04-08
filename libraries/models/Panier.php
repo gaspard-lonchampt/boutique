@@ -127,7 +127,6 @@ class Panier extends Models
         unset($_SESSION['panier'][$Produits_id]);
     }
 
-<<<<<<< Updated upstream
     public function displayCommand()
     {
         $requete = "SELECT * FROM orders WHERE customer_id = :customer_id";
@@ -155,11 +154,6 @@ class Panier extends Models
         return $commande;
 
     }
-=======
-    // public function displayCommand() {
-    //     $sql = "SELECT "
-    // }
->>>>>>> Stashed changes
 
     public function insertCommand()
     {
