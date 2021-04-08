@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
                     </div>
 
                 <div class="cat">
-                    <?= $_SESSION['product']['product_type_description']; ?>
+                    <h3><?= $_SESSION['product']['product_type_description']; ?></h3>
                 </div>
 
                 <div class="image01">
@@ -55,12 +55,15 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="quantite01">
-                    Quantité :<br>
-                    <input name="quantity" type="number" value="1" max="3" min="1">
+                    <h3 class="mb-1">Quantité :</h3>
+                    <div class="container">
+                    <input class="input is-small" name="quantity" type="number" value="1" max="10" min="1">
+                    </div>
                 </div>
 
                 <div class="taille01">
-                    Taille :<br>
+                    <h3 class="mb-1">Taille :</h3>
+                    <div class="select is-small">
                     <select name="taille">
                         <?php
                         foreach ($_SESSION['stock'] as $key => $value) {
@@ -68,10 +71,11 @@ if (isset($_POST['submit'])) {
                         }
                         ?>
                     </select>
+                    </div>
                 </div>
 
-                <div class="panier01">
-                    <input type="submit" href="addpanier.php?product_id=<?= $_SESSION['product']['product_id'] ?>">Ajouter au Panier</input>
+                <div class="panier01 is-flex is-justify-content-center">
+                    <button class="button is-warning mt-4" type="submit" href="addpanier.php?product_id=<?= $_SESSION['product']['product_id'] ?>">Ajouter au Panier</button>
                 </div>
             </div>
         

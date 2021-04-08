@@ -60,7 +60,7 @@ if (isset($_GET['voir'])) {
         <?php
         foreach ($navbarsearchProduits as $produit) {
             ?>
-            <div class="child">
+            <div class="child card">
 
                 <div id="content-item">
                     <div class="titre">

@@ -5,16 +5,12 @@
 
     $Panier = new \Models\Panier();
 
-    echo "<pre>";
-    var_dump($_SESSION['panier']);
-    var_dump($_SESSION['customer']);
-    var_dump($_POST);
-    echo "</pre>";
     if (isset($_GET['del'])) {
         $Panier->del($_GET['del']);
     }
 
     $total = 0;
+    
     // todo :
     // renvoyer vers la co si on va vers le checkout sans être co
     // enregistrer les infos du panier en BDD
