@@ -1,4 +1,5 @@
 <?php
+
 require_once '../../autoload.php';
 if (isset($_SESSION['customer']['customer_id']) > "0") {
     header('Location: profil.html.php');
@@ -7,10 +8,6 @@ if (isset($_SESSION['customer']['customer_id']) > "0") {
 
 require_once 'layout_front.html.php';
 require_once 'header.html.php';
-
-
-
-// var_dump($_SESSION);
 
 $view = new \view\Customers();
 
