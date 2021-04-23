@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace controllers;
 
 /**
  * Classe qui regroupe les conditions à vérifier/paramètres à rentrer avant de lancer les fonctions sur le model

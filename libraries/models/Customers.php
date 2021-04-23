@@ -1,6 +1,6 @@
 <?php
 
-namespace Models;
+namespace models;
 
 /**
  * Class regroupant les requêtes SQL pour les fonctions clients

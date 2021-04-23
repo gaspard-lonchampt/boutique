@@ -24,7 +24,7 @@ class Database
     {
         if (self::$instance === null) {
             self::$instance = $pdo = new PDO(
-                'mysql:host=localhost;dbname=boutique;charset=utf8', 'root', '',
+                'mysql:host=localhost:3306;dbname=gaspard-lonchampt_boutique;charset=utf8', 'gaspard-boutique', 'Hav6d&90',
                 [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
