@@ -5,7 +5,7 @@ $repere = 1;
 
 
 
-$inventaire = new \Models\Products();
+$inventaire = new \models\Products();
 
 ?>
 <main class="container">

@@ -4,7 +4,7 @@ require_once 'libraries/autoload.php';
 require_once 'libraries/view/boutique/layout_front.html.php';
 require_once 'libraries/view/boutique/header.html.php';
 
-$Produits = new \Models\Products();
+$Produits = new \models\Products();
 $allProduits = $Produits->findProductWithImages();
 $allMusic = $Produits->findMusic();
 $allProduit =$Produits->findProduit();

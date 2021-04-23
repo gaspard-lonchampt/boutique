@@ -8,19 +8,19 @@
         $repere = "0";
     }
 
-$itemsearch = new \Models\Products();
-    if(isset($_GET['navbarsearch'])) {
+// $itemsearch = new \Models\Products();
+//     if(isset($_GET['navbarsearch'])) {
 
-        $tab = array();
+//         $tab = array();
 
-        foreach ($_GET as $value){
-            if ($value != 'Rechercher')
-                array_push($tab, $value);
-        }
+//         foreach ($_GET as $value){
+//             if ($value != 'Rechercher')
+//                 array_push($tab, $value);
+//         }
         
-        $navbarsearchProduits = $itemsearch->filtrenavbar($tab);
+//         $navbarsearchProduits = $itemsearch->filtrenavbar($tab);
 
-    }
+//     }
 
 ?>
 

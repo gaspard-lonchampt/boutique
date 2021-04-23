@@ -11,7 +11,7 @@ if (empty($_SESSION['panier'])) {
     die('Votre panier est vide');
 }
 
-$Panier= new \Models\Panier();
+$Panier= new \models\Panier();
 
 // var_dump($_SESSION['panier']);
 

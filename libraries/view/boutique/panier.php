@@ -3,7 +3,7 @@
     require_once 'layout_front.html.php';
     require_once 'header.html.php';
 
-    $Panier = new \Models\Panier();
+    $Panier = new \models\Panier();
 
     if (isset($_GET['del'])) {
         $Panier->del($_GET['del']);

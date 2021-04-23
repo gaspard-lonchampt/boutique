@@ -7,8 +7,8 @@ $repere = 1;
 
 
 
-$Produits = new \Models\Products();
-$Categories = new \Models\Categories();
+$Produits = new \models\Products();
+$Categories = new \models\Categories();
 
 ?>
 <?php

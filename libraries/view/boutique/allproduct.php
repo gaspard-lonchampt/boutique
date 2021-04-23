@@ -4,9 +4,9 @@ require_once '../../autoload.php';
 require_once 'layout_front.html.php';
 require_once 'header.html.php';
 
-$Produits = new \Models\Products();
+$Produits = new \models\Products();
 $allProduits = $Produits->findAllProductsWithImages();
-$Categories = new \Models\Categories();
+$Categories = new \models\Categories();
 //var_dump($allProduits);
 if(isset($_GET['searchitem'])) {
 

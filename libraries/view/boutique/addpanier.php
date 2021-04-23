@@ -3,8 +3,8 @@ require_once '../../autoload.php';
 require_once 'layout_front.html.php';
 require_once 'header.html.php';
 
-$Produits = new \Models\Products();
-$Panier = new \Models\Panier();
+$Produits = new \models\Products();
+$Panier = new \models\Panier();
 
 // unset($_SESSION['panier']);
 

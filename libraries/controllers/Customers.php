@@ -7,7 +7,7 @@ namespace Controllers;
  */
 class Customers extends Controllers
 {
-    protected $modelName = \Models\Customers::class;
+    protected $modelName = \models\Customers::class;
     protected $pdo;
     private $customer_id;
 

@@ -7,8 +7,8 @@ $repere = 1;
 
 
 
-$Produits = new \Models\Products();
-$item = new \Models\Categories();
+$Produits = new \models\Products();
+$item = new \models\Categories();
 
 /**
  * Modifier le produit;
